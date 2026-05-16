@@ -1,13 +1,10 @@
 #!/bin/bash
 
 ################################################################################
-# 2026 Production-Ready Platform Auto-Deployment Script
-# Official Docs: https://docs.docker.com/
-# GitHub: https://github.com/docker/docker-ce
-# Version: 24.0.0 (Stable LTS)
-# Target: 76.13.218.129 (srv1636789.hstgr.cloud)
-# OS: Ubuntu 24.04 LTS
-# Regex Validation: ^[0-9]+\.[0-9]+\.[0-9]+$
+# 자동 배포 스크립트
+# 공식 문서: https://docs.docker.com/
+# 버전: v1.0.0 (2026-05-17)
+# 배포 대상: 76.13.218.129 (srv1636789.hstgr.cloud)
 ################################################################################
 
 set -e
@@ -52,8 +49,8 @@ log_section() {
 log_section "2026 Production-Ready 플랫폼 자동 배포"
 
 log_info "배포 시작 시간: $(date '+%Y-%m-%d %H:%M:%S')"
-log_info "호스트: $(hostname 2>/dev/null || echo 'unknown')"
-log_info "IP: $(hostname -I 2>/dev/null | awk '{print $1}' || echo 'unknown')"
+log_info "호스트: $(hostname)"
+log_info "IP: $(hostname -I | awk '{print $1}')"
 
 ################################################################################
 # Phase 1: 서버 준비
@@ -62,13 +59,13 @@ log_info "IP: $(hostname -I 2>/dev/null | awk '{print $1}' || echo 'unknown')"
 log_section "Phase 1: 서버 준비"
 
 log_info "1단계: VPS 초기화"
-OS_INFO=$(cat /etc/os-release 2>/dev/null | grep "PRETTY_NAME" | cut -d'"' -f2 || echo "Unknown OS")
+OS_INFO=$(cat /etc/os-release | grep "PRETTY_NAME" | cut -d'"' -f2)
 log_success "OS: $OS_INFO"
 
-DISK_USAGE=$(df -h / 2>/dev/null | awk 'NR==2 {print $5}' || echo "unknown")
+DISK_USAGE=$(df -h / | awk 'NR==2 {print $5}')
 log_success "디스크 사용률: $DISK_USAGE"
 
-MEM_USAGE=$(free -h 2>/dev/null | awk 'NR==2 {print $3 "/" $2}' || echo "unknown")
+MEM_USAGE=$(free -h | awk 'NR==2 {print $3 "/" $2}')
 log_success "메모리 사용량: $MEM_USAGE"
 
 log_info "2단계: Ubuntu 업데이트"
