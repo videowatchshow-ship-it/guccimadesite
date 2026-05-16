@@ -49,8 +49,8 @@ log_section() {
 log_section "2026 Production-Ready 플랫폼 자동 배포"
 
 log_info "배포 시작 시간: $(date '+%Y-%m-%d %H:%M:%S')"
-log_info "호스트: $(hostname)"
-log_info "IP: $(hostname -I | awk '{print $1}')"
+log_info "호스트: $(hostname 2>/dev/null || echo 'unknown')"
+log_info "IP: $(hostname -I 2>/dev/null | awk '{print $1}' || echo 'unknown')"
 
 ################################################################################
 # Phase 1: 서버 준비
@@ -59,13 +59,13 @@ log_info "IP: $(hostname -I | awk '{print $1}')"
 log_section "Phase 1: 서버 준비"
 
 log_info "1단계: VPS 초기화"
-OS_INFO=$(cat /etc/os-release | grep "PRETTY_NAME" | cut -d'"' -f2)
+OS_INFO=$(cat /etc/os-release 2>/dev/null | grep "PRETTY_NAME" | cut -d'"' -f2 || echo "Unknown OS")
 log_success "OS: $OS_INFO"
 
-DISK_USAGE=$(df -h / | awk 'NR==2 {print $5}')
+DISK_USAGE=$(df -h / 2>/dev/null | awk 'NR==2 {print $5}' || echo "unknown")
 log_success "디스크 사용률: $DISK_USAGE"
 
-MEM_USAGE=$(free -h | awk 'NR==2 {print $3 "/" $2}')
+MEM_USAGE=$(free -h 2>/dev/null | awk 'NR==2 {print $3 "/" $2}' || echo "unknown")
 log_success "메모리 사용량: $MEM_USAGE"
 
 log_info "2단계: Ubuntu 업데이트"
