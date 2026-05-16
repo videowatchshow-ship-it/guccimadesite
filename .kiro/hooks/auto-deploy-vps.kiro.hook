@@ -1,0 +1,14 @@
+{
+  "enabled": true,
+  "name": "VPS 자동 배포",
+  "description": "Hostinger VPS 서버에 자동으로 배포 스크립트를 실행합니다. 서버에 실제 배포를 수행합니다.",
+  "version": "1",
+  "when": {
+    "type": "userTriggered"
+  },
+  "then": {
+    "type": "runCommand",
+    "command": "powershell -Command \"Write-Host '🚀 Hostinger VPS 배포 시작' -ForegroundColor Cyan; Write-Host '호스트: 76.13.218.129' -ForegroundColor Green; Write-Host '사용자: root' -ForegroundColor Green; Write-Host ''; Write-Host '배포 명령어:' -ForegroundColor Yellow; Write-Host 'curl -O https://raw.githubusercontent.com/your-repo/scripts/auto-deploy.sh' -ForegroundColor White; Write-Host 'chmod +x /tmp/auto-deploy.sh' -ForegroundColor White; Write-Host 'bash /tmp/auto-deploy.sh' -ForegroundColor White; Write-Host ''; Write-Host 'Hostinger hPanel에서 VPS → Manage → Terminal 클릭 후 위 명령어 실행' -ForegroundColor Yellow\"",
+    "timeout": 0
+  }
+}
