@@ -1,0 +1,278 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                  2026 PRODUCTION-READY PLATFORM                           ║
+║                    DEPLOYMENT FLOWCHART                                   ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+START
+  │
+  ├─→ Choose Deployment Method
+  │   │
+  │   ├─→ Method 1: Hostinger Browser Terminal (RECOMMENDED)
+  │   │   ├─→ Go to https://hpanel.hostinger.com
+  │   │   ├─→ Navigate to VPS → srv1636789.hstgr.cloud → Manage
+  │   │   ├─→ Click "Terminal" button
+  │   │   └─→ Paste deployment command
+  │   │
+  │   ├─→ Method 2: SSH from Windows PowerShell
+  │   │   ├─→ Install OpenSSH: winget install OpenSSH.Client
+  │   │   ├─→ Connect: ssh -p 22 root@76.13.218.129
+  │   │   ├─→ Enter password: 1EMokhN03j9?G)8h7,pX
+  │   │   └─→ Paste deployment command
+  │   │
+  │   └─→ Method 3: Automated PowerShell Script
+  │       ├─→ Open PowerShell in project directory
+  │       └─→ Run: .\scripts\deploy-vps-windows.ps1
+  │
+  ├─→ Execute Deployment Command
+  │   │
+  │   └─→ curl -O https://raw.githubusercontent.com/videowatchshow-ship-it/guccimadesite/main/scripts/auto-deploy.sh && chmod +x auto-deploy.sh && bash auto-deploy.sh
+  │
+  ├─→ PHASE 1: Server Preparation (Steps 1-3)
+  │   ├─→ [1] VPS Initialization
+  │   │   ├─→ Check OS: Ubuntu 24.04 LTS
+  │   │   ├─→ Check Disk Usage
+  │   │   └─→ Check Memory Usage
+  │   ├─→ [2] Ubuntu Update
+  │   │   ├─→ apt update
+  │   │   └─→ apt upgrade
+  │   └─→ [3] SSH Security Configuration
+  │       └─→ Backup SSH config
+  │
+  ├─→ PHASE 2: Docker Installation (Steps 4-5)
+  │   ├─→ [4] Docker Installation
+  │   │   └─→ Install Docker 24.0.0 (Stable LTS)
+  │   └─→ [5] Docker Compose Installation
+  │       └─→ Install Docker Compose (Latest Stable)
+  │
+  ├─→ PHASE 3: Database Installation (Steps 6-7)
+  │   ├─→ [6] MariaDB Installation
+  │   │   └─→ Install MariaDB 11 Stable
+  │   └─→ [7] Redis Installation
+  │       └─→ Install Redis 7 Stable
+  │
+  ├─→ PHASE 4: Web Server Installation (Step 8)
+  │   └─→ [8] nginx Installation
+  │       └─→ Install nginx (Latest Stable)
+  │
+  ├─→ PHASE 5: Node.js Installation (Step 9)
+  │   └─→ [9] Node.js 22 LTS Installation
+  │       └─→ Install Node.js 22 LTS
+  │
+  ├─→ PHASE 6: Security Configuration (Steps 10-12)
+  │   ├─→ [10] UFW Firewall Configuration
+  │   │   ├─→ Enable UFW
+  │   │   ├─→ Allow port 22 (SSH)
+  │   │   ├─→ Allow port 80 (HTTP)
+  │   │   └─→ Allow port 443 (HTTPS)
+  │   ├─→ [11] fail2ban Installation
+  │   │   └─→ Install fail2ban (DDoS Protection)
+  │   └─→ [12] SSL/TLS Configuration
+  │       └─→ Install Certbot (Let's Encrypt)
+  │
+  ├─→ PHASE 7: Application Deployment (Steps 13-15)
+  │   ├─→ [13] Backend Directory Creation
+  │   │   └─→ Create /var/www/backend
+  │   ├─→ [14] Frontend Directory Creation
+  │   │   └─→ Create /var/www/frontend
+  │   └─→ [15] Streaming Directory Creation
+  │       └─→ Create /var/www/streaming
+  │
+  ├─→ PHASE 8: Monitoring and Backup (Steps 16-18)
+  │   ├─→ [16] Monitoring Configuration
+  │   │   └─→ Create /var/log/app
+  │   ├─→ [17] Backup Configuration
+  │   │   └─→ Create /backups
+  │   └─→ [18] Log Management
+  │       └─→ Configure log management
+  │
+  ├─→ PHASE 9: Final Validation (Steps 19-20)
+  │   ├─→ [19] Performance Optimization
+  │   │   └─→ Optimize system performance
+  │   └─→ [20] Final Validation
+  │       ├─→ Check Docker status
+  │       ├─→ Check nginx status
+  │       ├─→ Check MariaDB status
+  │       └─→ Check Redis status
+  │
+  ├─→ Deployment Complete! 🎉
+  │   ├─→ All 20 phases completed successfully
+  │   ├─→ All services running
+  │   └─→ VPS ready for application deployment
+  │
+  ├─→ NEXT STEPS
+  │   ├─→ Deploy Backend Application
+  │   │   ├─→ cd /var/www/backend
+  │   │   ├─→ git clone <repo>
+  │   │   ├─→ npm install
+  │   │   └─→ npm run build
+  │   ├─→ Deploy Frontend Application
+  │   │   ├─→ cd /var/www/frontend
+  │   │   ├─→ git clone <repo>
+  │   │   ├─→ npm install
+  │   │   └─→ npm run build
+  │   ├─→ Deploy Streaming Server
+  │   │   ├─→ cd /var/www/streaming
+  │   │   └─→ Configure SRS or nginx-rtmp
+  │   ├─→ Start Services
+  │   │   └─→ docker-compose up -d
+  │   └─→ Check Status
+  │       └─→ docker ps
+  │
+  └─→ END
+
+═══════════════════════════════════════════════════════════════════════════
+
+DEPLOYMENT TIMELINE
+═══════════════════════════════════════════════════════════════════════════
+
+Time    Phase                           Status
+────────────────────────────────────────────────────────────────────────────
+0:00    Start Deployment                ⏱️  Starting...
+0:30    Phase 1: Server Preparation     ✓ Complete
+1:00    Phase 2: Docker Installation    ✓ Complete
+1:30    Phase 3: Database Installation  ✓ Complete
+2:00    Phase 4: Web Server             ✓ Complete
+2:30    Phase 5: Node.js                ✓ Complete
+3:00    Phase 6: Security               ✓ Complete
+3:30    Phase 7: Application Dirs       ✓ Complete
+4:00    Phase 8: Monitoring & Backup    ✓ Complete
+4:30    Phase 9: Final Validation       ✓ Complete
+5:00    Deployment Complete             🎉 Success!
+
+Total Deployment Time: 10-15 minutes
+
+═══════════════════════════════════════════════════════════════════════════
+
+SERVICE STATUS AFTER DEPLOYMENT
+═══════════════════════════════════════════════════════════════════════════
+
+Service         Version              Status      Port
+────────────────────────────────────────────────────────────────────────────
+Docker          24.0.0               ✓ Running   -
+Docker Compose  Latest Stable        ✓ Running   -
+nginx           Latest Stable        ✓ Running   80, 443
+MariaDB         11 Stable            ✓ Running   3306
+Redis           7 Stable             ✓ Running   6379
+Node.js         22 LTS               ✓ Running   -
+UFW Firewall    Latest Stable        ✓ Enabled   -
+fail2ban        Latest Stable        ✓ Running   -
+Certbot         Latest Stable        ✓ Running   -
+
+═══════════════════════════════════════════════════════════════════════════
+
+VERIFICATION COMMANDS
+═══════════════════════════════════════════════════════════════════════════
+
+# Check Docker
+docker --version
+docker ps
+
+# Check nginx
+nginx -v
+systemctl status nginx
+
+# Check MariaDB
+mysql --version
+systemctl status mariadb
+
+# Check Redis
+redis-cli --version
+systemctl status redis-server
+
+# Check Node.js
+node --version
+npm --version
+
+# Check Firewall
+sudo ufw status
+
+# Check fail2ban
+sudo fail2ban-client status
+
+═══════════════════════════════════════════════════════════════════════════
+
+TROUBLESHOOTING FLOWCHART
+═══════════════════════════════════════════════════════════════════════════
+
+Issue Detected
+  │
+  ├─→ "Connection refused"
+  │   ├─→ Check VPS running in Hostinger hPanel
+  │   ├─→ Check firewall: sudo ufw status
+  │   └─→ Verify SSH port 22 is open
+  │
+  ├─→ "Permission denied"
+  │   ├─→ Ensure using root user
+  │   └─→ Check SSH key: chmod 600 ~/.ssh/id_rsa
+  │
+  ├─→ "apt update failed"
+  │   ├─→ Run: sudo apt update --fix-missing
+  │   └─→ Check internet connection
+  │
+  ├─→ "Docker not found"
+  │   ├─→ Verify: docker --version
+  │   └─→ Restart: sudo systemctl restart docker
+  │
+  └─→ Issue Resolved ✓
+
+═══════════════════════════════════════════════════════════════════════════
+
+DEPLOYMENT DECISION TREE
+═══════════════════════════════════════════════════════════════════════════
+
+Do you have SSH client installed?
+  │
+  ├─→ NO
+  │   └─→ Use Method 1: Hostinger Browser Terminal (RECOMMENDED)
+  │       └─→ No installation needed, works in any browser
+  │
+  └─→ YES
+      ├─→ Windows?
+      │   ├─→ YES
+      │   │   ├─→ Use Method 2: SSH from PowerShell
+      │   │   └─→ Or Method 3: Automated PowerShell Script
+      │   │
+      │   └─→ NO (Linux/Mac)
+      │       └─→ Use Method 2: SSH from Terminal
+      │           └─→ ssh -p 22 root@76.13.218.129
+      │
+      └─→ All methods execute the same deployment script
+
+═══════════════════════════════════════════════════════════════════════════
+
+DEPLOYMENT SUCCESS INDICATORS
+═══════════════════════════════════════════════════════════════════════════
+
+✓ All 20 phases completed
+✓ No error messages in terminal
+✓ All services showing "Running" status
+✓ Docker containers can be listed: docker ps
+✓ nginx responding on port 80/443
+✓ MariaDB accepting connections
+✓ Redis responding to ping
+✓ Node.js version 22 LTS installed
+✓ Firewall enabled with correct ports open
+✓ fail2ban protecting against DDoS
+✓ SSL/TLS certificates ready (Certbot)
+
+═══════════════════════════════════════════════════════════════════════════
+
+DEPLOYMENT FAILURE RECOVERY
+═══════════════════════════════════════════════════════════════════════════
+
+If deployment fails:
+
+1. Check error message in terminal
+2. Identify which phase failed
+3. Review troubleshooting section
+4. Fix the issue
+5. Re-run deployment command
+6. Deployment will resume from where it failed
+
+Note: Deployment script is idempotent - safe to run multiple times
+
+═══════════════════════════════════════════════════════════════════════════
+Last Updated: 2026-05-17
+Version: 1.0.0 (Stable LTS)
+Status: Production-Ready ✅
+═══════════════════════════════════════════════════════════════════════════
