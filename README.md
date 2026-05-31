@@ -101,13 +101,14 @@ Hostinger hPanel에서 SSH 키를 추가하여 비밀번호 없이 접속할 수
 
 1. **SSH 키 생성 (로컬에서)**
 ```bash
-ssh-keygen -t ed25519 -C "deploy@vps.local" -f ~/.ssh/gucci_deployment_key
+ssh-keygen -t ed25519 -C "deployment@gucci-2026" -f ~/.ssh/gucci_deployment_key
 ```
 
 2. **공개키를 Hostinger hPanel에 추가**
    - hPanel → VPS → Manage → Settings → SSH Keys
    - Add SSH key 클릭
    - 공개키 내용 붙여넣기 (`~/.ssh/gucci_deployment_key.pub`)
+   - 키 이름: `deployment@gucci-2026`
 
 3. **SSH 설정 파일에 추가 (~/.ssh/config)**
 ```
@@ -150,7 +151,6 @@ ssh gucci-vps
 - **Docker** - Stable (https://docs.docker.com)
 - **Docker Compose** - Stable (https://docs.docker.com/compose)
 - **nginx** - Stable (https://nginx.org/en/docs)
-- **Cloudflare** - Latest Stable (https://developers.cloudflare.com)
 
 ### Authentication
 - **Google OAuth** - https://developers.google.com/identity/protocols/oauth2
@@ -197,6 +197,73 @@ ssh gucci-vps
 ### Phase 9: 최종 검증 (2단계)
 19. 성능 최적화
 20. 최종 검증 및 서비스 상태 확인
+
+---
+
+## 🌐 사이트 노출 (Google SEO)
+
+### Google 검색에 사이트 노출을 위한 필수 단계
+
+#### 1. 사이트가 이미 인덱싱되었는지 확인
+
+```bash
+# Google 검색에서 다음 쿼리로 확인
+site:srv1636789.hstgr.cloud
+```
+
+#### 2. Google Search Console에 사이트 등록
+
+1. [Google Search Console](https://search.google.com/search-console) 접속
+2. "새로운 속성 추가" 클릭
+3. 도메인 유형 선택 (URL 접두사)
+4. `https://srv1636789.hstgr.cloud` 입력
+5. 소유권 확인 (DNS 레코드 또는 HTML 파일)
+
+#### 3. robots.txt 생성
+
+```bash
+# /var/www/frontend/public/robots.txt
+User-agent: *
+Allow: /
+Sitemap: https://srv1636789.hstgr.cloud/sitemap.xml
+```
+
+#### 4. sitemap.xml 생성
+
+Next.js의 경우 `next-sitemap` 패키지 사용:
+
+```bash
+npm install next-sitemap
+```
+
+```javascript
+// next-sitemap.config.js
+/** @type {import('next-sitemap').IConfig} */
+module.exports = {
+  siteUrl: 'https://srv1636789.hstgr.cloud',
+  generateRobotsTxt: true,
+  changefreq: 'daily',
+  priority: 0.7,
+  sitemapSize: 5000,
+}
+```
+
+#### 5. Google Search Console에 sitemap 제출
+
+1. Search Console에서 사이트 선택
+2. 왼쪽 메뉴 → Sitemaps
+3. `sitemap.xml` 입력 후 "제출" 클릭
+
+#### 6. Core Web Vitals 최적화
+
+- **LCP (Largest Contentful Paint)**: 2.5초 이하
+- **CLS (Cumulative Layout Shift)**: 0.1 이하
+- **INP (Interaction to Next Paint)**: 200ms 이하
+
+#### 7. 모바일 친화성 테스트
+
+- [Google Mobile-Friendly Test](https://search.google.com/test/mobile-friendly)
+- [PageSpeed Insights](https://pagespeed.web.dev/)
 
 ---
 
@@ -600,6 +667,10 @@ kill -9 <PID>
 - [ ] Firewall 설정 완료
 - [ ] Production build 최적화 완료
 - [ ] SEO 최적화 완료
+- [ ] Google Search Console 등록 완료
+- [ ] robots.txt 생성 완료
+- [ ] sitemap.xml 생성 및 제출 완료
+- [ ] Core Web Vitals 최적화 완료
 - [ ] WebSocket 테스트 완료
 - [ ] 스트리밍 테스트 완료
 

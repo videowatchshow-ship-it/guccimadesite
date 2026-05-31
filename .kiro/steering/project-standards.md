@@ -42,6 +42,29 @@ inclusion: always
 | | nginx | https://nginx.org/en/docs | https://github.com/nginx/nginx | Stable |
 | **OS** | Ubuntu | https://ubuntu.com/server/docs | — | 24.04 LTS |
 
+## SSH Key Configuration
+
+### SSH 키 정보 (deployment@gucci-2026)
+
+| 항목 | 값 |
+|------|-----|
+| **키 이름** | deployment@gucci-2026 |
+| **알고리즘** | ed25519 |
+| **공개키** | ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEHZRkPWLF5K0uzCmcgP37jso7LBr6nrUStUf3YsK5h9 deployment@gucci-2026 |
+
+### SSH 키 생성 명령어
+
+```bash
+ssh-keygen -t ed25519 -C "deployment@gucci-2026" -f ~/.ssh/gucci_deployment_key
+```
+
+### Hostinger hPanel에 SSH 키 추가
+
+1. hPanel → VPS → Manage → Settings → SSH Keys
+2. Add SSH key 클릭
+3. 키 이름: `deployment@gucci-2026`
+4. 공개키 내용 붙여넣기
+
 ## Version Management
 
 - Pin all versions explicitly (no `latest` tags or ranges like `^` or `~`)
