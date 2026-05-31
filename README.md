@@ -267,6 +267,57 @@ module.exports = {
 
 ---
 
+## 🌐 도메인 설정 (고대디 + Hostinger)
+
+### 도메인 네임서버 변경 (고대디에서 수동 설정)
+
+1. **고대디 로그인**
+   - https://godaddy.com 접속
+   - 계정 로그인
+
+2. **도메인 목록 이동**
+   - 상단 메뉴에서 "내 도메인" 클릭
+
+3. **네임서버 변경**
+   - 변경할 도메인 우측의 "..." 클릭
+   - "네임서버 관리" 선택
+   - "사용자 지정" 선택
+   - 다음 네임서버 입력:
+     - ns1.hostinger.com
+     - ns2.hostinger.com
+     - ns3.hostinger.com
+     - ns4.hostinger.com
+   - 저장 클릭
+
+4. **변경 확인**
+   - 네임서버 변경은 최대 48시간 소요 (보통 1-2시간)
+   - 확인 명령어: `nslookup -type=ns yourdomain.com`
+
+### Hostinger hPanel DNS 설정
+
+1. **Hostinger hPanel 접속**
+   - https://hpanel.hostinger.com
+   - VPS → Manage 클릭
+
+2. **DNS 관리 이동**
+   - 좌측 메뉴 → "DNS" 또는 "DNS Zones" 클릭
+
+3. **DNS 레코드 추가**
+   - A 레코드 추가:
+     - Name: `@` (루트 도메인)
+     - Value: `76.13.218.129`
+     - TTL: `3600`
+   - A 레코드 추가:
+     - Name: `www`
+     - Value: `76.13.218.129`
+     - TTL: `3600`
+
+4. **DNS 확인**
+   - Hostinger hPanel에서 DNS 설정 후 확인
+   - `nslookup yourdomain.com` 명령어로 확인
+
+---
+
 ## 📂 프로젝트 구조
 
 ```
@@ -658,7 +709,9 @@ kill -9 <PID>
 - [ ] Frontend 배포 완료
 - [ ] Streaming Server 배포 완료
 - [ ] SSL 설정 완료
-- [ ] DNS 설정 완료 (고대디 + Hostinger hPanel)
+- [ ] 도메인 네임서버 변경 완료 (고대디)
+- [ ] Hostinger DNS 설정 완료
+- [ ] DNS propagation 확인 완료
 
 ### Post-Deployment
 - [ ] 모니터링 연결 완료
