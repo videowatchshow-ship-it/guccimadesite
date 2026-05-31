@@ -20,7 +20,6 @@
 - ✅ **데스크탑 UX** - 200개 이상 체크리스트
 - ✅ **보안** - 30개 이상 체크리스트
 - ✅ **Docker 기반** - 완전 자동화
-- ✅ **Cloudflare CDN/WAF** - 보안 강화
 
 ### 필수 원칙 (11가지)
 1. **공식 문서 기준만** 사용
@@ -94,6 +93,35 @@ bash auto-deploy.sh
 
 ```bash
 ssh root@76.13.218.129
+```
+
+### SSH 키 설정 (권장)
+
+Hostinger hPanel에서 SSH 키를 추가하여 비밀번호 없이 접속할 수 있습니다.
+
+1. **SSH 키 생성 (로컬에서)**
+```bash
+ssh-keygen -t ed25519 -C "deploy@vps.local" -f ~/.ssh/gucci_deployment_key
+```
+
+2. **공개키를 Hostinger hPanel에 추가**
+   - hPanel → VPS → Manage → Settings → SSH Keys
+   - Add SSH key 클릭
+   - 공개키 내용 붙여넣기 (`~/.ssh/gucci_deployment_key.pub`)
+
+3. **SSH 설정 파일에 추가 (~/.ssh/config)**
+```
+Host gucci-vps
+    HostName 76.13.218.129
+    User root
+    IdentityFile ~/.ssh/gucci_deployment_key
+    StrictHostKeyChecking no
+    UserKnownHostsFile /dev/null
+```
+
+4. **SSH 연결 테스트**
+```bash
+ssh gucci-vps
 ```
 
 ---
@@ -270,12 +298,6 @@ ssh root@76.13.218.129
 - Authentication
 - Private Network
 - Public Access 비활성화
-
-### Cloudflare 보안
-- WAF (Web Application Firewall)
-- DDoS 방어
-- Bot Mitigation
-- Rate Limiting
 
 ---
 
@@ -463,14 +485,13 @@ EOF
 sudo certbot certonly --nginx -d srv1636789.hstgr.cloud
 ```
 
-### 6️⃣ Cloudflare 연결
+### 6️⃣ DNS 설정 (수동 설정 필요)
 
 ```
-1. Cloudflare 대시보드 접속
-2. 도메인 추가
-3. DNS 레코드 설정
-4. SSL/TLS 모드 설정 (Full)
-5. WAF 규칙 활성화
+고대디에서 네임서버를 Hostinger로 변경 후,
+Hostinger hPanel에서 DNS 레코드를 수동으로 설정:
+- A 레코드: @ → 76.13.218.129
+- A 레코드: www → 76.13.218.129
 ```
 
 ---
@@ -570,7 +591,7 @@ kill -9 <PID>
 - [ ] Frontend 배포 완료
 - [ ] Streaming Server 배포 완료
 - [ ] SSL 설정 완료
-- [ ] Cloudflare 연결 완료
+- [ ] DNS 설정 완료 (고대디 + Hostinger hPanel)
 
 ### Post-Deployment
 - [ ] 모니터링 연결 완료

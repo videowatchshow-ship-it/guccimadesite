@@ -40,7 +40,6 @@ inclusion: always
 | **Infrastructure** | Docker | https://docs.docker.com | https://github.com/docker | Stable |
 | | Docker Compose | https://docs.docker.com/compose | — | Stable |
 | | nginx | https://nginx.org/en/docs | https://github.com/nginx/nginx | Stable |
-| | Cloudflare | https://developers.cloudflare.com | — | Latest |
 | **OS** | Ubuntu | https://ubuntu.com/server/docs | — | 24.04 LTS |
 
 ## Version Management
@@ -106,14 +105,13 @@ inclusion: always
 8. Frontend deployment
 9. Streaming server deployment
 10. SSL/TLS setup
-11. Cloudflare integration
-12. Monitoring setup
-13. Backup system configuration
-14. fail2ban & UFW firewall setup
-15. Production build optimization
-16. SEO optimization
-17. WebSocket testing
-18. Streaming functionality testing
+11. Monitoring setup
+12. Backup system configuration
+13. fail2ban & UFW firewall setup
+14. Production build optimization
+15. SEO optimization
+16. WebSocket testing
+17. Streaming functionality testing
 
 ## Validation Checklist
 
