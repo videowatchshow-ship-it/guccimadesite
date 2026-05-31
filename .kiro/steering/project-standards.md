@@ -167,4 +167,29 @@ inclusion: always
 **Flag:** `^--?[a-z0-9-]+$`
 ---
 
+## VPS Information (구찌야놀자)
+
+| 항목 | 값 |
+|------|-----|
+| **호스트** | 76.13.218.129 |
+| **호스트명** | srv1636789.hstgr.cloud |
+| **SSH 포트** | 22 |
+| **사용자** | root |
+| **비밀번호** | q+7m#GElqQs/E&tfabwB |
+| **OS** | Ubuntu 24.04 LTS |
+| **CPU** | 1 Core |
+| **메모리** | 4 GB |
+| **디스크** | 50 GB |
+| **상태** | 실행 중 |
+| **만료일** | 2026-06-02 |
+| **컨트롤** | KVM |
+
+### SSH 연결 명령어
+
+```bash
+ssh root@76.13.218.129
+```
+
+---
+
 **Core Principle:** Official documentation → Stable/LTS versions → Production-ready code → Security-first → Mobile-first → SEO-first
