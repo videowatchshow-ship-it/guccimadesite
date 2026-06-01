@@ -6,6 +6,20 @@
 SET NAMES utf8mb4;
 SET CHARACTER SET utf8mb4;
 
+-- ─── 보안 설정 ───────────────────────────────────────────────────────────────
+-- 익명 사용자 제거 (보안)
+DELETE FROM mysql.user WHERE User='';
+
+-- 원격 루트 로그인 비활성화 (보안)
+DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');
+
+-- 테스트 데이터베이스 제거 (보안)
+DROP DATABASE IF EXISTS test;
+DELETE FROM mysql.db WHERE Db='test' OR Db='test\\_%';
+
+-- 권한 테이블 새로고침
+FLUSH PRIVILEGES;
+
 -- ─── 데이터베이스 ────────────────────────────────────────────────────────────
 CREATE DATABASE IF NOT EXISTS `guccimadesite`
   CHARACTER SET utf8mb4
@@ -77,3 +91,10 @@ CREATE TABLE IF NOT EXISTS `audit_logs` (
   INDEX `idx_action`     (`action`),
   INDEX `idx_created_at` (`created_at`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- ─── 로깅 설정 ───────────────────────────────────────────────────────────────
+-- 에러 로그 활성화 (기본값: /var/log/mysql/error.log)
+-- 일반 로그 활성화 (모든 쿼리 기록)
+-- 슬로우 쿼리 로그 활성화 (2초 이상 쿼리)
+-- 바이너리 로그 활성화 (복제 및 복구용)
+-- 참고: Docker 환경에서는 docker-compose.yml에서 설정
