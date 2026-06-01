@@ -2,47 +2,52 @@
 inclusion: always
 ---
 
-# 2026 Production-Ready 플랫폼 프로젝트 표준
+# 2026 프로덕션 레디 플랫폼 프로젝트 표준
 
-## Core Principles
+## 핵심 원칙
 
-**All code must be production-ready, officially documented, and security-first.**
+**모든 코드는 프로덕션 레디, 공식 문서 기반, 보안 우선이어야 합니다.**
 
-### Mandatory Requirements
-- Use only official documentation and stable/LTS versions
-- All code must be maintainable, secure, and tested
-- Docker-based infrastructure required
-- Mobile-first and SEO-first approach
+### 필수 요구사항
+- 공식 문서와 안정적인 LTS 버전만 사용
+- 모든 코드는 유지보수 가능하고, 보안적이며, 테스트되어야 함
+- Docker 기반 인프라 구조 필수
+- 모바일 우선, SEO 우선 접근 방식
+- 아래 정의된 정확한 프로젝트 구조 따를 것
+- 모든 설정은 공식 문서에 따라 검증되어야 함
 
-### Absolute Prohibitions
-- No speculative coding or undocumented patterns
-- No unofficial GitHub code or untested packages
-- No `latest` tags or unstable versions
-- No platform policy violations or artificial engagement manipulation
+### 절대 금지사항
+- 추측적인 코딩이나 문서화되지 않은 패턴 사용 금지
+- 비공식 GitHub 코드나 테스트되지 않은 패키지 사용 금지
+- `latest` 태그나 unstable 버전 사용 금지 (정확한 버전 핀 사용)
+- 플랫폼 정책 위반 또는 인공적인 엔게이지먼트 조작 금지
+- 하드코딩된 비밀번호나 자격증명 금지
+- 프로덕션 코드에 console.log 문장 금지
+- 이슈 트래킹 없이 TODO 주석 금지
 
-## Technology Stack & Versions
+## 기술 스택 및 버전
 
-| Layer | Technology | Docs | GitHub | Version |
-|-------|-----------|------|--------|---------|
-| **Frontend** | Next.js | https://nextjs.org/docs | https://github.com/vercel/next.js | Stable LTS |
+| 레이어 | 기술 | 문서 | GitHub | 버전 |
+|-------|------|------|--------|------|
+| **프론트엔드** | Next.js | https://nextjs.org/docs | https://github.com/vercel/next.js | Stable LTS |
 | | React | https://react.dev | https://github.com/facebook/react | Stable LTS |
 | | TailwindCSS | https://tailwindcss.com/docs | https://github.com/tailwindlabs/tailwindcss | Stable LTS |
-| **Backend** | Node.js | https://nodejs.org/en/docs | https://github.com/nodejs/node | 22 LTS |
+| **백엔드** | Node.js | https://nodejs.org/en/docs | https://github.com/nodejs/node | 22 LTS |
 | | Express.js | https://expressjs.com | https://github.com/expressjs/express | Stable LTS |
-| | NestJS (opt) | https://docs.nestjs.com | https://github.com/nestjs/nest | Stable LTS |
-| **Data** | MariaDB | https://mariadb.com/docs | https://github.com/MariaDB/server | 11 Stable |
+| | NestJS (선택) | https://docs.nestjs.com | https://github.com/nestjs/nest | Stable LTS |
+| **데이터베이스** | MariaDB | https://mariadb.com/docs | https://github.com/MariaDB/server | 11 Stable |
 | | Redis | https://redis.io/docs | https://github.com/redis/redis | 7 Stable |
-| **Streaming** | SRS | https://ossrs.io/lts/en-us/docs | https://github.com/ossrs/srs | LTS |
+| **스트리밍** | SRS | https://ossrs.io/lts/en-us/docs | https://github.com/ossrs/srs | LTS |
 | | nginx-rtmp | — | https://github.com/arut/nginx-rtmp-module | Stable |
 | | FFmpeg | https://ffmpeg.org/documentation.html | https://github.com/FFmpeg/FFmpeg | Stable LTS |
-| **Auth** | Google OAuth | https://developers.google.com/identity/protocols/oauth2 | — | Latest |
+| **인증** | Google OAuth | https://developers.google.com/identity/protocols/oauth2 | — | Latest |
 | | JWT | https://jwt.io/introduction | — | RFC 7519 |
-| **Infrastructure** | Docker | https://docs.docker.com | https://github.com/docker | Stable |
+| **인프라** | Docker | https://docs.docker.com | https://github.com/docker | Stable |
 | | Docker Compose | https://docs.docker.com/compose | — | Stable |
 | | nginx | https://nginx.org/en/docs | https://github.com/nginx/nginx | Stable |
 | **OS** | Ubuntu | https://ubuntu.com/server/docs | — | 24.04 LTS |
 
-## SSH Key Configuration
+## SSH 키 설정
 
 ### SSH 키 정보 (deployment@gucci-2026)
 
@@ -65,107 +70,107 @@ ssh-keygen -t ed25519 -C "deployment@gucci-2026" -f ~/.ssh/gucci_deployment_key
 3. 키 이름: `deployment@gucci-2026`
 4. 공개키 내용 붙여넣기
 
-## Version Management
+## 버전 관리
 
-- Pin all versions explicitly (no `latest` tags or ranges like `^` or `~`)
-- Maintain `package-lock.json` for all Node.js projects
-- Use Docker image digests instead of tags
-- All dependencies must be from official, stable sources
+- 모든 버전은 명시적으로 고정 (`latest` 태그나 `^`, `~` 범위 사용 금지)
+- 모든 Node.js 프로젝트는 `package-lock.json` 유지
+- Docker 이미지 태그 대신 digest 사용
+- 모든 의존성은 공식적이고 안정적인 소스에서만 가져올 것
 
-## Project Structure
+## 프로젝트 구조
 
 ```
 /project
-├── /frontend          # Next.js application
-├── /backend           # Node.js/Express backend
-├── /admin             # Admin dashboard
-├── /streaming         # Streaming server (SRS)
-├── /nginx             # nginx reverse proxy config
-├── /docker            # Docker Compose files
-├── /database          # MariaDB initialization
-├── /redis             # Redis configuration
-├── /security          # Security configs (fail2ban, UFW)
-├── /scripts           # Deployment automation
-├── /logs              # Application logs
-├── /backups           # Database backups
-└── README.md          # Project documentation
+├── /frontend          # Next.js 애플리케이션
+├── /backend           # Node.js/Express 백엔드
+├── /admin             # 관리자 대시보드
+├── /streaming         # 스트리밍 서버 (SRS)
+├── /nginx             # nginx 역방향 프록시 설정
+├── /docker            # Docker Compose 파일
+├── /database          # MariaDB 초기화
+├── /redis             # Redis 설정
+├── /security          # 보안 설정 (fail2ban, UFW)
+├── /scripts           # 배포 자동화 스크립트
+├── /logs              # 애플리케이션 로그
+├── /backups           # 데이터베이스 백업
+└── README.md          # 프로젝트 문서
 ```
 
-## Core Features
+## 핵심 기능
 
-1. **SEO Optimization** — 150+ checklist items (Rank Math + Google SEO)
-2. **Real-time Streaming** — YouTube/Twitch-style with OBS/PRISM support, adaptive bitrate, low latency
-3. **Live Chat** — WebSocket-based with Redis Pub/Sub, emoji support, moderator controls
-4. **Admin System** — Stream key generation, broadcast control, monitoring, audit logs
-5. **Google OAuth** — Sign-up modal, auto-login, session persistence, CSRF/XSS protection
-6. **Mobile UX** — 200+ items: touch optimization, thumb-friendly layout, one-hand UX, safe-area support
-7. **Desktop UX** — 200+ items: keyboard shortcuts, fullscreen mode, admin dashboard, multi-window support
-8. **Security** — 30+ items: DDoS protection, SQL injection prevention, XSS/CSRF defense, fail2ban, UFW firewall
+1. **SEO 최적화** — 150+ 체크리스트 항목 (Rank Math + Google SEO)
+2. **실시간 스트리밍** — YouTube/Twitch 스타일, OBS/PRISM 지원, 적응형 비트레이트, 저지연
+3. **라이브 채팅** — WebSocket 기반, Redis Pub/Sub, 이모지 지원, 모더레이터 컨트롤
+4. **관리자 시스템** — 스트림 키 생성, 방송 제어, 모니터링, 감사 로그
+5. **Google OAuth** — 로그인 모달, 자동 로그인, 세션 지속성, CSRF/XSS 보호
+6. **모바일 UX** — 200+ 항목: 터치 최적화, 엄지 사용 편의 레이아웃, 한손 UX, safe-area 지원
+7. **데스크톱 UX** — 200+ 항목: 키보드 단축키, 전체화면 모드, 관리자 대시보드, 멀티윈도우 지원
+8. **보안** — 30+ 항목: DDoS 보호, SQL 인젝션 방지, XSS/CSRF 방어, fail2ban, UFW 방화벽
 
-## Code Standards
+## 코드 표준
 
-**Required:**
-- All code must follow official documentation patterns
-- Production-ready code only (no experimental or beta features)
-- Maintainable, well-structured code
-- Security-first implementation
+**필수:**
+- 모든 코드는 공식 문서 패턴을 따라야 함
+- 프로덕션 레디 코드만 사용 (실험적 또는 베타 기능 금지)
+- 유지보수 가능하고, 잘 구조화된 코드
+- 보안 우선 구현
 
-**Prohibited:**
-- Speculative or undocumented implementations
-- Unofficial or unverified code
-- Untested packages or dependencies
-- Platform policy violations
+**금지:**
+- 추측적이거나 문서화되지 않은 구현
+- 비공식적이거나 검증되지 않은 코드
+- 테스트되지 않은 패키지나 의존성
+- 플랫폼 정책 위반
 
-## Deployment Sequence
+## 배포 순서
 
-1. VPS initialization
-2. Ubuntu updates
-3. Docker & Docker Compose installation
-4. nginx reverse proxy setup
-5. MariaDB configuration
-6. Redis configuration
-7. Backend deployment
-8. Frontend deployment
-9. Streaming server deployment
-10. SSL/TLS setup
-11. Monitoring setup
-12. Backup system configuration
-13. fail2ban & UFW firewall setup
-14. Production build optimization
-15. SEO optimization
-16. WebSocket testing
-17. Streaming functionality testing
+1. VPS 초기화
+2. Ubuntu 업데이트
+3. Docker & Docker Compose 설치
+4. nginx 역방향 프록시 설정
+5. MariaDB 설정
+6. Redis 설정
+7. 백엔드 배포
+8. 프론트엔드 배포
+9. 스트리밍 서버 배포
+10. SSL/TLS 설정
+11. 모니터링 설정
+12. 백업 시스템 설정
+13. fail2ban & UFW 방화벽 설정
+14. 프로덕션 빌드 최적화
+15. SEO 최적화
+16. WebSocket 테스트
+17. 스트리밍 기능 테스트
 
-## Validation Checklist
+## 검증 체크리스트
 
-- [ ] All code follows official documentation patterns
-- [ ] All versions are Stable/LTS (no `latest` tags)
-- [ ] All packages are tested and verified
-- [ ] Code is production-ready and deployable
-- [ ] Security best practices applied
-- [ ] SEO optimization implemented
-- [ ] Mobile UX complete
-- [ ] Desktop UX complete
-- [ ] Deployment testing complete
+- [ ] 모든 코드는 공식 문서 패턴을 따름
+- [ ] 모든 버전은 Stable/LTS (`latest` 태그 없음)
+- [ ] 모든 패키지는 테스트되고 검증됨
+- [ ] 코드는 프로덕션 레디하고 배포 가능
+- [ ] 보안 모범 사례 적용
+- [ ] SEO 최적화 구현
+- [ ] 모바일 UX 완료
+- [ ] 데스크톱 UX 완료
+- [ ] 배포 테스트 완료
 
-## AI Assistant Coding Rules
+## AI 어시스턴트 코딩 규칙
 
-### Mandatory Process
-1. **Search official documentation** — Use web search for latest 2026 versions
-2. **Verify with official GitHub** — Check stable/LTS branches only
-3. **Validate with regex patterns** — Ensure version numbers, paths, and commands match official specs
-4. **Write production-ready code** — All code must be complete and deployable
-5. **Include documentation links** — Every code block must reference official docs
+### 필수 프로세스
+1. **공식 문서 검색** — 최신 2026 버전을 위해 웹 검색 사용
+2. **공식 GitHub 검증** — stable/LTS 브랜치만 확인
+3. **정규표현식 패턴으로 검증** — 버전 번호, 경로, 명령어가 공식 사양과 일치하는지 확인
+4. **프로덕션 레디 코드 작성** — 모든 코드는 완전하고 배포 가능해야 함
+5. **문서 링크 포함** — 모든 코드 블록은 공식 문서를 참조해야 함
 
-### Absolute Prohibitions
-- Never ask user to run commands or perform tasks
-- Never use speculative implementations
-- Never code without official documentation
-- Never use unofficial GitHub code
-- Never use untested packages
-- Never wait for user input to proceed
+### 절대 금지사항
+- 사용자에게 명령어 실행이나 작업 수행을 요청하지 말 것
+- 추측적인 구현 사용하지 말 것
+- 공식 문서 없이 코딩하지 말 것
+- 비공식 GitHub 코드 사용하지 말 것
+- 테스트되지 않은 패키지 사용하지 말 것
+- 사용자의 입력을 기다리지 말고 자동으로 진행
 
-### Code Template
+### 코드 템플릿
 
 ```bash
 #!/bin/bash
@@ -178,17 +183,99 @@ ssh-keygen -t ed25519 -C "deployment@gucci-2026" -f ~/.ssh/gucci_deployment_key
 # All commands and configurations verified against official sources
 ```
 
-### Regex Validation Patterns
+### 정규표현식 검증 패턴
 
-**Semantic Versioning:** `^[0-9]+\.[0-9]+\.[0-9]+$`  
-**LTS Version:** `^[0-9]+\.[0-9]+\.[0-9]+-lts$`  
-**Absolute Path:** `^/[a-zA-Z0-9/_.-]+$`  
-**Port Number:** `^[0-9]{4,5}$`  
-**Command:** `^[a-z0-9-]+$`  
-**Flag:** `^--?[a-z0-9-]+$`
+**시맨틱 버전:** `^[0-9]+\.[0-9]+\.[0-9]+$`  
+**LTS 버전:** `^[0-9]+\.[0-9]+\.[0-9]+-lts$`  
+**절대 경로:** `^/[a-zA-Z0-9/_.-]+$`  
+**포트 번호:** `^[0-9]{4,5}$`  
+**명령어:** `^[a-z0-9-]+$`  
+**플래그:** `^--?[a-z0-9-]+$`
+
 ---
 
-## VPS Information (구찌야놀자)
+## AI 어시스턴트 아키텍처 가이드
+
+### 코드 작성 시 필수 사항
+
+1. **공식 문서 기반**
+   - 모든 기술은 공식 문서에서 정보를 가져올 것
+   - 코드 블록 위에 `Official Docs:` 주석으로 문서 링크 포함
+
+2. **버전 고정**
+   - `latest` 태그 사용 금지
+   - 정확한 버전 번호 사용 (예: `node:22.14.0-alpine`)
+   - Docker 이미지는 digest 사용 권장
+
+3. **보안 우선**
+   - 모든 비밀번호는 환경 변수 사용
+   - SQL 쿼리는 parameterized query 사용
+   - XSS/CSRF 방어 코드 포함
+
+4. **모바일 우선**
+   - 반응형 디자인 필수
+   - touch 이벤트 처리
+   - safe-area 인식
+
+5. **SEO 최적화**
+   - Next.js의 metadata API 사용
+   - 올바른 meta 태그 설정
+   - semantic HTML 사용
+
+### 프론트엔드 구조
+
+```typescript
+// pages/ - Next.js pages
+// components/ - 재사용 가능한 컴포넌트
+// lib/ - 유틸리티 함수
+// styles/ - 전역 스타일
+// public/ - 정적 파일
+```
+
+### 백엔드 구조
+
+```typescript
+// src/
+// ├── controllers/ - 요청 핸들러
+// ├── services/ - 비즈니스 로직
+// ├── models/ - 데이터 모델
+// ├── routes/ - 라우트 정의
+// ├── middleware/ - 미들웨어
+// ├── config/ - 설정 파일
+// └── utils/ - 유틸리티 함수
+```
+
+### Docker Compose 패턴
+
+```yaml
+version: '3.8'
+services:
+  app:
+    build: .
+    environment:
+      - NODE_ENV=production
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+      - redis
+```
+
+### 에러 핸들링
+
+- 모든 비동기 함수는 try-catch로 감쌈
+- 에러 로그는 중앙 집중식 로깅 사용
+- 사용자에게 민감한 정보 노출 금지
+
+### 테스트 요구사항
+
+- 유닛 테스트: 모든 핵심 로직
+- 통합 테스트: API 엔드포인트
+- E2E 테스트: 주요 사용자 플로우
+
+---
+
+## VPS 정보 (구찌야놀자)
 
 | 항목 | 값 |
 |------|-----|
@@ -213,4 +300,4 @@ ssh root@76.13.218.129
 
 ---
 
-**Core Principle:** Official documentation → Stable/LTS versions → Production-ready code → Security-first → Mobile-first → SEO-first
+**핵심 원칙:** 공식 문서 → 안정적인 LTS 버전 → 프로덕션 레디 코드 → 보안 우선 → 모바일 우선 → SEO 우선

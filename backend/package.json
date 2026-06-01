@@ -1,0 +1,33 @@
+{
+  "name": "gucci-backend",
+  "version": "1.0.0",
+  "description": "구찌야놀자 플랫폼 백엔드 API 서버",
+  "main": "src/index.js",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js"
+  },
+  "dependencies": {
+    "express": "5.2.1",
+    "socket.io": "4.8.3",
+    "mysql2": "3.15.0",
+    "redis": "5.6.1",
+    "jsonwebtoken": "9.0.2",
+    "bcryptjs": "3.0.2",
+    "cors": "2.8.5",
+    "helmet": "8.1.0",
+    "express-rate-limit": "7.5.0",
+    "express-session": "1.18.1",
+    "connect-redis": "9.0.0",
+    "passport": "0.7.0",
+    "passport-google-oauth20": "2.0.0",
+    "dotenv": "16.5.0",
+    "uuid": "11.1.0",
+    "morgan": "1.10.0",
+    "compression": "1.8.0"
+  }
+}
