@@ -2,9 +2,11 @@
 
 ################################################################################
 # 프로덕션 배포 스크립트
-# 공식 문서: https://docs.docker.com/
+# 공식 문서: https://docs.docker.com/engine/install/ubuntu/
 # 공식 GitHub: https://github.com/docker/docker-install
-# 버전: v1.0.0 (2026-05-14)
+# Docker Compose: https://docs.docker.com/compose/install/
+# Node.js: https://github.com/nodesource/distributions
+# 버전: v2.0.0 (2026-06-01)
 # 정규식 검증: ^[0-9]+\.[0-9]+\.[0-9]+$
 ################################################################################
 
@@ -173,18 +175,19 @@ phase_2_docker_installation() {
     # 5단계: Docker Compose 설치
     log_info "5단계: Docker Compose 설치"
     
-    if command -v docker-compose &> /dev/null; then
+    if command -v docker &> /dev/null && docker compose version &> /dev/null; then
         log_warning "Docker Compose가 이미 설치되어 있습니다"
-        DOCKER_COMPOSE_VERSION=$(docker-compose --version | grep -oP '[0-9]+\.[0-9]+\.[0-9]+' | head -1)
+        DOCKER_COMPOSE_VERSION=$(docker compose version 2>/dev/null | grep -oP '[0-9]+\.[0-9]+\.[0-9]+' | head -1)
         validate_version "$DOCKER_COMPOSE_VERSION" "Docker Compose"
     else
         log_info "Docker Compose 설치 중..."
-        DOCKER_COMPOSE_URL="https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)"
+        COMPOSE_VERSION="2.35.1"
+        DOCKER_COMPOSE_URL="https://github.com/docker/compose/releases/download/v${COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)"
         sudo curl -L "$DOCKER_COMPOSE_URL" -o /usr/local/bin/docker-compose || error_exit "Docker Compose 다운로드 실패"
         sudo chmod +x /usr/local/bin/docker-compose || error_exit "Docker Compose 권한 설정 실패"
-        log_success "Docker Compose 설치 완료"
+        log_success "Docker Compose ${COMPOSE_VERSION} 설치 완료"
         
-        DOCKER_COMPOSE_VERSION=$(docker-compose --version | grep -oP '[0-9]+\.[0-9]+\.[0-9]+' | head -1)
+        DOCKER_COMPOSE_VERSION=$(docker compose version 2>/dev/null | grep -oP '[0-9]+\.[0-9]+\.[0-9]+' | head -1)
         validate_version "$DOCKER_COMPOSE_VERSION" "Docker Compose"
     fi
     
@@ -306,7 +309,7 @@ phase_5_nodejs_installation() {
     fi
     
     log_info "npm 업그레이드"
-    sudo npm install -g npm@latest || error_exit "npm 업그레이드 실패"
+    sudo npm install -g npm@10.9.2 || error_exit "npm 업그레이드 실패"
     NPM_VERSION=$(npm --version)
     validate_version "$NPM_VERSION" "npm"
     

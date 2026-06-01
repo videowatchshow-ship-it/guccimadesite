@@ -1,14 +1,25 @@
 # 🔐 보안 정보 - 절대 커밋 금지
+.env
+.env.*
 .env.vps-credentials
 .env.local
 .env.*.local
 vps-credentials.txt
 
+# SSH 키 - 절대 커밋 금지
+gucci_deployment_key
+gucci_deployment_key.pub
+*.pem
+*.key
+id_rsa
+id_ed25519
+
 # Node.js
+# Official: https://docs.npmjs.com/cli/v10/configuring-npm/package-lock-json
+# package-lock.json은 재현 가능한 빌드를 위해 반드시 커밋해야 함 (npm 공식 권장)
 node_modules/
 npm-debug.log
 yarn-error.log
-package-lock.json
 
 # Docker
 .dockerignore

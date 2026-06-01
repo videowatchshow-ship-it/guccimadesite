@@ -4,7 +4,7 @@
 # VPS 서버 상태 조사 스크립트
 # 공식 문서: https://github.com/hostinger/api-cli
 # 공식 API: https://developers.hostinger.com
-# 버전: v0.1.12 (2025-11-07)
+# 버전: v1.0.0 (2026-06-01)
 # 정규식 검증: ^[0-9]+\.[0-9]+\.[0-9]+$
 ################################################################################
 
@@ -311,8 +311,8 @@ output ""
 ################################################################################
 
 output "=== 17. Docker Compose ==="
-if command -v docker-compose &> /dev/null; then
-    DOCKER_COMPOSE_VERSION=$(docker-compose --version | grep -oP '[0-9]+\.[0-9]+\.[0-9]+' | head -1)
+if docker compose version &> /dev/null; then
+    DOCKER_COMPOSE_VERSION=$(docker compose version 2>/dev/null | grep -oP '[0-9]+\.[0-9]+\.[0-9]+' | head -1)
     if [[ $DOCKER_COMPOSE_VERSION =~ $VERSION_REGEX ]]; then
         output "✅ Docker Compose: $DOCKER_COMPOSE_VERSION (검증 통과)"
     else
@@ -321,7 +321,7 @@ if command -v docker-compose &> /dev/null; then
     
     if [ -f "docker-compose.yml" ]; then
         output "docker-compose.yml 파일 존재"
-        output "$(docker-compose ps 2>/dev/null || echo 'docker-compose 실행 불가')"
+        output "$(docker compose ps 2>/dev/null || echo 'docker compose 실행 불가')"
     else
         output "docker-compose.yml 파일 없음"
     fi

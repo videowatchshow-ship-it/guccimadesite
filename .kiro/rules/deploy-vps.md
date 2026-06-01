@@ -24,7 +24,7 @@ bash /tmp/auto-deploy.sh
 호스트: 76.13.218.129
 호스트명: srv1636789.hstgr.cloud
 사용자: root
-비밀번호: 1EMokhN03j9?G)8h7,pX
+비밀번호: .env 파일 참조
 OS: Ubuntu 24.04 LTS
 ```
 

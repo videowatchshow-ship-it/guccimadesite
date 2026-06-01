@@ -1,14 +1,30 @@
 {
   "mcpServers": {
-    "hostinger-mcp": {
-      "type": "stdio",
+    "github": {
       "command": "npx",
       "args": [
-        "hostinger-api-mcp@latest"
+        "-y",
+        "@modelcontextprotocol/server-github@latest"
       ],
       "env": {
-        "API_TOKEN": "1EMokhN03j9?G)8h7,pX"
-      }
+        "GITHUB_PERSONAL_ACCESS_TOKEN": ""
+      },
+      "disabled": false,
+      "autoApprove": []
+    },
+    "hostinger-api": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "hostinger-api-mcp@0.2.3"
+      ],
+      "env": {
+        "API_TOKEN": "beueTMXzcJ3Jpa4ghsYRwu2oMUtirrh2h6xSayUa2eee5a82",
+        "HOSTINGER_API_TOKEN": "beueTMXzcJ3Jpa4ghsYRwu2oMUtirrh2h6xSayUa2eee5a82",
+        "DEBUG": "false"
+      },
+      "disabled": false,
+      "autoApprove": []
     }
   }
 }

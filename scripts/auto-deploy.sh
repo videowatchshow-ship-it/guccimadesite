@@ -2,9 +2,11 @@
 
 ################################################################################
 # 2026 Production-Ready Platform Auto-Deployment Script
-# Official Docs: https://docs.docker.com/
-# GitHub: https://github.com/docker/docker-ce
-# Version: 24.0.0 (Stable LTS)
+# Official Docs: https://docs.docker.com/engine/install/ubuntu/
+# Official GitHub: https://github.com/docker/docker-install
+# Docker Compose: https://docs.docker.com/compose/install/
+# Node.js: https://github.com/nodesource/distributions
+# Version: 2026-06-01 (공식 문서 기준)
 # Target: 76.13.218.129 (srv1636789.hstgr.cloud)
 # OS: Ubuntu 24.04 LTS
 # Regex Validation: ^[0-9]+\.[0-9]+\.[0-9]+$
@@ -99,12 +101,13 @@ else
 fi
 
 log_info "5단계: Docker Compose 설치"
-if ! command -v docker-compose &> /dev/null; then
-    sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose > /dev/null 2>&1
+if ! docker compose version &> /dev/null; then
+    COMPOSE_VERSION="2.35.1"
+    sudo curl -L "https://github.com/docker/compose/releases/download/v${COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose > /dev/null 2>&1
     sudo chmod +x /usr/local/bin/docker-compose
-    log_success "Docker Compose 설치 완료"
+    log_success "Docker Compose ${COMPOSE_VERSION} 설치 완료"
 else
-    COMPOSE_VERSION=$(docker-compose --version | awk '{print $3}' | sed 's/,//')
+    COMPOSE_VERSION=$(docker compose version 2>/dev/null | grep -oP '[0-9]+\.[0-9]+\.[0-9]+' | head -1)
     log_success "Docker Compose 이미 설치됨: $COMPOSE_VERSION"
 fi
 
@@ -285,7 +288,7 @@ log_info "다음 단계:"
 log_info "1. Backend 배포: cd /var/www/backend && git clone <repo>"
 log_info "2. Frontend 배포: cd /var/www/frontend && git clone <repo>"
 log_info "3. Streaming 배포: cd /var/www/streaming && git clone <repo>"
-log_info "4. 서비스 시작: docker-compose up -d"
+log_info "4. 서비스 시작: docker compose up -d"
 log_info "5. 상태 확인: docker ps"
 
 echo ""
