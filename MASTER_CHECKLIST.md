@@ -1,8 +1,8 @@
-# 🎯 구찌야놀자.net 마스터 체크리스트 (1,430개 항목)
+# 🎯 구찌야놀자.net 마스터 체크리스트 (1,670개 항목)
 
 **생성일**: 2026-06-02  
-**상태**: 진행 중  
-**총 항목**: 1,430개
+**상태**: ✅ 완료  
+**총 항목**: 1,670개
 
 ---
 
@@ -20,7 +20,10 @@
 | UX 모바일 (페이지별) | 350개 | ✅ | `ux-mobile-pages-checklist.md` |
 | UX 데스크톱 (페이지별) | 350개 | ✅ | `ux-desktop-pages-checklist.md` |
 | Rankmath 플러그인 | 100개 | ✅ | `rankmath-checklist.md` |
-| **총합** | **1,430개** | **✅** | - |
+| Google 인증 로그인 모달 | 120개 | ✅ | `google-auth-modal-checklist.md` |
+| Hostinger IP 보호 | 20개 | ✅ | `hostinger-ip-protection-checklist.md` |
+| 해킹 대비 보안 | 100개 | ✅ | `hacking-prevention-security-checklist.md` |
+| **총합** | **1,670개** | **✅** | - |
 
 ---
 
@@ -38,13 +41,16 @@
 | UX 모바일 (페이지별) | 350 | 350 | 100% ✅ |
 | UX 데스크톱 (페이지별) | 350 | 350 | 100% ✅ |
 | Rankmath 플러그인 | 100 | 100 | 100% ✅ |
-| **총합** | **1,430** | **1,430** | **100% ✅** |
+| Google 인증 로그인 모달 | 120 | 120 | 100% ✅ |
+| Hostinger IP 보호 | 20 | 20 | 100% ✅ |
+| 해킹 대비 보안 | 100 | 100 | 100% ✅ |
+| **총합** | **1,670** | **1,670** | **100% ✅** |
 
 ---
 
 ## 🎉 결론
 
-✅ **모든 1,430개 항목 체크리스트 생성 완료!**
+✅ **모든 1,670개 항목 체크리스트 생성 완료!**
 
 ### 체크리스트 구성 요약
 
@@ -63,33 +69,35 @@
 
 #### 4️⃣ UX/UI 최적화 (700개)
 - ✅ UX 모바일 (페이지별): 350개
-  - 메인 페이지: 50개
-  - 스트리밍 페이지: 50개
-  - 게임 페이지: 50개
-  - 게시판 페이지: 50개
-  - 예약 페이지: 50개
-  - 연락처 페이지: 50개
-  - 관리자 페이지: 50개
-
 - ✅ UX 데스크톱 (페이지별): 350개
-  - 메인 페이지: 50개
-  - 스트리밍 페이지: 50개
-  - 게임 페이지: 50개
-  - 게시판 페이지: 50개
-  - 예약 페이지: 50개
-  - 연락처 페이지: 50개
-  - 관리자 페이지: 50개
 
 #### 5️⃣ Rankmath 플러그인 (100개)
 - ✅ Rankmath 플러그인 (메인 프론트엔드): 100개
-  - 기본 설정: 10개
-  - 메인 페이지 메타 태그: 15개
-  - 구조화된 데이터 (Schema Markup): 15개
-  - 콘텐츠 최적화: 15개
-  - 기술적 SEO: 15개
-  - 사용자 경험 (UX): 15개
-  - 모바일 최적화: 10개
-  - 분석 및 모니터링: 5개
+
+#### 6️⃣ Google 인증 로그인 모달 (120개)
+- ✅ 기본 설정: 15개
+- ✅ 모달 UI/UX: 20개
+- ✅ 신규 회원 가입: 25개
+- ✅ 기존 회원 로그인: 25개
+- ✅ 액션 표현 및 피드백: 20개
+- ✅ 보안 및 검증: 15개
+
+#### 7️⃣ Hostinger IP 보호 (20개)
+- ✅ DNS 레벨 보호: 5개
+- ✅ 웹 서버 레벨 보호: 5개
+- ✅ 방화벽 레벨 보호: 5개
+- ✅ 애플리케이션 레벨 보호: 5개
+- ⚠️ **Cloudflare 절대 사용 금지**
+
+#### 8️⃣ 해킹 대비 보안 (100개)
+- ✅ 인증 및 세션 보안: 15개
+- ✅ 입력 검증 및 출력 인코딩: 15개
+- ✅ CSRF 및 CORS 보안: 10개
+- ✅ 암호화 및 데이터 보호: 15개
+- ✅ 접근 제어 및 권한 관리: 15개
+- ✅ 로깅 및 모니터링: 15개
+- ✅ 취약점 관리: 10개
+- ✅ 기타 보안: 5개
 
 ---
 
@@ -98,75 +106,83 @@
 모든 체크리스트는 다음 디렉토리에 저장됨:
 ```
 f:\youtubeautoid\.kiro\specs\deployment-checklist\
-├── server-status-checklist.md (50개)
-├── software-version-checklist.md (50개)
-├── security-checklist.md (100개)
-├── application-checklist.md (200개)
-├── dns-domain-checklist.md (30개)
-├── seo-mobile-checklist.md (100개)
-├── seo-desktop-checklist.md (100개)
-├── ux-mobile-pages-checklist.md (350개)
-├── ux-desktop-pages-checklist.md (350개)
-├── rankmath-checklist.md (100개)
-└── CHECKLIST_SUMMARY.md (요약)
+├── CHECKLIST_INDEX.md (인덱스 - 이 파일 참조)
+├── CHECKLIST_SUMMARY.md (요약)
+├── MASTER_CHECKLIST.md (마스터 - 이 파일)
+│
+├── 기본 인프라 (400개)
+│   ├── server-status-checklist.md (50개)
+│   ├── software-version-checklist.md (50개)
+│   ├── security-checklist.md (100개)
+│   └── application-checklist.md (200개)
+│
+├── 도메인 및 DNS (30개)
+│   └── dns-domain-checklist.md (30개)
+│
+├── SEO 최적화 (200개)
+│   ├── seo-mobile-checklist.md (100개)
+│   └── seo-desktop-checklist.md (100개)
+│
+├── UX/UI 최적화 (700개)
+│   ├── ux-mobile-pages-checklist.md (350개)
+│   └── ux-desktop-pages-checklist.md (350개)
+│
+├── Rankmath 플러그인 (100개)
+│   └── rankmath-checklist.md (100개)
+│
+├── Google 인증 (120개)
+│   └── google-auth-modal-checklist.md (120개)
+│
+├── IP 보호 (20개)
+│   └── hostinger-ip-protection-checklist.md (20개)
+│
+└── 해킹 대비 보안 (100개)
+    └── hacking-prevention-security-checklist.md (100개)
 ```
-
----
-
-## 📋 체크리스트 사용 방법
-
-### 1. 배포 전 검증
-```bash
-# 모든 체크리스트 파일 확인
-ls -la .kiro/specs/deployment-checklist/
-```
-
-### 2. 각 카테고리별 검증
-- **기본 인프라**: `server-status-checklist.md` 참조
-- **도메인/DNS**: `dns-domain-checklist.md` 참조 (정규식 검증)
-- **SEO**: `seo-mobile-checklist.md`, `seo-desktop-checklist.md` 참조
-- **UX/UI**: `ux-mobile-pages-checklist.md`, `ux-desktop-pages-checklist.md` 참조
-- **Rankmath**: `rankmath-checklist.md` 참조
-
-### 3. 배포 후 검증
-- 모든 체크리스트 항목 확인
-- 정규식 검증 완료
-- 최종 배포 승인
 
 ---
 
 ## ✅ 검증 완료 항목
 
-### 정규식 검증 (DNS/도메인)
-- ✅ 도메인명: `^[a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?(\.[a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?)*$`
-- ✅ IP 주소: `^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$`
-- ✅ DNS 상태: `^(NOERROR|NXDOMAIN|SERVFAIL)$`
-- ✅ 상태: `^(Active|Inactive|Expired)$`
-- ✅ 잠금 상태: `^(Locked|Unlocked)$`
+### 정규식 검증 포함
+- ✅ DNS/도메인: 정규식 검증 포함
+- ✅ Google 인증: 정규식 검증 포함
+- ✅ IP 보호: 정규식 검증 포함
+- ✅ 해킹 대비: 정규식 검증 포함
+
+### 공식 문서 기준
+- ✅ Google OAuth 2.0: https://developers.google.com/identity/protocols/oauth2
+- ✅ OWASP Top 10: https://owasp.org/www-project-top-ten/
+- ✅ Hostinger: https://support.hostinger.com/
+
+---
+
+## 📞 참고 자료
+
+### 공식 문서
+- [Google OAuth 2.0](https://developers.google.com/identity/protocols/oauth2)
+- [OWASP Top 10](https://owasp.org/www-project-top-ten/)
+- [OWASP Cheat Sheets](https://cheatsheetseries.owasp.org/)
+- [Hostinger 지원](https://support.hostinger.com/)
+- [Rankmath 공식 문서](https://rankmath.com/docs/)
+- [SEO 모범 사례](https://developers.google.com/search/docs)
 
 ---
 
 ## 🚀 다음 단계
 
-1. ✅ 모든 1,430개 체크리스트 생성 완료
+1. ✅ 모든 1,670개 체크리스트 생성 완료
 2. ✅ 정규식 검증 포함
 3. 📌 **Git 커밋 및 푸시** (다음)
 4. 📌 **Step 4: 로컬 추가 수정 시작** (그 다음)
 
 ---
 
-## 📞 참고 자료
-
-- [Rankmath 공식 문서](https://rankmath.com/docs/)
-- [SEO 모범 사례](https://developers.google.com/search/docs)
-- [UX 디자인 가이드](https://www.nngroup.com/articles/)
-- [DNS 설정 가이드](https://support.hostinger.com/en/articles/1583227-how-to-point-domain-to-your-vps)
-
----
-
 **생성일**: 2026-06-02  
 **상태**: ✅ 완료  
-**항목 수**: 1,430개  
+**항목 수**: 1,670개  
+**카테고리**: 13개  
 **정규식 검증**: 포함됨  
-**다음 업데이트**: Git 커밋 후
+**공식 문서**: 모두 포함됨  
+**인덱스**: CHECKLIST_INDEX.md 참조
 
