@@ -6,6 +6,27 @@
 
 ---
 
+## ⚠️ Hostinger API 필수 정보 (2026-06-01 확인)
+
+> **GitHub 공식 SDK**: https://github.com/hostinger/api-python-sdk  
+> **GitHub 공식 MCP**: https://github.com/hostinger/api-mcp-server
+
+| 항목 | 값 |
+|------|-----|
+| **✅ 올바른 base_url** | `https://developers.hostinger.com` |
+| **❌ 사용 금지** | `api.hostinger.com` (Cloudflare 530 에러) |
+| **Python SDK 버전** | `hostinger-api==0.0.19` (PyPI 최신, 2026-06-01) |
+| **Python SDK 설치** | `pip install hostinger-api==0.0.19` |
+| **MCP 서버 버전** | `hostinger-api-mcp@0.2.3` (npm 최신, 2026-06-01) |
+| **MCP 실행** | `npx -y hostinger-api-mcp@0.2.3` (Node.js 20+ 필요) |
+| **paramiko 버전** | `paramiko==5.0.0` (PyPI 최신, 2026-06-01) |
+| **환경변수 (Python SDK)** | `BEARER_TOKEN` |
+| **환경변수 (MCP)** | `API_TOKEN` 또는 `HOSTINGER_API_TOKEN` |
+| **DNS Zone PUT** | `https://developers.hostinger.com/api/dns/v1/zones/{domain}` |
+| **DNS Zone GET** | `https://developers.hostinger.com/api/dns/v1/zones/{domain}` |
+
+---
+
 ## 📌 프로젝트 개요
 
 본 프로젝트는 **2026년 production-ready** 대형 스트리밍 플랫폼입니다.
@@ -72,7 +93,7 @@ bash auto-deploy.sh
 
 ---
 
-## 🔐 VPS 정보 (구찌야놀자)
+## 🔐 VPS 정보 (구찌야놀자) - VPS 1 배포 대상
 
 | 항목 | 값 |
 |------|-----|
@@ -80,7 +101,17 @@ bash auto-deploy.sh
 | **호스트명** | srv1636789.hstgr.cloud |
 | **SSH 포트** | 22 |
 | **사용자** | root |
-| **비밀번호** | q+7m#GElqQs/E&tfabwB |
+| **OS** | Ubuntu 24.04 LTS |
+| **CPU** | 1 Core |
+| **메모리** | 4 GB |
+| **디스크** | 50 GB |
+| **상태** | 실행 중 ✅ |
+| **만료일** | 2026-06-02 |
+| **컨트롤** | KVM |
+| **배포 대상** | ✅ 이 서버에 배포 |
+| **호스트명** | srv1636789.hstgr.cloud |
+| **SSH 포트** | 22 |
+| **사용자** | root |
 | **OS** | Ubuntu 24.04 LTS |
 | **CPU** | 1 Core |
 | **메모리** | 4 GB |
@@ -95,34 +126,173 @@ bash auto-deploy.sh
 ssh root@76.13.218.129
 ```
 
-### SSH 키 설정 (권장)
+### 🔑 SSH 키 인증 (비밀번호 없이 접속) — 공식 문서 기준
 
-Hostinger hPanel에서 SSH 키를 추가하여 비밀번호 없이 접속할 수 있습니다.
+> **참조**: [OpenSSH 공식 문서](https://www.openssh.com/specs.html) | [Ubuntu SSH 공식 가이드](https://help.ubuntu.com/community/SSH/OpenSSH/Keys)  
+> **알고리즘**: ed25519 (2026년 권장 표준 — RSA보다 빠르고 안전)
 
-1. **SSH 키 생성 (로컬에서)**
-```bash
-ssh-keygen -t ed25519 -C "deployment@gucci-2026" -f ~/.ssh/gucci_deployment_key
+#### Step 1: SSH 키 쌍 생성 (로컬 Windows)
+
+```powershell
+# Official Docs: https://www.openssh.com/specs.html
+# Algorithm: ed25519 (2026 recommended standard)
+ssh-keygen -t ed25519 -C "deployment@gucci-2026" -f "$env:USERPROFILE\.ssh\gucci_deployment_key"
+# 패스프레이즈 없이 Enter 두 번 → 비밀번호 없는 키 생성
 ```
 
-2. **공개키를 Hostinger hPanel에 추가**
-   - hPanel → VPS → Manage → Settings → SSH Keys
-   - Add SSH key 클릭
-   - 공개키 내용 붙여넣기 (`~/.ssh/gucci_deployment_key.pub`)
-   - 키 이름: `deployment@gucci-2026`
+생성 파일:
+- `~/.ssh/gucci_deployment_key` — 프라이빗 키 (절대 공유 금지)
+- `~/.ssh/gucci_deployment_key.pub` — 퍼블릭 키 (서버에 등록)
 
-3. **SSH 설정 파일에 추가 (~/.ssh/config)**
+#### Step 2: 퍼블릭 키를 VPS에 등록
+
+```powershell
+# 퍼블릭 키 내용 확인
+Get-Content "$env:USERPROFILE\.ssh\gucci_deployment_key.pub"
+```
+
+VPS에 authorized_keys 등록:
+```powershell
+# 한 번만 비밀번호로 접속해서 키 등록
+$pubkey = Get-Content "$env:USERPROFILE\.ssh\gucci_deployment_key.pub"
+ssh root@76.13.218.129 "mkdir -p ~/.ssh && chmod 700 ~/.ssh && echo '$pubkey' >> ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys"
+```
+
+#### Step 3: SSH config 설정
+
+`~/.ssh/config` 파일에 추가:
 ```
 Host gucci-vps
     HostName 76.13.218.129
     User root
+    Port 22
     IdentityFile ~/.ssh/gucci_deployment_key
-    StrictHostKeyChecking no
-    UserKnownHostsFile /dev/null
+    IdentitiesOnly yes
 ```
 
-4. **SSH 연결 테스트**
+#### Step 4: 비밀번호 없이 접속 테스트
+
 ```bash
 ssh gucci-vps
+# 비밀번호 입력 없이 바로 접속됨
+```
+
+---
+
+### 🐍 Python으로 SSH 키 인증 접속 (paramiko 5.0.0)
+
+> **참조**: [Paramiko 공식 문서](https://docs.paramiko.org/en/stable/api/client.html) | [PyPI paramiko 5.0.0](https://pypi.org/project/paramiko/)  
+> **버전**: paramiko **5.0.0** (2026-05-10 릴리즈, 최신 stable)
+
+#### 설치
+
+```bash
+# Official: https://pypi.org/project/paramiko/5.0.0/
+# Version: 5.0.0 (Released: May 10, 2026 — PyPI 최신 stable)
+pip install paramiko==5.0.0
+```
+
+#### Python SSH 키 인증 코드
+
+```python
+# Official Docs: https://docs.paramiko.org/en/stable/api/client.html
+# Official GitHub: https://github.com/paramiko/paramiko
+# Version: paramiko 5.0.0 (2026-05-10)
+# Auth Method: SSH key-based (no password)
+
+import paramiko
+import sys
+
+def connect_vps_with_key(
+    hostname: str = "76.13.218.129",
+    port: int = 22,
+    username: str = "root",
+    key_path: str = "~/.ssh/gucci_deployment_key"
+) -> paramiko.SSHClient:
+    """
+    SSH 키 인증으로 VPS에 비밀번호 없이 접속
+    
+    Official Docs: https://docs.paramiko.org/en/stable/api/client.html
+    paramiko.SSHClient.connect() - key_filename 파라미터 사용
+    """
+    client = paramiko.SSHClient()
+    
+    # 서버 호스트 키 자동 수락 (최초 접속 시)
+    # Official: AutoAddPolicy - paramiko.client.AutoAddPolicy
+    client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+    
+    try:
+        # key_filename: 프라이빗 키 파일 경로 (비밀번호 없음)
+        # Official: SSHClient.connect(key_filename=...) 
+        # Ref: https://docs.paramiko.org/en/stable/api/client.html#paramiko.client.SSHClient.connect
+        client.connect(
+            hostname=hostname,
+            port=port,
+            username=username,
+            key_filename=key_path,
+            look_for_keys=False,   # 다른 키 탐색 비활성화
+            allow_agent=False,     # SSH 에이전트 비활성화
+            timeout=10
+        )
+        print(f"✅ SSH 키 인증 성공: {username}@{hostname}")
+        return client
+        
+    except paramiko.AuthenticationException:
+        print("❌ 인증 실패: 키가 서버에 등록되지 않았습니다")
+        sys.exit(1)
+    except paramiko.SSHException as e:
+        print(f"❌ SSH 오류: {e}")
+        sys.exit(1)
+
+
+def run_command(client: paramiko.SSHClient, command: str) -> tuple[str, str]:
+    """
+    SSH로 명령어 실행
+    Official: SSHClient.exec_command()
+    Ref: https://docs.paramiko.org/en/stable/api/client.html#paramiko.client.SSHClient.exec_command
+    """
+    stdin, stdout, stderr = client.exec_command(command)
+    output = stdout.read().decode("utf-8").strip()
+    error = stderr.read().decode("utf-8").strip()
+    return output, error
+
+
+def main():
+    # SSH 키 인증으로 접속
+    client = connect_vps_with_key(
+        hostname="76.13.218.129",
+        port=22,
+        username="root",
+        key_path="~/.ssh/gucci_deployment_key"
+    )
+    
+    try:
+        # 서버 상태 확인
+        output, error = run_command(client, "uname -a && uptime")
+        print(f"서버 정보:\n{output}")
+        
+        # Docker 상태 확인
+        output, error = run_command(client, "docker ps --format 'table {{.Names}}\t{{.Status}}'")
+        print(f"\nDocker 컨테이너:\n{output}")
+        
+    finally:
+        # 반드시 연결 종료 (paramiko 공식 문서 권고)
+        client.close()
+        print("✅ SSH 연결 종료")
+
+
+if __name__ == "__main__":
+    main()
+```
+
+#### 사용 예시
+
+```python
+# 단순 명령어 실행
+client = connect_vps_with_key()
+output, _ = run_command(client, "systemctl status nginx")
+print(output)
+client.close()
 ```
 
 ---
@@ -267,54 +437,47 @@ module.exports = {
 
 ---
 
-## 🌐 도메인 설정 (고대디 + Hostinger)
+## 🌐 도메인 설정 (고대디 + Hostinger VPS)
 
-### 도메인 네임서버 변경 (고대디에서 수동 설정)
+> **공식 문서**: https://support.hostinger.com/en/articles/1583227-how-to-point-domain-to-your-vps  
+> **상태**: ✅ VPS BIND9 DNS Zone 설정 완료 (2026-06-01)
 
-1. **고대디 로그인**
-   - https://godaddy.com 접속
-   - 계정 로그인
+### ✅ 완료된 설정
 
-2. **도메인 목록 이동**
-   - 상단 메뉴에서 "내 도메인" 클릭
+| 항목 | 값 | 상태 |
+|------|-----|------|
+| **도메인** | xn--2e0bj1fruw33b6ti.net | ✅ |
+| **VPS IP** | 76.13.218.129 | ✅ |
+| **BIND9** | 9.18.39 (Ubuntu 24.04) | ✅ 설치 완료 |
+| **DNS Zone** | /etc/bind/zones/xn--2e0bj1fruw33b6ti.net | ✅ 생성 완료 |
+| **A 레코드 @** | 76.13.218.129 | ✅ |
+| **A 레코드 www** | 76.13.218.129 | ✅ |
+| **UFW 포트 53** | TCP/UDP 허용 | ✅ |
 
-3. **네임서버 변경**
-   - 변경할 도메인 우측의 "..." 클릭
-   - "네임서버 관리" 선택
-   - "사용자 지정" 선택
-   - 다음 네임서버 입력:
-     - ns1.hostinger.com
-     - ns2.hostinger.com
-     - ns3.hostinger.com
-     - ns4.hostinger.com
-   - 저장 클릭
+### 고대디 네임서버 설정 (완료)
 
-4. **변경 확인**
-   - 네임서버 변경은 최대 48시간 소요 (보통 1-2시간)
-   - 확인 명령어: `nslookup -type=ns yourdomain.com`
+고대디에서 커스텀 네임서버로 변경:
+- `ns1.xn--2e0bj1fruw33b6ti.net` → `76.13.218.129`
+- `ns2.xn--2e0bj1fruw33b6ti.net` → `76.13.218.129`
 
-### Hostinger hPanel DNS 설정
+### VPS BIND9 DNS Zone 확인
 
-1. **Hostinger hPanel 접속**
-   - https://hpanel.hostinger.com
-   - VPS → Manage 클릭
+```bash
+# VPS에서 DNS 조회 테스트
+dig @76.13.218.129 xn--2e0bj1fruw33b6ti.net A +short
+# 결과: 76.13.218.129
 
-2. **DNS 관리 이동**
-   - 좌측 메뉴 → "DNS" 또는 "DNS Zones" 클릭
+dig @76.13.218.129 www.xn--2e0bj1fruw33b6ti.net A +short
+# 결과: 76.13.218.129
+```
 
-3. **DNS 레코드 추가**
-   - A 레코드 추가:
-     - Name: `@` (루트 도메인)
-     - Value: `76.13.218.129`
-     - TTL: `3600`
-   - A 레코드 추가:
-     - Name: `www`
-     - Value: `76.13.218.129`
-     - TTL: `3600`
+### Hostinger API 토큰
 
-4. **DNS 확인**
-   - Hostinger hPanel에서 DNS 설정 후 확인
-   - `nslookup yourdomain.com` 명령어로 확인
+| 항목 | 값 |
+|------|-----|
+| **API 토큰** | `.env` 파일 참조 |
+| **발급처** | https://hpanel.hostinger.com/profile/api |
+| **용도** | Hostinger API 인증 |
 
 ---
 
@@ -603,13 +766,13 @@ EOF
 sudo certbot certonly --nginx -d srv1636789.hstgr.cloud
 ```
 
-### 6️⃣ DNS 설정 (수동 설정 필요)
+### 6️⃣ DNS 설정 (완료)
 
-```
-고대디에서 네임서버를 Hostinger로 변경 후,
-Hostinger hPanel에서 DNS 레코드를 수동으로 설정:
-- A 레코드: @ → 76.13.218.129
-- A 레코드: www → 76.13.218.129
+```bash
+# VPS BIND9 DNS Zone 설정 완료
+# @ → 76.13.218.129 ✅
+# www → 76.13.218.129 ✅
+# 네임서버 변경 완료 ✅
 ```
 
 ---
@@ -760,7 +923,7 @@ bash auto-deploy.sh
 ---
 
 **상태**: ✅ 배포 준비 완료  
-**마지막 업데이트**: 2026-05-17  
+**마지막 업데이트**: 2026-06-01 (공식 문서 기준 버전 전체 검증 완료)  
 **다음 단계**: 지금 바로 배포 시작!  
 
 **행운을 빕니다! 🚀**
