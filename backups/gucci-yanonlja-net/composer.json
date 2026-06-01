@@ -1,0 +1,41 @@
+{
+  "name": "gucci/yanonlja-net",
+  "description": "구찌야놀자 아바타 바카라 스트리밍 플랫폼",
+  "type": "project",
+  "license": "proprietary",
+  "require": {
+    "php": ">=8.2",
+    "ext-mysqli": "*",
+    "ext-json": "*",
+    "ext-mbstring": "*",
+    "ext-openssl": "*",
+    "ext-fileinfo": "*",
+    "ext-apcu": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^11.0"
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "sort-packages": true,
+    "platform": {
+      "php": "8.2.0"
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "Gucci\\": "src/"
+    }
+  },
+  "scripts": {
+    "test": "phpunit --testdox",
+    "lint": "php -l public/index.php && php -l core/auth/google-auth-api.php && php -l core/helpers/security-headers.php"
+  },
+  "extra": {
+    "php-version": "8.2 LTS",
+    "mariadb-version": "11 Stable",
+    "redis-version": "7 Stable",
+    "nginx-version": "Stable",
+    "node-version": "22 LTS"
+  }
+}

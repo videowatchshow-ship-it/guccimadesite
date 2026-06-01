@@ -1,0 +1,109 @@
+/**
+ * 데스크탑 전용 CSS — 구찌야놀자
+ * ref: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_media_queries
+ * ref: https://www.w3.org/WAI/WCAG21/quickref/
+ */
+
+@font-face {
+  font-family: 'SchoolSafetyTteokbokki';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2510-1@1.0/HakgyoansimTTeokbokkiB.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --d-bg:     #040f1c;
+  --d-bg2:    #071a2e;
+  --d-gold:   #f5c842;
+  --d-text:   #c8d8e8;
+  --d-muted:  #8898aa;
+  --d-border: rgba(245,200,66,0.15);
+  --d-radius: 16px;
+}
+
+body {
+  font-family: 'SchoolSafetyTteokbokki', sans-serif;
+  background: var(--d-bg);
+  color: var(--d-text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+.skip-to-main {
+  position: absolute; top: -100%; left: 1rem;
+  background: var(--d-gold); color: var(--d-bg);
+  padding: .5rem 1rem; border-radius: 6px;
+  font-size: .875rem; font-weight: 700;
+  z-index: 9999; text-decoration: none;
+  transition: top .2s ease;
+}
+.skip-to-main:focus { top: 1rem; }
+
+.d-gold { color: var(--d-gold); }
+
+/* ── 버튼 */
+.d-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+  padding: .875rem 2rem; border-radius: 50px;
+  font-family: inherit; font-size: 1rem; font-weight: 700;
+  text-decoration: none; cursor: pointer; border: none;
+  transition: all .25s ease; min-height: 48px;
+}
+.d-btn-primary {
+  background: linear-gradient(135deg, var(--d-gold), #e6a800);
+  color: var(--d-bg);
+  box-shadow: 0 4px 20px rgba(245,200,66,.35);
+}
+.d-btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(245,200,66,.5); }
+.d-btn-outline {
+  background: transparent; color: var(--d-gold);
+  border: 2px solid rgba(245,200,66,.4);
+}
+.d-btn-outline:hover { background: rgba(245,200,66,.08); border-color: var(--d-gold); transform: translateY(-2px); }
+.d-btn:focus-visible { outline: 3px solid var(--d-gold); outline-offset: 3px; }
+
+/* ── 컨테이너 */
+.d-inner { max-width: 1200px; margin: 0 auto; padding: 0 2rem; width: 100%; }
+
+/* ── 페이지 히어로 */
+.d-page-hero {
+  background: linear-gradient(180deg, #071a2e 0%, var(--d-bg) 100%);
+  padding: 3rem 0 2rem;
+  border-bottom: 1px solid var(--d-border);
+}
+
+/* ── 카드 */
+.d-card {
+  background: rgba(255,255,255,.03);
+  border: 1px solid var(--d-border);
+  border-radius: var(--d-radius);
+  padding: 1.5rem;
+  transition: all .3s ease;
+}
+.d-card:hover {
+  border-color: rgba(245,200,66,.3);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0,0,0,.3);
+}
+
+/* ── 키보드 단축키 힌트 */
+.d-kbd {
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 4px;
+  color: var(--d-muted);
+  font-size: .72rem;
+  padding: .1rem .4rem;
+}
+
+/* ── 선택 색상 */
+::selection { background: rgba(245,200,66,.3); color: #fff; }
+
+/* ── 반응형 */
+@media (max-width: 1024px) { .d-inner { padding: 0 1.5rem; } }
+@media (max-width: 768px)  { .d-page-hero { padding: 2rem 0 1.5rem; } }
