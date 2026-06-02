@@ -548,13 +548,14 @@ ssh root@76.13.218.129
 | **A 레코드 @** | 76.13.218.129 | ✅ |
 | **A 레코드 www** | 76.13.218.129 | ✅ |
 | **UFW 포트 53** | TCP/UDP 허용 | ✅ |
-| **고대디 NS** | ns1/ns2.xn--2e0bj1fruw33b6ti.net | ✅ 설정 완료 |
+| **고대디 NS** | ns1.hostinger.com / ns2.hostinger.com | ✅ 변경 완료 (사용자 확인) |
 
-### 네임서버 설정 완료
+### 네임서버 설정 완료 (2026-06-02 사용자 직접 확인)
 
-커스텀 네임서버 설정 완료:
-- **NS1**: `ns1.xn--2e0bj1fruw33b6ti.net` → `76.13.218.129`
-- **NS2**: `ns2.xn--2e0bj1fruw33b6ti.net` → `76.13.218.129`
+- **NS1**: `ns1.hostinger.com` ✅ GoDaddy에서 변경 완료
+- **NS2**: `ns2.hostinger.com` ✅ GoDaddy에서 변경 완료
+- **Hostinger 도메인 등록**: ✅ `is_accessible: true` 확인됨
+- **WHOIS 전파**: 진행 중 (GoDaddy UI 반영 완료, WHOIS 서버 전파 중)
 
 ---
 

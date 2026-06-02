@@ -1,0 +1,173 @@
+/**
+ * 모바일 전용 CSS — 구찌야놀자
+ * ref: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_media_queries
+ * ref: https://developer.mozilla.org/en-US/docs/Web/CSS/env
+ * ref: https://www.w3.org/WAI/WCAG21/quickref/
+ */
+
+/* ── 폰트 */
+@font-face {
+  font-family: 'SchoolSafetyTteokbokki';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2510-1@1.0/HakgyoansimTTeokbokkiB.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── 기본 */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --m-bg:      #040f1c;
+  --m-bg2:     #071a2e;
+  --m-gold:    #f5c842;
+  --m-text:    #c8d8e8;
+  --m-muted:   #8898aa;
+  --m-border:  rgba(245,200,66,0.15);
+  --m-radius:  12px;
+  --m-safe-b:  env(safe-area-inset-bottom, 0px);
+}
+
+body {
+  font-family: 'SchoolSafetyTteokbokki', sans-serif;
+  background: var(--m-bg);
+  color: var(--m-text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  /* iOS 안전 영역 — ref: https://developer.mozilla.org/en-US/docs/Web/CSS/env */
+  padding-bottom: var(--m-safe-b);
+}
+
+/* ── 접근성 */
+.skip-to-main {
+  position: absolute; top: -100%; left: 1rem;
+  background: var(--m-gold); color: var(--m-bg);
+  padding: .5rem 1rem; border-radius: 6px;
+  font-size: .875rem; font-weight: 700;
+  z-index: 9999; text-decoration: none;
+  transition: top .2s ease;
+}
+.skip-to-main:focus { top: 1rem; }
+
+/* ── 공통 유틸 */
+.m-gold { color: var(--m-gold); }
+
+/* ── 버튼 — 최소 터치 영역 44px (ref: https://www.w3.org/WAI/WCAG21/quickref/#target-size) */
+.m-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .4rem;
+  padding: .8rem 1.5rem; border-radius: 50px;
+  font-family: inherit; font-size: .95rem; font-weight: 700;
+  text-decoration: none; cursor: pointer; border: none;
+  transition: all .25s ease; min-height: 48px; min-width: 48px;
+}
+.m-btn-primary {
+  background: linear-gradient(135deg, var(--m-gold), #e6a800);
+  color: var(--m-bg);
+  box-shadow: 0 4px 16px rgba(245,200,66,.35);
+}
+.m-btn-primary:active { transform: scale(.97); }
+.m-btn-outline {
+  background: transparent; color: var(--m-gold);
+  border: 2px solid rgba(245,200,66,.4);
+}
+.m-btn-outline:active { background: rgba(245,200,66,.1); }
+.m-btn:focus-visible { outline: 3px solid var(--m-gold); outline-offset: 3px; }
+
+/* ── 히어로 */
+.m-hero {
+  background: linear-gradient(180deg, #071a2e 0%, var(--m-bg) 100%);
+  padding: 2rem 1rem 1.5rem;
+  text-align: center;
+}
+.m-hero-inner { max-width: 480px; margin: 0 auto; }
+.m-live-badge {
+  display: inline-flex; align-items: center; gap: .4rem;
+  background: rgba(229,62,62,.9); color: #fff;
+  padding: .3rem .75rem; border-radius: 4px;
+  font-size: .78rem; font-weight: 700; margin-bottom: 1rem;
+}
+.m-live-dot {
+  width: 6px; height: 6px; background: #fff; border-radius: 50%;
+  animation: m-blink 1.5s ease-in-out infinite;
+}
+@keyframes m-blink { 0%,100%{opacity:1} 50%{opacity:.3} }
+.m-hero-title {
+  font-size: clamp(1.75rem, 8vw, 2.5rem);
+  color: #fff; line-height: 1.2; margin-bottom: .75rem;
+}
+.m-hero-desc {
+  font-size: clamp(.875rem, 4vw, 1rem);
+  color: var(--m-muted); line-height: 1.7; margin-bottom: 1.5rem;
+}
+.m-hero-cta { display: flex; gap: .75rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1.5rem; }
+.m-stats {
+  display: flex; justify-content: center; gap: 2rem;
+  padding-top: 1.25rem; border-top: 1px solid rgba(255,255,255,.07);
+}
+.m-stat { text-align: center; }
+.m-stat-num { display: block; font-size: 1.25rem; font-weight: 700; color: var(--m-gold); }
+.m-stat-label { font-size: .75rem; color: var(--m-muted); }
+
+/* ── 메뉴 그리드 */
+.m-menu-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: .75rem; padding: 1.25rem 1rem;
+  background: var(--m-bg2);
+  border-top: 1px solid var(--m-border);
+  border-bottom: 1px solid var(--m-border);
+}
+.m-menu-item {
+  display: flex; flex-direction: column; align-items: center; gap: .4rem;
+  background: rgba(255,255,255,.03); border: 1px solid var(--m-border);
+  border-radius: var(--m-radius); padding: 1rem .5rem;
+  text-decoration: none; color: var(--m-text);
+  transition: all .25s ease; min-height: 80px;
+}
+.m-menu-item:active { background: rgba(245,200,66,.08); border-color: rgba(245,200,66,.3); }
+.m-menu-item:focus-visible { outline: 3px solid var(--m-gold); outline-offset: 3px; }
+.m-menu-icon { font-size: 1.5rem; }
+.m-menu-label { font-size: .8rem; font-weight: 600; color: var(--m-text); }
+
+/* ── 섹션 공통 */
+.m-section-title {
+  font-size: clamp(1.1rem, 5vw, 1.4rem);
+  color: var(--m-gold); margin-bottom: 1rem;
+}
+
+/* ── 특징 */
+.m-features { padding: 1.5rem 1rem; }
+.m-feature-list { display: flex; flex-direction: column; gap: .875rem; }
+.m-feature-item {
+  display: flex; align-items: flex-start; gap: .875rem;
+  background: rgba(255,255,255,.03); border: 1px solid var(--m-border);
+  border-radius: var(--m-radius); padding: 1rem;
+}
+.m-feature-icon { font-size: 1.5rem; flex-shrink: 0; }
+.m-feature-item strong { display: block; margin-bottom: .25rem; }
+.m-feature-item p { font-size: .85rem; color: var(--m-muted); line-height: 1.6; margin: 0; }
+
+/* ── 빠른 연락 */
+.m-contact-quick { padding: 1.5rem 1rem 2rem; }
+.m-contact-btns { display: flex; flex-direction: column; gap: .75rem; }
+.m-contact-btn {
+  display: flex; align-items: center; justify-content: center; gap: .5rem;
+  padding: 1rem; border-radius: var(--m-radius);
+  font-family: inherit; font-size: .95rem; font-weight: 700;
+  text-decoration: none; transition: all .25s ease; min-height: 56px;
+}
+.m-telegram {
+  background: linear-gradient(135deg, rgba(0,136,204,.2), rgba(0,136,204,.1));
+  border: 1px solid rgba(0,136,204,.3); color: #63b3ed;
+}
+.m-telegram:active { background: rgba(0,136,204,.3); }
+.m-kakao {
+  background: linear-gradient(135deg, rgba(254,229,0,.15), rgba(254,229,0,.08));
+  border: 1px solid rgba(254,229,0,.2); color: #f6e05e;
+}
+.m-kakao:active { background: rgba(254,229,0,.25); }
+.m-contact-btn:focus-visible { outline: 3px solid var(--m-gold); outline-offset: 3px; }
+
+/* ── 선택 색상 */
+::selection { background: rgba(245,200,66,.3); color: #fff; }

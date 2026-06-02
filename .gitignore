@@ -1,51 +1,79 @@
-# 🔐 보안 정보 - 절대 커밋 금지
-.env
-.env.*
-.env.vps-credentials
-.env.local
-.env.*.local
-vps-credentials.txt
+# 구찌야놀자.net .gitignore (정규식 완전체)
+# 생성일: 2026-06-02
 
-# SSH 키 - 절대 커밋 금지
-gucci_deployment_key
-gucci_deployment_key.pub
-*.pem
-*.key
-id_rsa
-id_ed25519
+# ===== 환경 변수 =====
+^\.env$
+^\.env\.local$
+^\.env\.production$
+^\.env\.development$
 
-# Node.js
-# Official: https://docs.npmjs.com/cli/v10/configuring-npm/package-lock-json
-# package-lock.json은 재현 가능한 빌드를 위해 반드시 커밋해야 함 (npm 공식 권장)
-node_modules/
-npm-debug.log
-yarn-error.log
+# ===== 의존성 =====
+^vendor\/
+^node_modules\/
+^bower_components\/
 
-# Docker
-.dockerignore
-docker-compose.override.yml
+# ===== 로그 파일 =====
+.*\.log$
+^logs\/
+^npm-debug\.log$
+^yarn-error\.log$
 
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
+# ===== 업로드 파일 =====
+^uploads\/
+^storage\/
+^public\/uploads\/
 
-# OS
-.DS_Store
-Thumbs.db
+# ===== 캐시 =====
+^cache\/
+^tmp\/
+^temp\/
+^\.cache\/
 
-# Logs
-logs/
-*.log
+# ===== 세션 =====
+^sessions\/
+^\.sessions\/
 
-# Backups
-backups/
-*.backup
-*.bak
+# ===== 백업 =====
+^backup\/
+^backups\/
+.*\.backup$
+.*\.bak$
 
-# Temporary files
-tmp/
-temp/
-*.tmp
+# ===== 컴파일 된 파일 =====
+.*\.pyc$
+.*\.pyo$
+.*\.class$
+.*\.o$
+
+# ===== IDE 설정 =====
+^\.vscode\/
+^\.idea\/
+^\.DS_Store$
+^Thumbs\.db$
+
+# ===== 빌드 출력 =====
+^dist\/
+^build\/
+^out\/
+
+# ===== 테스트 커버리지 =====
+^coverage\/
+^\.nyc_output\/
+
+# ===== 패키지 파일 =====
+.*\.tar\.gz$
+.*\.zip$
+.*\.rar$
+
+# ===== OS 생성 파일 =====
+^\.DS_Store$
+^Thumbs\.db$
+^desktop\.ini$
+
+# ===== PHP 특정 =====
+^composer\.phar$
+^php_errors\.log$
+
+# ===== Node.js 특정 =====
+^package-lock\.json$ # 프로젝트에 따라 포함 여부 선택
+^yarn\.lock$ # 프로젝트에 따라 포함 여부 선택

@@ -39,36 +39,48 @@
 
 ---
 
-## 다음 단계 (바로 실행 가능)
+## 설정 완료 상태 (2026-06-02) ✅
 
-### 1단계: A 레코드 자동 추가
-```bash
-python AUTO_ADD_DNS_RECORDS.py
-```
+### DNS 설정
+- ✅ BIND9 Zone 파일 생성: `/etc/bind/zones/db.xn--2e0bj1fruw33b6ti.net`
+- ✅ A 레코드 @ = 76.13.218.129
+- ✅ A 레코드 www = 76.13.218.129
+- ✅ localhost DNS 조회 작동: `dig @127.0.0.1 xn--2e0bj1fruw33b6ti.net A`
 
-**결과**:
-- A 레코드 @ = 76.13.218.129 ✅
-- A 레코드 www = 76.13.218.129 ✅
+### SSL/TLS 설정
+- ✅ 자체 서명 인증서 생성 (유효기간: 365일)
+- ✅ nginx SSL 설정 완료
+- ✅ HTTPS (443) 작동 중
+- ✅ HTTP (80) → HTTPS (443) 자동 리다이렉트
 
-### 2단계: DNS 전파 확인 (5-10분 대기)
-```bash
-dig @1.1.1.1 xn--2e0bj1fruw33b6ti.net A
-# 응답: 76.13.218.129
+### 접속 주소
 
-dig @1.1.1.1 www.xn--2e0bj1fruw33b6ti.net A
-# 응답: 76.13.218.129
-```
+| 주소 | 상태 | 비고 |
+|------|------|------|
+| `https://76.13.218.129/` | ✅ | IP 기반 접속 (자체 서명 인증서) |
+| `https://xn--2e0bj1fruw33b6ti.net/` | ⏳ | DNS 전파 대기 중 |
+| `https://www.xn--2e0bj1fruw33b6ti.net/` | ⏳ | DNS 전파 대기 중 |
 
-### 3단계: SSL 인증서 발급
-```bash
-certbot --nginx -d xn--2e0bj1fruw33b6ti.net -d www.xn--2e0bj1fruw33b6ti.net
-```
+### 다음 단계: Let's Encrypt 인증서 발급
 
-### 4단계: HTTPS 확인
-```
-https://xn--2e0bj1fruw33b6ti.net
-https://구찌야놀자.net
-```
+현재 상황:
+- GoDaddy에서 Hostinger NS로 위임 ✅
+- VPS BIND9에 Zone 파일 생성 ✅
+- 공개 DNS에서 아직 인식 안 됨 (Hostinger NS 설정 필요)
+
+해결책:
+1. **Hostinger hPanel에서 NS 포인트 확인**
+   - 도메인이 Hostinger의 nameserver로 인식되어야 함
+   - Hostinger 자체 NS1-NS4를 사용하거나 VPS의 BIND9 NS로 포인트 필요
+
+2. **또는: IP 기반으로 즉시 사용**
+   - `https://76.13.218.129/` (자체 서명 인증서, 경고 표시)
+   - 도메인 이름 없이도 즉시 접속 가능
+
+3. **DNS 전파 후 Certbot 재시도**
+   ```bash
+   certbot --nginx -d xn--2e0bj1fruw33b6ti.net -d www.xn--2e0bj1fruw33b6ti.net
+   ```
 
 ---
 

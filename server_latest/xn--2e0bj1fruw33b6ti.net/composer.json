@@ -1,0 +1,7 @@
+{
+  "name": "gucci/yanonlja",
+  "require": {
+    "php": ">=8.2"
+  }
+}
+
