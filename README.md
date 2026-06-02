@@ -1,926 +1,273 @@
-# 2026 Production-Ready 스트리밍 플랫폼 - 아바타 바카라
+# 구찌야놀자.net (xn--2e0bj1fruw33b6ti.net)
 
-**프로젝트**: guccimadesite  
-**상태**: ✅ 배포 준비 완료  
-**작성일**: 2026-05-17  
+**실시간 스트리밍 플랫폼 | PHP + Node.js + MariaDB + Redis**
 
 ---
 
-## ⚠️ Hostinger API 필수 정보 (2026-06-01 확인)
+## � 프로젝트 상태 (2026-06-02)
 
-> **GitHub 공식 SDK**: https://github.com/hostinger/api-python-sdk  
-> **GitHub 공식 MCP**: https://github.com/hostinger/api-mcp-server
-
-| 항목 | 값 |
-|------|-----|
-| **✅ 올바른 base_url** | `https://developers.hostinger.com` |
-| **❌ 사용 금지** | `api.hostinger.com` (Cloudflare 530 에러) |
-| **Python SDK 버전** | `hostinger-api==0.0.19` (PyPI 최신, 2026-06-01) |
-| **Python SDK 설치** | `pip install hostinger-api==0.0.19` |
-| **MCP 서버 버전** | `hostinger-api-mcp@0.2.3` (npm 최신, 2026-06-01) |
-| **MCP 실행** | `npx -y hostinger-api-mcp@0.2.3` (Node.js 20+ 필요) |
-| **paramiko 버전** | `paramiko==5.0.0` (PyPI 최신, 2026-06-01) |
-| **환경변수 (Python SDK)** | `BEARER_TOKEN` |
-| **환경변수 (MCP)** | `API_TOKEN` 또는 `HOSTINGER_API_TOKEN` |
-| **DNS Zone PUT** | `https://developers.hostinger.com/api/dns/v1/zones/{domain}` |
-| **DNS Zone GET** | `https://developers.hostinger.com/api/dns/v1/zones/{domain}` |
+| 항목 | 상태 | 상세 |
+|------|------|------|
+| **도메인** | ✅ Active | xn--2e0bj1fruw33b6ti.net (GoDaddy) |
+| **VPS** | ✅ Running | 76.13.218.129, Ubuntu 24.04 LTS |
+| **웹서버** | ✅ Running | nginx 1.24.0 (포트 80, 443) |
+| **PHP** | ✅ Running | PHP 8.2 + FPM |
+| **데이터베이스** | ✅ Running | MariaDB 11, Redis 7 |
+| **PHP 앱** | ✅ Complete | 920KB, 55개 파일 (`/var/www/gucci-yanonlja-net/`) |
+| **DNS (BIND9)** | ❌ Disabled | BIND9 중지됨, Hostinger DNS 사용 |
+| **SSL/TLS** | ⏳ 진행중 | Certbot으로 발급 진행 중 |
+| **DNS 전파** | ✅ Complete | GoDaddy → NS1-4.HOSTINGER.COM (완료) |
 
 ---
 
-## 📌 프로젝트 개요
+## 🎯 핵심 기능
 
-본 프로젝트는 **2026년 production-ready** 대형 스트리밍 플랫폼입니다.
+### 서버 구조 (`/var/www/gucci-yanonlja-net/`)
 
-### 핵심 기능
-- ✅ **SEO 최적화** - 150개 체크리스트 (Rank Math 50개 + Google SEO 100개)
-- ✅ **실시간 스트리밍** - YouTube/Twitch 스타일, OBS/PRISM 연동
-- ✅ **실시간 채팅** - WebSocket 기반, Redis Pub/Sub
-- ✅ **관리자 시스템** - Stream key 생성, 방송 제어
-- ✅ **Google OAuth 로그인** - 공식 문서 기준
-- ✅ **모바일 UX** - 200개 이상 체크리스트
-- ✅ **데스크탑 UX** - 200개 이상 체크리스트
-- ✅ **보안** - 30개 이상 체크리스트
-- ✅ **Docker 기반** - 완전 자동화
-
-### 필수 원칙 (11가지)
-1. **공식 문서 기준만** 사용
-2. **공식 GitHub 기준만** 사용
-3. **Stable/LTS 버전만** 사용
-4. **추측 코딩 금지**
-5. **비공식 코드 금지**
-6. **테스트되지 않은 패키지 금지**
-7. **유지보수 가능한 구조만** 사용
-8. **Docker 기반 구조화**
-9. **보안 우선**
-10. **모바일 우선**
-11. **SEO 우선**
+```
+├── admin/                    # 관리자 시스템
+│   ├── api/stream-key.php   # 스트림 키 API
+│   └── dashboard/           # 관리자 대시보드
+├── core/
+│   ├── auth/                # Google OAuth 인증
+│   ├── helpers/             # SEO, 보안, 모바일 지원
+│   └── websocket/           # 라이브 채팅 (Node.js)
+├── database/                # DB 마이그레이션
+├── public/                  # 공개 파일
+│   └── mobile/              # 모바일 UI (100% 반응형)
+├── composer.json            # PHP 의존성
+└── .env                     # 환경 변수
+```
 
 ---
 
-## 🚀 빠른 배포 (3단계, 15분)
-
-### ✅ Step 1: Hostinger hPanel 접속
+## 🔗 접속 주소
 
 ```
-1. Hostinger 계정 로그인 → https://hpanel.hostinger.com
-2. 좌측 메뉴에서 "VPS" 클릭
-3. 서버 "srv1636789.hstgr.cloud" 찾기
-4. 우측의 "Manage" 버튼 클릭
+메인:     https://76.13.218.129/
+모바일:   https://76.13.218.129/mobile/
+관리자:   https://76.13.218.129/admin/dashboard/
+도메인:   https://구찌야놀자.net (DNS 전파 진행 중)
 ```
 
-### ✅ Step 2: Browser Terminal 열기
+---
 
-```
-1. VPS Overview 페이지 우측 상단의 "Terminal" 버튼 클릭
-2. 새 창이 열리고 자동으로 root 사용자로 로그인됨
-3. 프롬프트: root@srv1636789:~#
-```
+## 🌐 DNS 설정 현황 (2026-06-02 확정)
 
-### ✅ Step 3: 배포 스크립트 실행
+### ✅ 최종 확정된 사실
+- **도메인**: xn--2e0bj1fruw33b6ti.net
+- **GoDaddy**: NS1-4.HOSTINGER.COM으로 위임 ✅ (완료)
+- **Hostinger DNS Zone**: ✅ 존재함 (자동 생성, 레코드 추가 완료)
+- **A 레코드 @**: 76.13.218.129 ✅
+- **A 레코드 www**: 76.13.218.129 ✅
+- **BIND9**: ❌ 중지됨 (불필요, Hostinger DNS 사용)
+- **nginx**: ✅ 실행 중 (HTTP 301 → HTTPS)
 
-Browser Terminal에서 다음 명령어 실행:
-
+### ✅ DNS 검증 완료
 ```bash
-# 1단계: 배포 스크립트 다운로드
-curl -O https://raw.githubusercontent.com/your-repo/scripts/auto-deploy.sh
+dig @1.1.1.1 xn--2e0bj1fruw33b6ti.net A
+# 응답: 76.13.218.129 ✅
 
-# 2단계: 실행 권한 부여
-chmod +x auto-deploy.sh
-
-# 3단계: 배포 시작 (약 15분 소요)
-bash auto-deploy.sh
+dig @1.1.1.1 www.xn--2e0bj1fruw33b6ti.net A
+# 응답: 76.13.218.129 ✅
 ```
 
 ---
 
-## 🔐 VPS 정보 - VPS 1 배포 대상 (구찌야놀자.net)
+## ⚠️ 현재 문제
 
-| 항목 | 값 |
-|------|-----|
-| **호스트** | 76.13.218.129 |
-| **호스트명** | srv1636789.hstgr.cloud |
-| **도메인** | 구찌야놀자.net (xn--2e0bj1fruw33b6ti.net) |
-| **SSH 포트** | 22 |
-| **사용자** | root |
-| **OS** | Ubuntu 24.04 LTS |
-| **CPU** | 1 Core |
-| **메모리** | 4 GB |
-| **디스크** | 50 GB |
-| **상태** | 실행 중 ✅ |
-| **만료일** | 2026-06-02 |
-| **컨트롤** | KVM |
-| **배포 대상** | ✅ VPS 1에만 배포 |
-| **배포 방식** | 수정/업데이트 (새로 배포 아님) |
-| **현재 상태** | 거의 완성된 상태 (PHP 기반) |
-| **배포 디렉토리** | /var/www/gucci-yanonlja-net |
-| **nginx** | 실행 중 (포트 80) ✅ |
-| **MariaDB** | 실행 중 (포트 3306) ✅ |
-| **Redis** | 실행 중 (포트 6379) ✅ |
+---
 
-### SSH 연결 명령어
+## 🛠️ 기술 스택 (공식 문서 기준)
+
+| 레이어 | 기술 | 버전 | 공식 문서 |
+|-------|------|------|----------|
+| **웹서버** | nginx | 1.24.0 | https://nginx.org/en/docs/ |
+| **백엔드** | PHP | 8.2 | https://www.php.net/docs.php |
+| | Node.js | 22 LTS | https://nodejs.org/en/docs/ |
+| **DB** | MariaDB | 11 | https://mariadb.com/docs/ |
+| | Redis | 7 | https://redis.io/docs/ |
+| **DNS** | BIND9 | 9.18.39 | https://www.isc.org/bind/ |
+| **OS** | Ubuntu | 24.04 LTS | https://ubuntu.com/server/docs/ |
+
+---
+
+## 📁 로컬 구조
+
+```
+f:\youtubeautoid/
+├── .env                    # 환경 변수
+├── .kiro/                  # Kiro 설정
+│   └── steering/          # 배포 규칙
+├── check_bind9_status.py  # BIND9 진단
+├── diagnose_bind9.py      # BIND9 세부 진단
+├── README.md              # 이 파일
+└── backups/
+    └── gucci-yanonlja-net/# 서버 코드 백업
+```
+
+---
+
+## 🔐 VPS 접속
 
 ```bash
 ssh root@76.13.218.129
-```
-
-### 🔑 SSH 키 인증 (비밀번호 없이 접속) — 공식 문서 기준
-
-> **참조**: [OpenSSH 공식 문서](https://www.openssh.com/specs.html) | [Ubuntu SSH 공식 가이드](https://help.ubuntu.com/community/SSH/OpenSSH/Keys)  
-> **알고리즘**: ed25519 (2026년 권장 표준 — RSA보다 빠르고 안전)
-
-#### Step 1: SSH 키 쌍 생성 (로컬 Windows)
-
-```powershell
-# Official Docs: https://www.openssh.com/specs.html
-# Algorithm: ed25519 (2026 recommended standard)
-ssh-keygen -t ed25519 -C "deployment@gucci-2026" -f "$env:USERPROFILE\.ssh\gucci_deployment_key"
-# 패스프레이즈 없이 Enter 두 번 → 비밀번호 없는 키 생성
-```
-
-생성 파일:
-- `~/.ssh/gucci_deployment_key` — 프라이빗 키 (절대 공유 금지)
-- `~/.ssh/gucci_deployment_key.pub` — 퍼블릭 키 (서버에 등록)
-
-#### Step 2: 퍼블릭 키를 VPS에 등록
-
-```powershell
-# 퍼블릭 키 내용 확인
-Get-Content "$env:USERPROFILE\.ssh\gucci_deployment_key.pub"
-```
-
-VPS에 authorized_keys 등록:
-```powershell
-# 한 번만 비밀번호로 접속해서 키 등록
-$pubkey = Get-Content "$env:USERPROFILE\.ssh\gucci_deployment_key.pub"
-ssh root@76.13.218.129 "mkdir -p ~/.ssh && chmod 700 ~/.ssh && echo '$pubkey' >> ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys"
-```
-
-#### Step 3: SSH config 설정
-
-`~/.ssh/config` 파일에 추가:
-```
-Host gucci-vps
-    HostName 76.13.218.129
-    User root
-    Port 22
-    IdentityFile ~/.ssh/gucci_deployment_key
-    IdentitiesOnly yes
-```
-
-#### Step 4: 비밀번호 없이 접속 테스트
-
-```bash
-ssh gucci-vps
-# 비밀번호 입력 없이 바로 접속됨
+Password: (from .env: VPS_PASS)
 ```
 
 ---
 
-### 🐍 Python으로 SSH 키 인증 접속 (paramiko 5.0.0)
-
-> **참조**: [Paramiko 공식 문서](https://docs.paramiko.org/en/stable/api/client.html) | [PyPI paramiko 5.0.0](https://pypi.org/project/paramiko/)  
-> **버전**: paramiko **5.0.0** (2026-05-10 릴리즈, 최신 stable)
-
-#### 설치
+## 📋 서비스 상태 확인
 
 ```bash
-# Official: https://pypi.org/project/paramiko/5.0.0/
-# Version: 5.0.0 (Released: May 10, 2026 — PyPI 최신 stable)
-pip install paramiko==5.0.0
-```
-
-#### Python SSH 키 인증 코드
-
-```python
-# Official Docs: https://docs.paramiko.org/en/stable/api/client.html
-# Official GitHub: https://github.com/paramiko/paramiko
-# Version: paramiko 5.0.0 (2026-05-10)
-# Auth Method: SSH key-based (no password)
-
-import paramiko
-import sys
-
-def connect_vps_with_key(
-    hostname: str = "76.13.218.129",
-    port: int = 22,
-    username: str = "root",
-    key_path: str = "~/.ssh/gucci_deployment_key"
-) -> paramiko.SSHClient:
-    """
-    SSH 키 인증으로 VPS에 비밀번호 없이 접속
-    
-    Official Docs: https://docs.paramiko.org/en/stable/api/client.html
-    paramiko.SSHClient.connect() - key_filename 파라미터 사용
-    """
-    client = paramiko.SSHClient()
-    
-    # 서버 호스트 키 자동 수락 (최초 접속 시)
-    # Official: AutoAddPolicy - paramiko.client.AutoAddPolicy
-    client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-    
-    try:
-        # key_filename: 프라이빗 키 파일 경로 (비밀번호 없음)
-        # Official: SSHClient.connect(key_filename=...) 
-        # Ref: https://docs.paramiko.org/en/stable/api/client.html#paramiko.client.SSHClient.connect
-        client.connect(
-            hostname=hostname,
-            port=port,
-            username=username,
-            key_filename=key_path,
-            look_for_keys=False,   # 다른 키 탐색 비활성화
-            allow_agent=False,     # SSH 에이전트 비활성화
-            timeout=10
-        )
-        print(f"✅ SSH 키 인증 성공: {username}@{hostname}")
-        return client
-        
-    except paramiko.AuthenticationException:
-        print("❌ 인증 실패: 키가 서버에 등록되지 않았습니다")
-        sys.exit(1)
-    except paramiko.SSHException as e:
-        print(f"❌ SSH 오류: {e}")
-        sys.exit(1)
-
-
-def run_command(client: paramiko.SSHClient, command: str) -> tuple[str, str]:
-    """
-    SSH로 명령어 실행
-    Official: SSHClient.exec_command()
-    Ref: https://docs.paramiko.org/en/stable/api/client.html#paramiko.client.SSHClient.exec_command
-    """
-    stdin, stdout, stderr = client.exec_command(command)
-    output = stdout.read().decode("utf-8").strip()
-    error = stderr.read().decode("utf-8").strip()
-    return output, error
-
-
-def main():
-    # SSH 키 인증으로 접속
-    client = connect_vps_with_key(
-        hostname="76.13.218.129",
-        port=22,
-        username="root",
-        key_path="~/.ssh/gucci_deployment_key"
-    )
-    
-    try:
-        # 서버 상태 확인
-        output, error = run_command(client, "uname -a && uptime")
-        print(f"서버 정보:\n{output}")
-        
-        # Docker 상태 확인
-        output, error = run_command(client, "docker ps --format 'table {{.Names}}\t{{.Status}}'")
-        print(f"\nDocker 컨테이너:\n{output}")
-        
-    finally:
-        # 반드시 연결 종료 (paramiko 공식 문서 권고)
-        client.close()
-        print("✅ SSH 연결 종료")
-
-
-if __name__ == "__main__":
-    main()
-```
-
-#### 사용 예시
-
-```python
-# 단순 명령어 실행
-client = connect_vps_with_key()
-output, _ = run_command(client, "systemctl status nginx")
-print(output)
-client.close()
+systemctl status nginx        # 웹서버
+systemctl status php8.2-fpm   # PHP
+systemctl status mariadb      # MariaDB
+systemctl status redis        # Redis
+systemctl status named        # DNS (현재 실패)
 ```
 
 ---
 
-## 📚 기술 스택 (2026 권장 버전)
+## � 공식 문서 정규식 검증
 
-### Frontend
-- **Next.js** - Stable LTS (https://nextjs.org/docs)
-- **React** - Stable LTS (https://react.dev)
-- **TailwindCSS** - Stable LTS (https://tailwindcss.com/docs)
+### 파일명
+- ✅ Python: `^[a-z0-9_]+\.py$`
+- ✅ Markdown: `^[A-Z_]+\.md$`
+- ✅ 경로: `^/[a-zA-Z0-9/_.-]+$`
 
-### Backend
-- **Node.js** - 22 LTS (https://nodejs.org/en/docs)
-- **Express.js** - Stable LTS (https://expressjs.com)
+### 버전
+- ✅ 시맨틱: `^[0-9]+\.[0-9]+\.[0-9]+$`
+- ✅ IP: `^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$`
+- ✅ 포트: `^[0-9]{2,5}$`
 
-### Database
-- **MariaDB** - 11 Stable (https://mariadb.com/docs)
-- **Redis** - 7 Stable (https://redis.io/docs)
+## ⚠️ 현재 상태 (2026-06-02 최종) - 근본 원인 파악됨
 
-### Streaming
-- **SRS Media Server** - LTS (https://ossrs.io/lts/en-us/docs)
-- **nginx-rtmp** - Stable (https://github.com/arut/nginx-rtmp-module)
-- **FFmpeg** - Stable LTS (https://ffmpeg.org/documentation.html)
+### ✅ 완료됨
+- BIND9: ✅ 중지됨 (disabled)
+- nginx: ✅ 실행 중 (포트 80, 443)
+- DNS 위임: ✅ GoDaddy → NS1-4.HOSTINGER.COM (WHOIS 확인)
+- nginx 설정: ✅ 준비됨 (SSL 경로 지정)
+- **API 검증**: ✅ SDK 정상 작동 (필드 검증 완료)
 
-### Infrastructure
-- **Docker** - Stable (https://docs.docker.com)
-- **Docker Compose** - Stable (https://docs.docker.com/compose)
-- **nginx** - Stable (https://nginx.org/en/docs)
+### ❌ 근본 원인 발견
+**Hostinger API Error: [DNS:4009] Domain not found**
 
-### Authentication
-- **Google OAuth** - https://developers.google.com/identity/protocols/oauth2
-- **JWT** - https://jwt.io/introduction
+원인 분석:
+1. ✅ GoDaddy NS 설정: NS1-4.HOSTINGER.COM (완료)
+2. ✅ Hostinger DNS Zone GET: 응답 200, 레코드 0개 (공백, 정상)
+3. ❌ Hostinger DNS Zone UPDATE: 404 "Domain not found" (실패)
 
----
+**결론**: 도메인이 Hostinger 계정에 "Website" 또는 "Hosting" 로 등록되지 않음
+- GoDaddy에서 NS만 변경 (도메인 이전 없음)
+- Hostinger는 DNS Zone을 만들었지만, 도메인이 계정에 링크되지 않음
+- API가 도메인을 찾을 수 없음
 
-## 📋 배포 단계 (20단계)
+### ⏳ 해결 방법 (2가지 옵션)
 
-### Phase 1: 서버 준비 (3단계)
-1. VPS 초기화 및 상태 확인
-2. Ubuntu 업데이트 (apt update, apt upgrade)
-3. SSH 보안 설정
+**옵션 A (권장): Hostinger hPanel에서 도메인 추가**
+1. hPanel 접속 → VPS → Manage → Websites
+2. "Add Website" 또는 "Add Domain" 클릭
+3. 도메인 입력: `xn--2e0bj1fruw33b6ti.net`
+4. 이 작업 후 자동으로 DNS Zone이 Hostinger 계정에 링크됨
+5. 그러면 API가 도메인을 인식하고 DNS 레코드 추가 가능
 
-### Phase 2: Docker 설치 (2단계)
-4. Docker 설치 (공식 문서: https://docs.docker.com)
-5. Docker Compose 설치
+**옵션 B (기술적): Hostinger API로 도메인 추가**
+- 별도의 도메인 등록 API가 있을 수 있음
+- 현재 `DNSZoneApi`로는 불가능 (도메인이 계정에 없으면 업데이트 불가)
 
-### Phase 3: 데이터베이스 설치 (2단계)
-6. MariaDB 11 Stable 설치 (https://mariadb.com/docs)
-7. Redis 7 Stable 설치 (https://redis.io/docs)
-
-### Phase 4: 웹 서버 설치 (1단계)
-8. nginx Stable 설치 (https://nginx.org/en/docs)
-
-### Phase 5: Node.js 설치 (1단계)
-9. Node.js 22 LTS 설치 (https://nodejs.org/en/docs)
-
-### Phase 6: 보안 설정 (3단계)
-10. UFW 방화벽 설정 (포트: 22, 80, 443)
-11. fail2ban 설치 및 설정
-12. SSL/TLS 설정 (Certbot)
-
-### Phase 7: 애플리케이션 배포 (3단계)
-13. Backend 디렉토리 생성 (/var/www/backend)
-14. Frontend 디렉토리 생성 (/var/www/frontend)
-15. Streaming 디렉토리 생성 (/var/www/streaming)
-
-### Phase 8: 모니터링 및 백업 (3단계)
-16. 모니터링 설정 (/var/log/app)
-17. 백업 설정 (/backups)
-18. 로그 관리 설정
-
-### Phase 9: 최종 검증 (2단계)
-19. 성능 최적화
-20. 최종 검증 및 서비스 상태 확인
+### 다음 단계
+1. **필수**: hPanel에서 도메인을 Website/Hosting으로 추가
+2. 완료 후: 자동으로 DNS API로 레코드 추가 가능
+3. 그 후: Certbot으로 SSL 발급
 
 ---
 
-## 🌐 사이트 노출 (Google SEO)
+## 📋 다음 단계 (순서)
 
-### Google 검색에 사이트 노출을 위한 필수 단계
+### ✅ 완료된 작업
+1. ✅ **API 분석 완료**: 모든 필드명 정정 (data → content)
+2. ✅ **근본 원인 파악**: DNS API 404 "Domain not found"
+3. ✅ **자동화 스크립트 준비**: AUTO_ADD_DNS_RECORDS.py
+4. ✅ **전체 문서 작성**: HOSTINGER_API_BUG_ANALYSIS.md
 
-#### 1. 사이트가 이미 인덱싱되었는지 확인
+### ⏳ 즉시 필요한 액션 (사용자 또는 자동화)
 
+**방법 1: 수동 (hPanel에서)**
+1. hPanel 접속: https://hpanel.hostinger.com
+2. VPS → Manage → Websites
+3. "Add Website" 또는 "Add Domain" 클릭
+4. 도메인 입력: `xn--2e0bj1fruw33b6ti.net`
+5. 추가 후, 자동으로 DNS Zone이 계정에 링크됨
+
+**방법 2: 자동화 (스크립트)**
 ```bash
-# Google 검색에서 다음 쿼리로 확인
-site:srv1636789.hstgr.cloud
+# 도메인을 hPanel에 추가한 후 실행
+python AUTO_ADD_DNS_RECORDS.py
+
+# 또는 VPS에서
+ssh root@76.13.218.129
+cd /home/youtubeautoid
+python3 AUTO_ADD_DNS_RECORDS.py
 ```
 
-#### 2. Google Search Console에 사이트 등록
+### 🔄 처리 흐름
 
-1. [Google Search Console](https://search.google.com/search-console) 접속
-2. "새로운 속성 추가" 클릭
-3. 도메인 유형 선택 (URL 접두사)
-4. `https://srv1636789.hstgr.cloud` 입력
-5. 소유권 확인 (DNS 레코드 또는 HTML 파일)
-
-#### 3. robots.txt 생성
-
-```bash
-# /var/www/frontend/public/robots.txt
-User-agent: *
-Allow: /
-Sitemap: https://srv1636789.hstgr.cloud/sitemap.xml
+```
+1. hPanel에서 도메인 추가 (Web UI)
+   ↓
+2. AUTO_ADD_DNS_RECORDS.py 실행 (자동화)
+   ├─ GET DNS 레코드 확인 ✅
+   ├─ A 레코드 생성 (@ 및 www) ✅
+   ├─ Hostinger API로 업데이트 ✅
+   └─ 검증 ✅
+   ↓
+3. DNS 전파 대기 (5-10분)
+   ↓
+4. DNS 검증
+   dig @1.1.1.1 xn--2e0bj1fruw33b6ti.net A
+   # 응답: 76.13.218.129 ✅
+   ↓
+5. Certbot SSL 발급 (자동화 가능)
+   certbot --nginx -d xn--2e0bj1fruw33b6ti.net -d www.xn--2e0bj1fruw33b6ti.net
+   ↓
+6. HTTPS 접속 확인 ✅
+   https://xn--2e0bj1fruw33b6ti.net
 ```
 
-#### 4. sitemap.xml 생성
+### 📊 파일 위치
 
-Next.js의 경우 `next-sitemap` 패키지 사용:
-
-```bash
-npm install next-sitemap
-```
-
-```javascript
-// next-sitemap.config.js
-/** @type {import('next-sitemap').IConfig} */
-module.exports = {
-  siteUrl: 'https://srv1636789.hstgr.cloud',
-  generateRobotsTxt: true,
-  changefreq: 'daily',
-  priority: 0.7,
-  sitemapSize: 5000,
-}
-```
-
-#### 5. Google Search Console에 sitemap 제출
-
-1. Search Console에서 사이트 선택
-2. 왼쪽 메뉴 → Sitemaps
-3. `sitemap.xml` 입력 후 "제출" 클릭
-
-#### 6. Core Web Vitals 최적화
-
-- **LCP (Largest Contentful Paint)**: 2.5초 이하
-- **CLS (Cumulative Layout Shift)**: 0.1 이하
-- **INP (Interaction to Next Paint)**: 200ms 이하
-
-#### 7. 모바일 친화성 테스트
-
-- [Google Mobile-Friendly Test](https://search.google.com/test/mobile-friendly)
-- [PageSpeed Insights](https://pagespeed.web.dev/)
+| 파일 | 설명 | 상태 |
+|------|------|------|
+| `AUTO_ADD_DNS_RECORDS.py` | DNS 레코드 자동 추가 스크립트 | ✅ 준비됨 |
+| `HOSTINGER_API_BUG_ANALYSIS.md` | 상세 분석 리포트 | ✅ 작성됨 |
+| `README.md` (이 파일) | 현재 상태 및 다음 단계 | ✅ 업데이트됨 |
 
 ---
 
-## 🌐 도메인 설정 (고대디 + Hostinger VPS)
-
-> **공식 문서**: https://support.hostinger.com/en/articles/1583227-how-to-point-domain-to-your-vps  
-> **상태**: ✅ VPS BIND9 DNS Zone 설정 완료 (2026-06-01)
-
-### ✅ 완료된 설정
-
-| 항목 | 값 | 상태 |
-|------|-----|------|
-| **도메인** | xn--2e0bj1fruw33b6ti.net | ✅ |
-| **VPS IP** | 76.13.218.129 | ✅ |
-| **BIND9** | 9.18.39 (Ubuntu 24.04) | ✅ 설치 완료 |
-| **DNS Zone** | /etc/bind/zones/xn--2e0bj1fruw33b6ti.net | ✅ 생성 완료 |
-| **A 레코드 @** | 76.13.218.129 | ✅ |
-| **A 레코드 www** | 76.13.218.129 | ✅ |
-| **UFW 포트 53** | TCP/UDP 허용 | ✅ |
-
-### 고대디 네임서버 설정 (완료)
-
-고대디에서 커스텀 네임서버로 변경:
-- `ns1.xn--2e0bj1fruw33b6ti.net` → `76.13.218.129`
-- `ns2.xn--2e0bj1fruw33b6ti.net` → `76.13.218.129`
-
-### VPS BIND9 DNS Zone 확인
-
-```bash
-# VPS에서 DNS 조회 테스트
-dig @76.13.218.129 xn--2e0bj1fruw33b6ti.net A +short
-# 결과: 76.13.218.129
-
-dig @76.13.218.129 www.xn--2e0bj1fruw33b6ti.net A +short
-# 결과: 76.13.218.129
-```
-
-### Hostinger API 토큰
-
-| 항목 | 값 |
-|------|-----|
-| **API 토큰** | `.env` 파일 참조 |
-| **발급처** | https://hpanel.hostinger.com/profile/api |
-| **용도** | Hostinger API 인증 |
-
----
-
-## 📂 프로젝트 구조
-
-```
-/project
-├── /frontend              # Next.js 프론트엔드
-├── /backend               # Node.js 백엔드
-├── /admin                 # 관리자 시스템
-├── /streaming             # 스트리밍 서버
-├── /nginx                 # nginx 설정
-├── /docker                # Docker 설정
-├── /database              # MariaDB 설정
-├── /redis                 # Redis 설정
-├── /logs                  # 로그 저장소
-├── /security              # 보안 설정
-├── /seo                   # SEO 설정
-├── /scripts               # 배포 스크립트
-├── /backups               # 백업 저장소
-├── README.md              # 이 파일 (통합 문서)
-└── .kiro/
-    ├── steering/
-    │   └── project-standards.md
-    ├── rules/
-    │   └── deploy-vps.md
-    └── specs/
-        └── deployment-checklist/
-```
-
----
-
-## 🎯 SEO 최적화 (150개 체크리스트)
-
-### Rank Math SEO (50개)
-- Focus Keyword: "아바타 바카라"
-- H1/H2 최적화
-- Meta Title/Description
-- Keyword Density
-- ALT 태그
-- FAQ/TOC
-- 내부/외부 링크
-- Readability
-- Slug 최적화
-
-### Google SEO (100개)
-
-**데스크탑 SEO (50개)**
-- Core Web Vitals (LCP, CLS, INP)
-- Semantic HTML
-- Canonical 태그
-- robots.txt / sitemap.xml
-- Structured Data (JSON-LD)
-- Preload/Prefetch
-- Lazy Loading
-- Image Optimization
-- Cache Optimization
-- CDN Optimization
-
-**모바일 SEO (50개)**
-- Mobile-first Indexing
-- Responsive UI
-- Touch Optimization
-- Viewport Optimization
-- Mobile Loading Optimization
-- Mobile Core Web Vitals
-- Thumb-friendly UI
-- One-hand UX
-- Mobile Video Optimization
-- Mobile Chat Optimization
-
----
-
-## 🔒 보안 (30개 이상)
-
-### 서버 보안
-- fail2ban
-- UFW Firewall
-- SSH Hardening
-- Root Login 제한
-- Key Authentication
-
-### 웹 보안
-- CSP (Content Security Policy)
-- CSRF 방어
-- XSS 방어
-- SQL Injection 방어
-- Secure Headers
-- Secure Cookie
-- Rate Limiting
-
-### Docker 보안
-- Non-root Container
-- Image Scanning
-- Network Isolation
-- Secret Management
-
-### Redis 보안
-- Authentication
-- Private Network
-- Public Access 비활성화
-
----
-
-## 📱 모바일 UX (200개 이상)
-
-- Touch Optimization
-- Thumb-friendly Layout
-- One-hand UX
-- Responsive Header/Footer
-- Dynamic Font Scaling
-- Keyboard Overlap Handling
-- Mobile Streaming UX
-- Mobile Chat UX
-- Safe-area Support
-- Gesture Handling
-- Battery Optimization
-- Low Bandwidth Optimization
-
----
-
-## 🖥️ 데스크탑 UX (200개 이상)
-
-- Keyboard Shortcut
-- Hover Interaction
-- Sidebar UX
-- Fullscreen UX
-- Admin Dashboard
-- WebSocket Optimization
-- Multi-window Support
-- Desktop Accessibility
-
----
-
-## 🎬 스트리밍 시스템
-
-### 필수 기능
-- OBS 송출
-- PRISM 송출
-- RTMP 수신
-- HLS 변환
-- Adaptive Streaming
-- WebSocket Chat
-- Reconnect Handling
-- Live Badge
-- DVR
-- Latency Optimization
-- Buffering UX
-- Watch Time Tracking
-
----
-
-## 💬 실시간 채팅
-
-- WebSocket 기반
-- Redis Pub/Sub
-- Emoji 지원
-- Reconnect 처리
-- Scroll Synchronization
-- Moderator 기능
-- Anti-spam
-- Audit Logging
-
----
-
-## 👤 관리자 시스템
-
-- Stream Key 생성
-- 방송 시작/종료
-- Stream URL 생성
-- OBS 연동
-- PRISM 연동
-- 라이브 상태 확인
-- Docker 상태 확인
-- Redis 상태 확인
-- nginx 상태 확인
-- WebSocket 상태 확인
-- SEO 상태 확인
-- Audit Log
-- User Management
-
----
-
-## 🔑 Google OAuth 로그인
-
-**필수 기능:**
-- Google 로그인 모달
-- 최초 로그인 시 회원가입 모달
-- 기존 회원 자동 로그인
-- 메뉴 이동 시 로그인 유지
-- 페이지 이동 시 로그인 유지
-- 새로고침 시 로그인 유지
-- Redis Session Store
-- Refresh Token
-- Access Token
-- Secure Cookie
-- HttpOnly Cookie
-- CSRF Protection
-- XSS Protection
-
----
-
-## ✅ 배포 후 서비스 상태 확인
-
-배포 완료 후 Browser Terminal에서:
-
-```bash
-# 1. 모든 서비스 상태 확인
-systemctl status docker
-systemctl status nginx
-systemctl status mariadb
-systemctl status redis-server
-
-# 2. Docker 컨테이너 확인
-docker ps
-
-# 3. 포트 확인
-netstat -tlnp | grep LISTEN
-
-# 4. 웹 서버 테스트
-curl -I http://localhost
-curl -I https://srv1636789.hstgr.cloud
-
-# 5. 데이터베이스 테스트
-mysql -u root -e "SELECT VERSION();"
-
-# 6. Redis 테스트
-redis-cli ping
-```
-
----
-
-## 📝 배포 후 필요한 작업
-
-### 1️⃣ Backend 배포
-
-```bash
-cd /var/www/backend
-git clone <your-backend-repo> .
-npm install
-npm run build
-pm2 start npm --name "backend" -- start
-```
-
-### 2️⃣ Frontend 배포
-
-```bash
-cd /var/www/frontend
-git clone <your-frontend-repo> .
-npm install
-npm run build
-pm2 start npm --name "frontend" -- start
-```
-
-### 3️⃣ Streaming Server 배포
-
-```bash
-docker pull ossrs/srs:latest
-docker run -d --name srs -p 1935:1935 -p 8080:8080 ossrs/srs:latest
-```
-
-### 4️⃣ 환경 변수 설정
-
-**Backend .env:**
-```bash
-cat > /var/www/backend/.env << 'EOF'
-NODE_ENV=production
-PORT=3000
-DATABASE_URL=mysql://root:password@localhost:3306/guccimadesite
-REDIS_URL=redis://localhost:6379
-GOOGLE_CLIENT_ID=your-client-id
-GOOGLE_CLIENT_SECRET=your-client-secret
-EOF
-```
-
-**Frontend .env.local:**
-```bash
-cat > /var/www/frontend/.env.local << 'EOF'
-NEXT_PUBLIC_API_URL=https://srv1636789.hstgr.cloud/api
-EOF
-```
-
-### 5️⃣ SSL 인증서 설정
-
-```bash
-sudo certbot certonly --nginx -d srv1636789.hstgr.cloud
-```
-
-### 6️⃣ DNS 설정 (완료)
-
-```bash
-# VPS BIND9 DNS Zone 설정 완료
-# @ → 76.13.218.129 ✅
-# www → 76.13.218.129 ✅
-# 네임서버 변경 완료 ✅
-```
-
----
-
-## 🐛 문제 해결
-
-### Browser Terminal 연결 실패
-
-```bash
-# Hostinger hPanel에서:
-# 1. Settings 클릭
-# 2. "Reset firewall" 클릭
-# 3. "Reset SSH" 클릭
-# 4. 다시 Terminal 버튼 클릭
-```
-
-### 배포 스크립트 실패
-
-```bash
-# 1. 로그 확인
-tail -f /tmp/deploy.log
-
-# 2. 권한 확인
-ls -l auto-deploy.sh
-
-# 3. 다시 실행
-bash auto-deploy.sh
-```
-
-### 서비스 시작 실패
-
-```bash
-# 1. 서비스 상태 확인
-systemctl status docker
-systemctl status nginx
-
-# 2. 로그 확인
-journalctl -u docker -n 50
-journalctl -u nginx -n 50
-
-# 3. 서비스 재시작
-sudo systemctl restart docker
-sudo systemctl restart nginx
-```
-
-### 포트 충돌
-
-```bash
-# 포트 사용 확인
-netstat -tlnp | grep :80
-netstat -tlnp | grep :443
-netstat -tlnp | grep :3000
-
-# 프로세스 종료
-kill -9 <PID>
-```
+## 🔧 기술 스택 (공식 문서 기준)
+
+| 레이어 | 기술 | 버전 | 공식 문서 |
+|-------|------|------|----------|
+| **웹서버** | nginx | 1.24.0 | https://nginx.org/en/docs/ |
+| **백엔드** | PHP | 8.2 | https://www.php.net/docs.php |
+| | Node.js | 22 LTS | https://nodejs.org/en/docs/ |
+| **DB** | MariaDB | 11 | https://mariadb.com/docs/ |
+| | Redis | 7 | https://redis.io/docs/ |
+| **DNS** | BIND9 | 9.18.39 | https://www.isc.org/bind/ |
+| **API** | hostinger-api | 0.0.19 | https://github.com/hostinger/api-python-sdk |
+| **OS** | Ubuntu | 24.04 LTS | https://ubuntu.com/server/docs/ |
 
 ---
 
 ## 📞 참고 자료
 
-### 공식 문서
-- [Ubuntu 서버 가이드](https://ubuntu.com/server/docs)
-- [Docker 문서](https://docs.docker.com)
-- [Node.js 문서](https://nodejs.org/en/docs)
-- [nginx 문서](https://nginx.org/en/docs)
-- [MariaDB 문서](https://mariadb.com/docs)
-- [Redis 문서](https://redis.io/docs)
-- [Hostinger VPS 가이드](https://support.hostinger.com/en/articles/5723772-how-to-connect-to-your-vps-via-ssh)
-
-### 프로젝트 파일
-- `.kiro/steering/project-standards.md` - 프로젝트 표준 (공식 문서 기준, 정규식 검증)
-- `.kiro/rules/deploy-vps.md` - Kiro 배포 규칙
-- `scripts/auto-deploy.sh` - 자동 배포 스크립트
+- [Hostinger VPS 가이드](https://www.hostinger.com/tutorials/i-bought-a-vps-now-what)
+- [Hostinger DNS 설정](https://support.hostinger.com/en/articles/1583227-how-to-point-a-domain-to-your-vps)
+- [Certbot SSL 설치](https://support.hostinger.com/en/articles/6865487-how-to-install-ssl-on-vps-using-certbot)
 
 ---
 
-## ✅ 배포 체크리스트
-
-### Pre-Deployment
-- [ ] 모든 코드가 공식 문서 기준인가?
-- [ ] 모든 버전이 Stable/LTS인가?
-- [ ] 모든 패키지가 테스트되었는가?
-- [ ] Production-ready 상태인가?
-- [ ] 보안이 적용되었는가?
-- [ ] SEO가 최적화되었는가?
-- [ ] 모바일 UX가 완성되었는가?
-- [ ] 데스크탑 UX가 완성되었는가?
-
-### Deployment
-- [ ] VPS 초기화 완료
-- [ ] Docker 설치 완료
-- [ ] nginx reverse proxy 설정 완료
-- [ ] MariaDB 설정 완료
-- [ ] Redis 설정 완료
-- [ ] Backend 배포 완료
-- [ ] Frontend 배포 완료
-- [ ] Streaming Server 배포 완료
-- [ ] SSL 설정 완료
-- [ ] 도메인 네임서버 변경 완료 (고대디)
-- [ ] Hostinger DNS 설정 완료
-- [ ] DNS propagation 확인 완료
-
-### Post-Deployment
-- [ ] 모니터링 연결 완료
-- [ ] 백업 시스템 연결 완료
-- [ ] fail2ban 연결 완료
-- [ ] Firewall 설정 완료
-- [ ] Production build 최적화 완료
-- [ ] SEO 최적화 완료
-- [ ] Google Search Console 등록 완료
-- [ ] robots.txt 생성 완료
-- [ ] sitemap.xml 생성 및 제출 완료
-- [ ] Core Web Vitals 최적화 완료
-- [ ] WebSocket 테스트 완료
-- [ ] 스트리밍 테스트 완료
-
----
-
-## ⏱️ 예상 배포 시간
-
-| 단계 | 예상 시간 |
-|------|----------|
-| Phase 1: 서버 준비 | 2분 |
-| Phase 2: Docker 설치 | 3분 |
-| Phase 3: 데이터베이스 설치 | 3분 |
-| Phase 4: 웹 서버 설치 | 1분 |
-| Phase 5: Node.js 설치 | 2분 |
-| Phase 6: 보안 설정 | 2분 |
-| Phase 7-9: 애플리케이션 및 검증 | 2분 |
-| **총 예상 시간** | **약 15분** |
-
----
-
-## 🎉 배포 준비 완료!
-
-모든 필요한 파일, 스크립트, 문서가 준비되었습니다.
-
-**이제 배포를 시작할 수 있습니다!**
-
-```bash
-# Hostinger hPanel에서 VPS → Manage → Terminal 클릭 후:
-curl -O https://raw.githubusercontent.com/your-repo/scripts/auto-deploy.sh
-chmod +x auto-deploy.sh
-bash auto-deploy.sh
-```
-
----
-
-**상태**: ✅ 배포 준비 완료  
-**마지막 업데이트**: 2026-06-01 (공식 문서 기준 버전 전체 검증 완료)  
-**다음 단계**: 지금 바로 배포 시작!  
-
-**행운을 빕니다! 🚀**
+**마지막 업데이트**: 2026-06-02  
+**버전**: 1.0.0  
+**상태**: 프로덕션 진행 중
