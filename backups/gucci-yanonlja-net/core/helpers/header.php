@@ -364,143 +364,18 @@
          ref: https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/examples/disclosure-navigation/
     -->
     <nav class="gucci-nav" id="main-nav" role="navigation" aria-label="메인 내비게이션">
-
-      <!-- 스트리밍 드롭다운 -->
-      <div class="nav-item">
-        <button class="nav-btn" aria-haspopup="true" aria-expanded="false"
-          aria-controls="dd-streaming" id="btn-streaming">
-          스트리밍
-          <svg class="nav-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-            <polyline points="4 6 8 10 12 6"/>
-          </svg>
-        </button>
-        <div class="nav-dropdown" id="dd-streaming" role="region" aria-labelledby="btn-streaming">
-          <a class="nav-dd-item" href="/desktop/streaming/">
-            <span class="nav-dd-icon" aria-hidden="true">🔴</span>
-            <span>
-              <span class="nav-dd-label">실시간 LIVE</span>
-              <span class="nav-dd-desc">바카라 · 카지노 생중계</span>
-            </span>
-          </a>
-          <a class="nav-dd-item" href="/streaming/">
-            <span class="nav-dd-icon" aria-hidden="true">🎬</span>
-            <span>
-              <span class="nav-dd-label">지난 방송 보기</span>
-              <span class="nav-dd-desc">전체화면 · 고화질 재생</span>
-            </span>
-          </a>
-        </div>
-      </div>
-
-      <!-- 게임 드롭다운 -->
-      <div class="nav-item">
-        <button class="nav-btn" aria-haspopup="true" aria-expanded="false"
-          aria-controls="dd-games" id="btn-games">
-          게임
-          <svg class="nav-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-            <polyline points="4 6 8 10 12 6"/>
-          </svg>
-        </button>
-        <div class="nav-dropdown" id="dd-games" role="region" aria-labelledby="btn-games">
-          <a class="nav-dd-item" href="/games/">
-            <span class="nav-dd-icon" aria-hidden="true">🃏</span>
-            <span>
-              <span class="nav-dd-label">게임 안내</span>
-              <span class="nav-dd-desc">바카라 · 룰렛 · 블랙잭</span>
-            </span>
-          </a>
-          <a class="nav-dd-item" href="/reservation/">
-            <span class="nav-dd-icon" aria-hidden="true">📅</span>
-            <span>
-              <span class="nav-dd-label">게임 예약</span>
-              <span class="nav-dd-desc">테이블 사전 예약</span>
-            </span>
-          </a>
-        </div>
-      </div>
-
-      <!-- 커뮤니티 드롭다운 -->
-      <div class="nav-item">
-        <button class="nav-btn" aria-haspopup="true" aria-expanded="false"
-          aria-controls="dd-community" id="btn-community">
-          커뮤니티
-          <svg class="nav-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-            <polyline points="4 6 8 10 12 6"/>
-          </svg>
-        </button>
-        <div class="nav-dropdown" id="dd-community" role="region" aria-labelledby="btn-community">
-          <a class="nav-dd-item" href="/free-board/">
-            <span class="nav-dd-icon" aria-hidden="true">💬</span>
-            <span>
-              <span class="nav-dd-label">자유게시판</span>
-              <span class="nav-dd-desc">정보 공유 · 커뮤니티</span>
-            </span>
-          </a>
-          <a class="nav-dd-item" href="/contact/">
-            <span class="nav-dd-icon" aria-hidden="true">📞</span>
-            <span>
-              <span class="nav-dd-label">문의하기</span>
-              <span class="nav-dd-desc">텔레그램 · 카카오톡</span>
-            </span>
-          </a>
-        </div>
-      </div>
-
     </nav>
   </div>
 </header>
 
 <script>
 /**
- * W3C ARIA Practices — Disclosure Navigation Menu
+ * W3C ARIA Practices — Mobile Menu Toggle
  * 공식 문서: https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/examples/disclosure-navigation/
- * 원본 JS: https://github.com/w3c/aria-practices/blob/main/content/patterns/disclosure/examples/js/disclosureMenu.js
  * 라이선스: https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
  */
 (function () {
   'use strict';
-
-  function openMenu(button, menu) {
-    button.setAttribute('aria-expanded', 'true');
-    menu.style.display = 'block';
-  }
-
-  function closeMenu(button, menu) {
-    button.setAttribute('aria-expanded', 'false');
-    menu.style.display = 'none';
-  }
-
-  function closeAllMenus() {
-    document.querySelectorAll('.nav-btn[aria-haspopup]').forEach(function (btn) {
-      var menuId = btn.getAttribute('aria-controls');
-      var menu   = document.getElementById(menuId);
-      if (menu) { closeMenu(btn, menu); }
-    });
-  }
-
-  var buttons = document.querySelectorAll('.nav-btn[aria-haspopup]');
-  buttons.forEach(function (button) {
-    var menuId = button.getAttribute('aria-controls');
-    var menu   = document.getElementById(menuId);
-    if (!menu) { return; }
-
-    closeMenu(button, menu);
-
-    button.addEventListener('click', function (e) {
-      var isExpanded = button.getAttribute('aria-expanded') === 'true';
-      closeAllMenus();
-      if (!isExpanded) { openMenu(button, menu); }
-      e.stopPropagation();
-    });
-
-    button.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') { closeAllMenus(); button.focus(); }
-    });
-  });
-
-  document.addEventListener('click', function (e) {
-    if (!e.target.closest('.nav-item')) { closeAllMenus(); }
-  });
 
   /* 모바일 햄버거
    * ref: https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
