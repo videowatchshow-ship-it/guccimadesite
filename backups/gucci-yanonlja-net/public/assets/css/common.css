@@ -88,6 +88,90 @@ body {
   background: var(--color-bg);
   color: var(--color-text);
   overflow-x: hidden;
+  font-size: var(--font-size-md);
+  line-height: 1.6;
+}
+
+/* ── 제목 (h1~h6) */
+h1 {
+  font-size: clamp(1.875rem, 5vw, 2.5rem);
+  line-height: 1.2;
+  font-weight: 700;
+  margin: var(--space-6) 0 var(--space-4);
+}
+
+h2 {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  line-height: 1.2;
+  font-weight: 700;
+  margin: var(--space-6) 0 var(--space-4);
+}
+
+h3 {
+  font-size: clamp(1.375rem, 3.5vw, 1.75rem);
+  line-height: 1.3;
+  font-weight: 700;
+  margin: var(--space-5) 0 var(--space-3);
+}
+
+h4 {
+  font-size: clamp(1.25rem, 3vw, 1.5rem);
+  line-height: 1.3;
+  font-weight: 700;
+  margin: var(--space-4) 0 var(--space-3);
+}
+
+h5 {
+  font-size: clamp(1.125rem, 2.5vw, 1.25rem);
+  line-height: 1.4;
+  font-weight: 700;
+  margin: var(--space-4) 0 var(--space-2);
+}
+
+h6 {
+  font-size: var(--font-size-lg);
+  line-height: 1.4;
+  font-weight: 700;
+  margin: var(--space-3) 0 var(--space-2);
+}
+
+/* ── 단락 */
+p {
+  font-size: var(--font-size-md);
+  line-height: 1.7;
+  margin: var(--space-4) 0;
+}
+
+/* ── 작은 텍스트 */
+small {
+  font-size: var(--font-size-sm);
+}
+
+/* ── 매우 작은 텍스트 */
+.text-xs {
+  font-size: var(--font-size-xs);
+}
+
+/* ── 링크 */
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+a:hover {
+  color: var(--color-primary-dark);
+  text-decoration: underline;
+}
+
+/* ── 목록 */
+ul, ol {
+  margin: var(--space-4) 0;
+  padding-left: var(--space-6);
+}
+li {
+  font-size: var(--font-size-md);
+  line-height: 1.7;
+  margin: var(--space-2) 0;
 }
 
 /* ── 접근성: 본문 바로가기
