@@ -201,7 +201,7 @@ $site_url   = 'https://xn--2e0bj1fruw33b6ti.net';
 
 
 
-$page_title = '아바타 바카라 1위 에이전시 | 구찌야 놀자 캄보디아 생방송';
+$page_title = '아바타 바카라 1위 에이전시 | 구찌야 놀자 캄보디아 생방송 실시간';
 
 
 
@@ -222,7 +222,7 @@ $page_kw    = '아바타 바카라, 아바타바카라, 캄보디아 바카라, 
 
 
 
-$page_img   = $site_url . '/아바타-바카라-구찌야-놀자.png';
+$page_img   = $site_url . '/%EC%95%84%EB%B0%94%ED%83%80-%EB%B0%94%EC%B9%B4%EB%9D%BC-%EA%B5%AC%EC%B0%8C%EC%95%BC-%EB%86%80%EC%9E%90.png';
 
 
 
@@ -271,7 +271,8 @@ $req_uri    = filter_input(INPUT_SERVER, 'REQUEST_URI', FILTER_SANITIZE_URL) ?? 
 
 
 
-$canonical  = htmlspecialchars('https://' . $host . $req_uri, ENT_QUOTES, 'UTF-8');
+// HTTPS 강제 — canonical은 반드시 https://
+$canonical  = htmlspecialchars('https://' . preg_replace('/^https?:\/\//', '', $host) . $req_uri, ENT_QUOTES, 'UTF-8');
 
 
 
@@ -334,7 +335,7 @@ $canonical  = htmlspecialchars('https://' . $host . $req_uri, ENT_QUOTES, 'UTF-8
 
 
 
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover">
 
 
 
@@ -642,7 +643,8 @@ $canonical  = htmlspecialchars('https://' . $host . $req_uri, ENT_QUOTES, 'UTF-8
 
 
 
-  <link rel="manifest" href="/manifest.json">
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+<link rel="manifest" href="/manifest.json">
 
 
 
@@ -755,6 +757,7 @@ $canonical  = htmlspecialchars('https://' . $host . $req_uri, ENT_QUOTES, 'UTF-8
 
 
   <meta name="format-detection"              content="telephone=no">
+  <meta name="format-detection" content="address=no">
 
 
 
@@ -845,7 +848,7 @@ $canonical  = htmlspecialchars('https://' . $host . $req_uri, ENT_QUOTES, 'UTF-8
 
 
 
-        href="/아바타-바카라-구찌야-놀자.png"
+        href="/%EC%95%84%EB%B0%94%ED%83%80-%EB%B0%94%EC%B9%B4%EB%9D%BC-%EA%B5%AC%EC%B0%8C%EC%95%BC-%EB%86%80%EC%9E%90.png"
 
 
 
@@ -1146,7 +1149,7 @@ $canonical  = htmlspecialchars('https://' . $host . $req_uri, ENT_QUOTES, 'UTF-8
 
 
 
-      "url": "https://xn--2e0bj1fruw33b6ti.net/아바타-바카라-구찌야-놀자.png",
+      "url": "https://xn--2e0bj1fruw33b6ti.net/%EC%95%84%EB%B0%94%ED%83%80-%EB%B0%94%EC%B9%B4%EB%9D%BC-%EA%B5%AC%EC%B0%8C%EC%95%BC-%EB%86%80%EC%9E%90.png",
 
 
 
@@ -1426,14 +1429,14 @@ $canonical  = htmlspecialchars('https://' . $host . $req_uri, ENT_QUOTES, 'UTF-8
 
 
 
-    "thumbnailUrl": "https://xn--2e0bj1fruw33b6ti.net/아바타-바카라-구찌야-놀자.png",
+    "thumbnailUrl": "https://xn--2e0bj1fruw33b6ti.net/%EC%95%84%EB%B0%94%ED%83%80-%EB%B0%94%EC%B9%B4%EB%9D%BC-%EA%B5%AC%EC%B0%8C%EC%95%BC-%EB%86%80%EC%9E%90.png",
 
 
 
 
 
 
-    "uploadDate": "2026-01-01",
+    "uploadDate": "2026-01-01T00:00:00+09:00",
 
 
 
@@ -1972,6 +1975,7 @@ $canonical  = htmlspecialchars('https://' . $host . $req_uri, ENT_QUOTES, 'UTF-8
 
 
 
+        font-size: 16px; /* WCAG 1.4.4 최소 16px */
       font-family: 'SchoolSafetyTteokbokki', sans-serif;
 
 
@@ -2600,6 +2604,14 @@ $canonical  = htmlspecialchars('https://' . $host . $req_uri, ENT_QUOTES, 'UTF-8
 
 
     }
+
+    /* touch-action 최적화 — 300ms 딜레이 제거
+       ref: https://developer.mozilla.org/en-US/docs/Web/CSS/touch-action */
+    a, button, [role="button"] {
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: rgba(245,200,66,0.15);
+    }
+
 
 
 
@@ -4217,7 +4229,7 @@ $canonical  = htmlspecialchars('https://' . $host . $req_uri, ENT_QUOTES, 'UTF-8
 
 
 
-    .about-card-desc { font-size: 0.9rem; color: #6b7c93; line-height: 1.6; }
+    .about-card-desc { font-size: 1rem; color: #6b7c93; line-height: 1.6; }
 
 
 
@@ -4606,7 +4618,7 @@ $canonical  = htmlspecialchars('https://' . $host . $req_uri, ENT_QUOTES, 'UTF-8
 
 
 
-    .feature-desc { font-size: 0.9rem; color: #6b7c93; line-height: 1.7; }
+    .feature-desc { font-size: 1rem; /* min 16px on mobile */ color: #6b7c93; line-height: 1.7; }
 
 
 
@@ -4823,7 +4835,7 @@ $canonical  = htmlspecialchars('https://' . $host . $req_uri, ENT_QUOTES, 'UTF-8
 
 
 
-    .streaming-preview-text { font-size: 0.9rem; }
+    .streaming-preview-text { font-size: 1rem; }
 
 
 
@@ -5474,7 +5486,7 @@ $canonical  = htmlspecialchars('https://' . $host . $req_uri, ENT_QUOTES, 'UTF-8
 
 
 
-      font-size: 0.95rem;
+      font-size: 1rem;
 
 
 
@@ -6328,7 +6340,7 @@ $canonical  = htmlspecialchars('https://' . $host . $req_uri, ENT_QUOTES, 'UTF-8
 
 
 
-      font-size: 0.9rem;
+      font-size: 1rem;
 
 
 
@@ -6497,6 +6509,45 @@ $canonical  = htmlspecialchars('https://' . $host . $req_uri, ENT_QUOTES, 'UTF-8
 
 
     .review-date { font-size: 0.78rem; color: #4a5568; }
+    /* ════════════════════════════════════════
+       모바일 전용 보강 (대기업 반응형 방식)
+       ref: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_media_queries
+    ════════════════════════════════════════ */
+    @media (max-width: 480px) {
+      /* 히어로 */
+      .hero-inner { padding: 2rem 1rem; gap: 1rem; }
+      .hero-h1    { font-size: clamp(1.6rem, 7vw, 2.2rem); }
+      .hero-desc  { font-size: 0.95rem; }
+      .hero-cta   { flex-direction: column; align-items: center; }
+      .hero-stats { gap: 1rem; }
+      .hero-img-wrap { width: 200px; height: 200px; }
+
+      /* 버튼 */
+      .g-btn { width: 100%; justify-content: center; font-size: 0.95rem; }
+
+      /* 섹션 패딩 */
+      .g-section  { padding: 1.75rem 0; }
+      .g-inner    { padding: 0 1rem; }
+
+      /* 카드 그리드 1열 */
+      .features-grid,
+      .about-grid { grid-template-columns: 1fr; }
+
+      /* 폰트 */
+      .g-section-title { font-size: clamp(1.3rem, 5vw, 1.75rem); }
+
+      /* 네비게이션 */
+      .nav-links { display: none; }
+      .nav-mobile-toggle { display: flex; }
+    }
+
+    /* safe-area (노치 대응)
+       ref: https://developer.mozilla.org/en-US/docs/Web/CSS/env */
+    @supports (padding: env(safe-area-inset-bottom)) {
+      footer { padding-bottom: calc(1rem + env(safe-area-inset-bottom)); }
+      .m-bottom-nav { padding-bottom: env(safe-area-inset-bottom); }
+    }
+
 
 
 
@@ -6742,6 +6793,7 @@ $canonical  = htmlspecialchars('https://' . $host . $req_uri, ENT_QUOTES, 'UTF-8
 
 
           </h1>
+          <h2 class="g-section-title" id="streaming-heading">아바타 바카라 실시간 스트리밍</h2>
 
 
 
@@ -7042,56 +7094,21 @@ $canonical  = htmlspecialchars('https://' . $host . $req_uri, ENT_QUOTES, 'UTF-8
 
 
 
-            <img
-
-
-
-
-
-
-              src="/아바타-바카라-구찌야-놀자.png"
-
-
-
-
-
-
-              alt="아바타 바카라 구찌야 놀자 캄보디아 생방송 로고"
-
-
-
-
-
-
-              class="hero-img"
-
-
-
-
-
-
-              width="380" height="380"
-
-
-
-
-
-
-              loading="eager"
-
-
-
-
-
-
-              fetchpriority="high"
-
-
-
-
-
-
-              onerror="this.style.display='none'">
+            <!-- WebP 지원 — ref: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture -->
+            <picture>
+              <source
+                srcset="/%EC%95%84%EB%B0%94%ED%83%80-%EB%B0%94%EC%B9%B4%EB%9D%BC-%EA%B5%AC%EC%B0%8C%EC%95%BC-%EB%86%80%EC%9E%90.webp"
+                type="image/webp">
+              <img
+                src="/%EC%95%84%EB%B0%94%ED%83%80-%EB%B0%94%EC%B9%B4%EB%9D%BC-%EA%B5%AC%EC%B0%8C%EC%95%BC-%EB%86%80%EC%9E%90.png"
+                alt="아바타 바카라 구찌야 놀자 캄보디아 생방송 로고"
+                class="hero-img"
+                width="380" height="380"
+                loading="eager"
+                fetchpriority="high"
+                decoding="async"
+                onerror="this.style.display='none'">
+            </picture>
 
 
 
@@ -7485,7 +7502,7 @@ $canonical  = htmlspecialchars('https://' . $host . $req_uri, ENT_QUOTES, 'UTF-8
 
 
 
-              <div class="about-card-title">실시간 현장 중계</div>
+              <h4 class="about-card-title">실시간 현장 중계</h4>
 
 
 
@@ -7541,7 +7558,7 @@ $canonical  = htmlspecialchars('https://' . $host . $req_uri, ENT_QUOTES, 'UTF-8
 
 
 
-              <div class="about-card-title">안정적인 연결 시스템</div>
+              <h4 class="about-card-title">안정적인 연결 시스템</h4>
 
 
 
@@ -7597,7 +7614,7 @@ $canonical  = htmlspecialchars('https://' . $host . $req_uri, ENT_QUOTES, 'UTF-8
 
 
 
-              <div class="about-card-title">모바일 완벽 지원</div>
+              <h4 class="about-card-title">모바일 완벽 지원</h4>
 
 
 
@@ -7653,7 +7670,7 @@ $canonical  = htmlspecialchars('https://' . $host . $req_uri, ENT_QUOTES, 'UTF-8
 
 
 
-              <div class="about-card-title">실시간 채팅</div>
+              <h4 class="about-card-title">실시간 채팅</h4>
 
 
 
@@ -7842,7 +7859,7 @@ $canonical  = htmlspecialchars('https://' . $host . $req_uri, ENT_QUOTES, 'UTF-8
 
 
 
-            <p class="feature-title">캄보디아 현장 생방송</p>
+            <h3 class="feature-title">캄보디아 현장 생방송</h3>
 
 
 
@@ -7905,7 +7922,7 @@ $canonical  = htmlspecialchars('https://' . $host . $req_uri, ENT_QUOTES, 'UTF-8
 
 
 
-            <p class="feature-title">저지연 스트리밍</p>
+            <h3 class="feature-title">저지연 스트리밍</h3>
 
 
 
@@ -7968,7 +7985,7 @@ $canonical  = htmlspecialchars('https://' . $host . $req_uri, ENT_QUOTES, 'UTF-8
 
 
 
-            <p class="feature-title">안전한 운영 환경</p>
+            <h3 class="feature-title">안전한 운영 환경</h3>
 
 
 
@@ -8031,7 +8048,7 @@ $canonical  = htmlspecialchars('https://' . $host . $req_uri, ENT_QUOTES, 'UTF-8
 
 
 
-            <p class="feature-title">모바일 최적화</p>
+            <h3 class="feature-title">모바일 최적화</h3>
 
 
 
@@ -8094,7 +8111,7 @@ $canonical  = htmlspecialchars('https://' . $host . $req_uri, ENT_QUOTES, 'UTF-8
 
 
 
-            <p class="feature-title">실시간 채팅 시스템</p>
+            <h3 class="feature-title">실시간 채팅 시스템</h3>
 
 
 
@@ -8157,7 +8174,7 @@ $canonical  = htmlspecialchars('https://' . $host . $req_uri, ENT_QUOTES, 'UTF-8
 
 
 
-            <p class="feature-title">직관적인 인터페이스</p>
+            <h3 class="feature-title">직관적인 인터페이스</h3>
 
 
 
@@ -9882,7 +9899,7 @@ $canonical  = htmlspecialchars('https://' . $host . $req_uri, ENT_QUOTES, 'UTF-8
 
 
 
-            <button class="faq-question"
+            <button class="faq-question" role="button"
 
 
 
@@ -10001,7 +10018,7 @@ $canonical  = htmlspecialchars('https://' . $host . $req_uri, ENT_QUOTES, 'UTF-8
 
 
 
-            <button class="faq-question"
+            <button class="faq-question" role="button"
 
 
 
@@ -10120,7 +10137,7 @@ $canonical  = htmlspecialchars('https://' . $host . $req_uri, ENT_QUOTES, 'UTF-8
 
 
 
-            <button class="faq-question"
+            <button class="faq-question" role="button"
 
 
 
@@ -10253,7 +10270,7 @@ $canonical  = htmlspecialchars('https://' . $host . $req_uri, ENT_QUOTES, 'UTF-8
 
 
 
-            <button class="faq-question"
+            <button class="faq-question" role="button"
 
 
 
@@ -10379,7 +10396,7 @@ $canonical  = htmlspecialchars('https://' . $host . $req_uri, ENT_QUOTES, 'UTF-8
 
 
 
-            <button class="faq-question"
+            <button class="faq-question" role="button"
 
 
 
