@@ -62,7 +62,9 @@ $page_img   = $site_url . '/assets/images/avatar-baccarat-gucci-play.png';
   <link rel="preload" href="/assets/css/mobile-responsive.css" as="style">
   <link rel="preload" href="https://cdn.jsdelivr.net/gh/projectnoonnu/2510-1@1.0/HakgyoansimTTeokbokkiB.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/assets/css/mobile-responsive.css">
-  <link rel="stylesheet" href="/desktop/assets/css/desktop.css">
+    <!-- common.css: 폰트, 여백, 색상 기본 스타일 -->
+  <link rel="stylesheet" href="/assets/css/common.css">
+<link rel="stylesheet" href="/desktop/assets/css/desktop.css">
   <meta name="theme-color" content="#040f1c">
   <meta name="google-site-verification" content="VCbm_iM-IQ4cCfnMxW_Eh3-fsi0IeuM175IRVLPlXtQ">
 </head>
@@ -178,3 +180,4 @@ $page_img   = $site_url . '/assets/images/avatar-baccarat-gucci-play.png';
 <script src="/desktop/assets/js/desktop.js" defer></script>
 </body>
 </html>
+

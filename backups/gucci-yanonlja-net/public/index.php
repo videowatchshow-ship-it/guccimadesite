@@ -125,6 +125,9 @@ $canonical  = htmlspecialchars('https://' . $host . $req_uri, ENT_QUOTES, 'UTF-8
   <!-- 공유 반응형 CSS -->
   <link rel="stylesheet" href="/assets/css/mobile-responsive.css">
 
+  <!-- common.css: 폰트, 여백, 색상 기본 스타일 -->
+  <link rel="stylesheet" href="/assets/css/common.css">
+
 
   <!-- SEO #18: JSON-LD 구조화 데이터 — WebSite + SearchAction -->
   <!-- ref: https://schema.org/WebSite -->
@@ -1661,3 +1664,4 @@ $canonical  = htmlspecialchars('https://' . $host . $req_uri, ENT_QUOTES, 'UTF-8
 
 </body>
 </html>
+

@@ -16,11 +16,18 @@
 !setup.py
 
 # 백업 및 임시 파일
-/backups/
+# ⚠️  /backups/gucci-yanonlja-net은 서버 소스코드 - 포함!
 /backup/
 *.backup
 *.bak
 *.tmp
+
+# backups 폴더 예외: 서버 소스코드는 반드시 포함
+!/backups/
+!/backups/gucci-yanonlja-net/
+!/backups/gucci-yanonlja-net/**/*.php
+!/backups/gucci-yanonlja-net/**/*.css
+!/backups/gucci-yanonlja-net/**/*.js
 
 # Kiro IDE 설정 (로컬 개발 도구)
 /.kiro/
