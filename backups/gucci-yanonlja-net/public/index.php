@@ -6742,7 +6742,6 @@ $canonical  = htmlspecialchars('https://' . $host . $req_uri, ENT_QUOTES, 'UTF-8
 
 
           </h1>
-          <h2 class="g-section-title" id="streaming-heading">아바타 바카라 실시간 스트리밍</h2>
 
 
 
@@ -7204,7 +7203,7 @@ $canonical  = htmlspecialchars('https://' . $host . $req_uri, ENT_QUOTES, 'UTF-8
 
 
 
-        <p class="g-section-title" id="about-heading">현장의 분위기를 그대로 전달하는 플랫폼</p>
+        <h2 class="g-section-title" id="about-heading">아바타 바카라 — 현장감 그대로 전달하는 플랫폼</h2>
 
 
 
@@ -7780,7 +7779,7 @@ $canonical  = htmlspecialchars('https://' . $host . $req_uri, ENT_QUOTES, 'UTF-8
 
 
 
-        <p class="g-section-title" id="features-heading">아바타 바카라 실시간 운영 구조와 안정적인 연결 시스템</p>
+        <h3 class="g-section-title" id="features-heading">아바타 바카라 실시간 운영 구조와 안정적인 연결 시스템</h3>
 
 
 
@@ -8417,7 +8416,7 @@ $canonical  = htmlspecialchars('https://' . $host . $req_uri, ENT_QUOTES, 'UTF-8
 
 
 
-            <p class="g-section-title" id="streaming-heading">아바타 바카라 실시간 스트리밍</p>
+            <h3 class="g-section-title" id="streaming-heading">아바타 바카라 실시간 스트리밍</h3>
 
 
 
@@ -8560,7 +8559,7 @@ $canonical  = htmlspecialchars('https://' . $host . $req_uri, ENT_QUOTES, 'UTF-8
 
 
 
-        <p class="g-section-title" id="content-heading">아바타 바카라 캄보디아 현장 중심 진행 방식의 특징</p>
+        <h3 class="g-section-title" id="content-heading">아바타 바카라 캄보디아 현장 중심 진행 방식의 특징</h3>
 
 
 
@@ -8609,7 +8608,7 @@ $canonical  = htmlspecialchars('https://' . $host . $req_uri, ENT_QUOTES, 'UTF-8
 
 
 
-            <p class="g-section-title">이용 편의성과 직관적인 인터페이스</p>
+            <h3 class="g-section-title">이용 편의성과 직관적인 인터페이스</h3>
 
 
 
@@ -8798,7 +8797,7 @@ $canonical  = htmlspecialchars('https://' . $host . $req_uri, ENT_QUOTES, 'UTF-8
 
 
 
-            <p class="g-section-title">신뢰감 있는 운영 흐름과 사용자 경험</p>
+            <h3 class="g-section-title">신뢰감 있는 운영 흐름과 사용자 경험</h3>
 
 
 
@@ -8980,7 +8979,7 @@ $canonical  = htmlspecialchars('https://' . $host . $req_uri, ENT_QUOTES, 'UTF-8
 
 
 
-            <p class="g-section-title">앞으로의 운영 방향과 콘텐츠 확장성</p>
+            <h3 class="g-section-title">앞으로의 운영 방향과 콘텐츠 확장성</h3>
 
 
 
@@ -9190,7 +9189,7 @@ $canonical  = htmlspecialchars('https://' . $host . $req_uri, ENT_QUOTES, 'UTF-8
 
 
 
-            <p class="g-section-title">실시간 운영 구조와 서버 안정성</p>
+            <h3 class="g-section-title">실시간 운영 구조와 서버 안정성</h3>
 
 
 
@@ -9435,7 +9434,7 @@ $canonical  = htmlspecialchars('https://' . $host . $req_uri, ENT_QUOTES, 'UTF-8
 
 
 
-        <p class="g-section-title" id="reviews-heading">아바타 바카라 이용자 후기</p>
+        <h3 class="g-section-title" id="reviews-heading">아바타 바카라 이용자 후기</h3>
 
 
 
@@ -9841,7 +9840,7 @@ $canonical  = htmlspecialchars('https://' . $host . $req_uri, ENT_QUOTES, 'UTF-8
 
 
 
-        <p class="g-section-title" id="faq-heading">아바타 바카라 자주 묻는 질문</p>
+        <h3 class="g-section-title" id="faq-heading">아바타 바카라 자주 묻는 질문</h3>
 
 
 
@@ -10583,7 +10582,7 @@ $canonical  = htmlspecialchars('https://' . $host . $req_uri, ENT_QUOTES, 'UTF-8
 
 
 
-          <p class="g-section-title" id="contact-heading">아바타 바카라 지금 바로 문의하세요</p>
+          <h3 class="g-section-title" id="contact-heading">아바타 바카라 지금 바로 문의하세요</h3>
 
 
 
