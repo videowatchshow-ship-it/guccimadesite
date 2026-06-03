@@ -248,36 +248,40 @@ phase_3_database_installation() {
 }
 
 ################################################################################
-# Phase 4: 웹 서버 설치
+# Phase 4: 웹 서버 설치 (Apache2)
+# ref: https://httpd.apache.org/docs/2.4/install.html
 ################################################################################
 
 phase_4_webserver_installation() {
-    log_section "Phase 4: 웹 서버 설치"
+    log_section "Phase 4: 웹 서버 설치 (Apache2)"
     
-    # 8단계: nginx 설치
-    log_info "8단계: nginx 설치"
+    # 8단계: Apache2 설치
+    # NOTE: nginx 사용 안함 — Apache2만 사용
+    log_info "8단계: Apache2 설치"
     
-    if command -v nginx &> /dev/null; then
-        log_warning "nginx가 이미 설치되어 있습니다"
-        NGINX_VERSION=$(nginx -v 2>&1 | grep -oP '[0-9]+\.[0-9]+\.[0-9]+' | head -1)
-        validate_version "$NGINX_VERSION" "nginx"
+    if command -v apache2 &> /dev/null; then
+        log_warning "Apache2가 이미 설치되어 있습니다"
+        APACHE_VERSION=$(apache2 -v 2>&1 | grep -oP '[0-9]+\.[0-9]+\.[0-9]+' | head -1)
+        validate_version "$APACHE_VERSION" "Apache2"
     else
-        log_info "nginx 설치 중..."
-        sudo apt install -y nginx || error_exit "nginx 설치 실패"
-        log_success "nginx 설치 완료"
+        log_info "Apache2 설치 중..."
+        sudo apt install -y apache2 || error_exit "Apache2 설치 실패"
+        # 필수 모듈 활성화
+        sudo a2enmod ssl rewrite headers expires deflate proxy proxy_http || true
+        log_success "Apache2 설치 완료"
         
-        NGINX_VERSION=$(nginx -v 2>&1 | grep -oP '[0-9]+\.[0-9]+\.[0-9]+' | head -1)
-        validate_version "$NGINX_VERSION" "nginx"
+        APACHE_VERSION=$(apache2 -v 2>&1 | grep -oP '[0-9]+\.[0-9]+\.[0-9]+' | head -1)
+        validate_version "$APACHE_VERSION" "Apache2"
     fi
     
-    log_info "nginx 설정 검증"
-    sudo nginx -t || error_exit "nginx 설정 검증 실패"
-    log_success "nginx 설정 검증 완료"
+    log_info "Apache2 설정 검증"
+    sudo apache2ctl configtest || error_exit "Apache2 설정 검증 실패"
+    log_success "Apache2 설정 검증 완료"
     
-    log_info "nginx 서비스 시작"
-    sudo systemctl start nginx || error_exit "nginx 서비스 시작 실패"
-    sudo systemctl enable nginx || error_exit "nginx 자동 시작 설정 실패"
-    log_success "nginx 서비스 시작 완료"
+    log_info "Apache2 서비스 시작"
+    sudo systemctl start apache2 || error_exit "Apache2 서비스 시작 실패"
+    sudo systemctl enable apache2 || error_exit "Apache2 자동 시작 설정 실패"
+    log_success "Apache2 서비스 시작 완료"
     
     log_success "Phase 4 완료"
 }
@@ -367,7 +371,7 @@ phase_6_security_setup() {
         log_warning "Certbot이 이미 설치되어 있습니다"
     else
         log_info "Certbot 설치 중..."
-        sudo apt install -y certbot python3-certbot-nginx || error_exit "Certbot 설치 실패"
+        sudo apt install -y certbot python3-certbot-apache || error_exit "Certbot 설치 실패"
         log_success "Certbot 설치 완료"
     fi
     
@@ -435,8 +439,8 @@ phase_9_final_validation() {
     echo -n "Docker: "
     sudo systemctl is-active docker && log_success "실행 중" || log_error "중지됨"
     
-    echo -n "nginx: "
-    sudo systemctl is-active nginx && log_success "실행 중" || log_error "중지됨"
+    echo -n "Apache2: "
+    sudo systemctl is-active apache2 && log_success "실행 중" || log_error "중지됨"
     
     echo -n "MariaDB: "
     sudo systemctl is-active mariadb && log_success "실행 중" || log_error "중지됨"

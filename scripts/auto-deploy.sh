@@ -140,15 +140,18 @@ fi
 # Phase 4: 웹 서버 설치
 ################################################################################
 
-log_section "Phase 4: 웹 서버 설치"
+log_section "Phase 4: 웹 서버 설치 (Apache2)"
+# ref: https://httpd.apache.org/docs/2.4/install.html
+# NOTE: nginx 사용 안함 — Apache2만 사용
 
-log_info "8단계: nginx 설치"
-if ! command -v nginx &> /dev/null; then
-    sudo apt install -y nginx > /dev/null 2>&1
-    log_success "nginx 설치 완료"
+log_info "8단계: Apache2 설치"
+if ! command -v apache2 &> /dev/null; then
+    sudo apt install -y apache2 > /dev/null 2>&1
+    sudo a2enmod ssl rewrite headers expires deflate > /dev/null 2>&1 || true
+    log_success "Apache2 설치 완료"
 else
-    NGINX_VERSION=$(nginx -v 2>&1 | awk '{print $3}')
-    log_success "nginx 이미 설치됨: $NGINX_VERSION"
+    APACHE_VERSION=$(apache2 -v 2>&1 | grep -oP '[0-9]+\.[0-9]+\.[0-9]+' | head -1)
+    log_success "Apache2 이미 설치됨: $APACHE_VERSION"
 fi
 
 ################################################################################
@@ -190,7 +193,7 @@ fi
 
 log_info "12단계: SSL/TLS 설정"
 if ! command -v certbot &> /dev/null; then
-    sudo apt install -y certbot python3-certbot-nginx > /dev/null 2>&1
+    sudo apt install -y certbot python3-certbot-apache > /dev/null 2>&1
     log_success "Certbot 설치 완료"
 else
     log_success "Certbot 이미 설치됨"
@@ -251,10 +254,10 @@ else
     log_warning "Docker: 중지됨"
 fi
 
-if systemctl is-active --quiet nginx; then
-    log_success "nginx: 실행 중"
+if systemctl is-active --quiet apache2; then
+    log_success "Apache2: 실행 중"
 else
-    log_warning "nginx: 중지됨"
+    log_warning "Apache2: 중지됨"
 fi
 
 if systemctl is-active --quiet mariadb; then

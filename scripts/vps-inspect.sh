@@ -150,8 +150,8 @@ else
 fi
 
 # nginx (공식 문서: https://nginx.org/en/docs/)
-if command -v nginx &> /dev/null; then
-    NGINX_VERSION=$(nginx -v 2>&1 | grep -oP '[0-9]+\.[0-9]+\.[0-9]+' | head -1)
+if command -v apache2 &> /dev/null; then
+    NGINX_VERSION=$(apache2 -v 2>&1 | grep -oP '[0-9]+\.[0-9]+\.[0-9]+' | head -1)
     if [[ $NGINX_VERSION =~ $VERSION_REGEX ]]; then
         output "✅ nginx: $NGINX_VERSION (검증 통과)"
     else

@@ -6,7 +6,7 @@
 #   node:22.22.3-alpine3.22  — https://hub.docker.com/_/node
 #   mariadb:11.4.11          — https://hub.docker.com/_/mariadb (LTS)
 #   redis:8.0.4-alpine       — https://hub.docker.com/_/redis (GA 2026-04)
-#   nginx:1.30.1-alpine      — https://hub.docker.com/_/nginx (stable, 2026-05-13)
+# Web server: Apache2 (host-native) — nginx removed
 
 services:
   # ─── Frontend: Next.js 16.2.6 ───────────────────────────────────────────────
@@ -165,42 +165,11 @@ services:
       timeout: 10s
       retries: 3
 
-  # ─── nginx 1.30 Stable ───────────────────────────────────────────────────────
-  # Official: https://nginx.org/en/docs/
-  # Version: 1.30.1-alpine (stable, 2026-05-13) — https://hub.docker.com/_/nginx
-  nginx:
-    image: nginx:1.30.1-alpine
-    container_name: gucci-nginx
-    restart: unless-stopped
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - ../nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-      - ../nginx/conf.d:/etc/nginx/conf.d:ro
-      - /etc/letsencrypt:/etc/letsencrypt:ro
-      - nginx-logs:/var/log/nginx
-    depends_on:
-      - frontend
-      - backend
-    networks:
-      - gucci-network
-    security_opt:
-      - no-new-privileges:true
-    cap_drop:
-      - ALL
-    cap_add:
-      - NET_BIND_SERVICE
-    read_only: true
-    tmpfs:
-      - /tmp
-      - /run
-      - /var/cache/nginx
-    healthcheck:
-      test: ["CMD", "nginx", "-t"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
+  # ─── Web Server: Apache2 (host-native, not in Docker) ────────────────────────
+  # Apache2 is installed and managed directly on the VPS host (not as a container).
+  # It proxies frontend (:3000) and backend (:3001) via mod_proxy.
+  # Config: /etc/apache2/sites-enabled/000-xn--2e0bj1fruw33b6ti.net-le-ssl.conf
+  # NOTE: nginx has been removed. Do not add nginx service back.
 
 volumes:
   mariadb-data:
@@ -210,8 +179,6 @@ volumes:
   redis-data:
     driver: local
   redis-logs:
-    driver: local
-  nginx-logs:
     driver: local
 
 networks:
