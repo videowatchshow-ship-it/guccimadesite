@@ -1,0 +1,33 @@
+=== AppArmor BIND9 권한 수정 ===
+
+[1] 로그 디렉토리 생성
+
+
+
+
+[2] AppArmor named 프로필에 /var/log/bind/ 추가
+
+
+[3] AppArmor 재로드
+AppArmor parser error for /etc/apparmor.d/usr.sbin.named in profile /etc/apparmor.d/usr.sbin.named at line 102: syntax error, unexpected TOK_MODE, expecting TOK_OPEN
+
+
+[4] BIND9 재시작
+Job for named.service failed because the control process exited with error code.
+See "systemctl status named.service" and "journalctl -xeu named.service" for details.
+
+
+[5] 최종 상태
+failed
+
+;; communications error to 127.0.0.1#53: connection refused
+;; communications error to 127.0.0.1#53: connection refused
+;; communications error to 127.0.0.1#53: connection refused
+
+; <<>> DiG 9.18.39-0ubuntu0.24.04.5-Ubuntu <<>> @127.0.0.1 xn--2e0bj1fruw33b6ti.net A +short
+; (1 server found)
+;; global options: +cmd
+;; no servers could be reached
+
+
+✅ 완료

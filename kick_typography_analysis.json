@@ -1,0 +1,83 @@
+{
+  "metadata": {
+    "title": "Kick.com 영감 폰트 크기 시스템",
+    "date_created": "2026-06-03T03:55:57.559764",
+    "reference": [
+      "https://m2.material.io/design/typography/the-type-system.html",
+      "https://remtopx.com/blog/responsive-typography-best-practices/",
+      "https://accessibility.build/guides/accessible-typography-wcag"
+    ],
+    "platform": "스트리밍 플랫폼 (Kick, YouTube, Twitch 기준)"
+  },
+  "desktop_font_sizes": {
+    "h1_title": "2.5rem",
+    "h2_section": "2rem",
+    "h3_subsection": "1.75rem",
+    "h4_heading": "1.5rem",
+    "h5_subheading": "1.25rem",
+    "nav_link": "1.125rem",
+    "body_text": "1rem",
+    "button_text": "1rem",
+    "caption_text": "0.875rem",
+    "small_text": "0.75rem"
+  },
+  "mobile_font_sizes": {
+    "h1_title": "1.875rem",
+    "h2_section": "1.5rem",
+    "h3_subsection": "1.375rem",
+    "h4_heading": "1.25rem",
+    "h5_subheading": "1.125rem",
+    "nav_link": "1rem",
+    "body_text": "0.95rem",
+    "button_text": "0.95rem",
+    "caption_text": "0.8rem",
+    "small_text": "0.7rem"
+  },
+  "analysis": {
+    "desktop": {
+      "largest": "2.5rem",
+      "smallest": "0.75rem",
+      "body": "1rem",
+      "total_sizes": 10
+    },
+    "mobile": {
+      "largest": "1.875rem",
+      "smallest": "0.7rem",
+      "body": "0.95rem",
+      "total_sizes": 10
+    },
+    "responsive_strategy": "클램프(clamp) 및 미디어 쿼리 조합",
+    "breakpoints": {
+      "mobile": "max-width: 768px",
+      "tablet": "768px - 1024px",
+      "desktop": "min-width: 1024px"
+    }
+  },
+  "component_specifics": {
+    "header": {
+      "nav_link": "데스크톱: 1.125rem, 모바일: 1rem",
+      "logo_text": "데스크톱: 2rem, 모바일: 1.5rem"
+    },
+    "content": {
+      "page_title": "데스크톱: 2.5rem, 모바일: 1.875rem",
+      "section_heading": "데스크톱: 2rem, 모바일: 1.5rem",
+      "body": "데스크톱: 1rem, 모바일: 0.95rem"
+    },
+    "streaming_cards": {
+      "title": "데스크톱: 1.125rem(18px), 모바일: 1rem(16px)",
+      "description": "데스크톱: 0.875rem(14px), 모바일: 0.8rem(12.8px)",
+      "viewer_count": "0.875rem(14px)"
+    },
+    "buttons": {
+      "primary": "데스크톱/모바일: 1rem",
+      "min_touch_target": "44px (모바일 접근성)"
+    }
+  },
+  "wcag_compliance": {
+    "minimum_body_font_size": "14px",
+    "color_contrast": "4.5:1 (일반 텍스트)",
+    "heading_color_contrast": "7:1 (강화된 대비)",
+    "line_height_minimum": "1.5",
+    "letter_spacing": "0.12em 이상 권장"
+  }
+}

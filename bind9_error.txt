@@ -1,0 +1,76 @@
+
+================================================================================
+BIND9 정확한 에러 메시지
+================================================================================
+
+▶ systemd 로그 (마지막 50줄):
+Jun 02 10:56:54 xn--2e0bj1fruw33b6ti.net named[177335]: compiled with libxml2 version: 2.9.14
+Jun 02 10:56:54 xn--2e0bj1fruw33b6ti.net named[177335]: linked to libxml2 version: 20914
+Jun 02 10:56:54 xn--2e0bj1fruw33b6ti.net named[177335]: compiled with json-c version: 0.17
+Jun 02 10:56:54 xn--2e0bj1fruw33b6ti.net named[177335]: linked to json-c version: 0.17
+Jun 02 10:56:54 xn--2e0bj1fruw33b6ti.net named[177335]: compiled with zlib version: 1.3
+Jun 02 10:56:54 xn--2e0bj1fruw33b6ti.net named[177335]: linked to zlib version: 1.3
+Jun 02 10:56:54 xn--2e0bj1fruw33b6ti.net named[177335]: ----------------------------------------------------
+Jun 02 10:56:54 xn--2e0bj1fruw33b6ti.net named[177335]: BIND 9 is maintained by Internet Systems Consortium,
+Jun 02 10:56:54 xn--2e0bj1fruw33b6ti.net named[177335]: Inc. (ISC), a non-profit 501(c)(3) public-benefit
+Jun 02 10:56:54 xn--2e0bj1fruw33b6ti.net named[177335]: corporation.  Support and training for BIND 9 are
+Jun 02 10:56:54 xn--2e0bj1fruw33b6ti.net named[177335]: available at https://www.isc.org/support
+Jun 02 10:56:54 xn--2e0bj1fruw33b6ti.net named[177335]: ----------------------------------------------------
+Jun 02 10:56:54 xn--2e0bj1fruw33b6ti.net named[177335]: adjusted limit on open files from 524288 to 1048576
+Jun 02 10:56:54 xn--2e0bj1fruw33b6ti.net named[177335]: found 1 CPU, using 1 worker thread
+Jun 02 10:56:54 xn--2e0bj1fruw33b6ti.net named[177335]: using 1 UDP listener per interface
+Jun 02 10:56:54 xn--2e0bj1fruw33b6ti.net named[177335]: DNSSEC algorithms: RSASHA1 NSEC3RSASHA1 RSASHA256 RSASHA512 ECDSAP256SHA256 ECDSAP384SHA384 ED25519 ED448
+Jun 02 10:56:54 xn--2e0bj1fruw33b6ti.net named[177335]: DS algorithms: SHA-1 SHA-256 SHA-384
+Jun 02 10:56:54 xn--2e0bj1fruw33b6ti.net named[177335]: HMAC algorithms: HMAC-MD5 HMAC-SHA1 HMAC-SHA224 HMAC-SHA256 HMAC-SHA384 HMAC-SHA512
+Jun 02 10:56:54 xn--2e0bj1fruw33b6ti.net named[177335]: TKEY mode 2 support (Diffie-Hellman): yes
+Jun 02 10:56:54 xn--2e0bj1fruw33b6ti.net named[177335]: TKEY mode 3 support (GSS-API): yes
+Jun 02 10:56:54 xn--2e0bj1fruw33b6ti.net named[177335]: the initial working directory is '/'
+Jun 02 10:56:54 xn--2e0bj1fruw33b6ti.net named[177335]: loading configuration from '/etc/bind/named.conf'
+Jun 02 10:56:54 xn--2e0bj1fruw33b6ti.net named[177335]: the working directory is now '/var/cache/bind'
+Jun 02 10:56:54 xn--2e0bj1fruw33b6ti.net named[177335]: unable to open '/etc/bind/bind.keys'; using built-in keys instead
+Jun 02 10:56:54 xn--2e0bj1fruw33b6ti.net named[177335]: looking for GeoIP2 databases in '/usr/share/GeoIP'
+Jun 02 10:56:54 xn--2e0bj1fruw33b6ti.net named[177335]: using default UDP/IPv4 port range: [32768, 60999]
+Jun 02 10:56:54 xn--2e0bj1fruw33b6ti.net named[177335]: using default UDP/IPv6 port range: [32768, 60999]
+Jun 02 10:56:54 xn--2e0bj1fruw33b6ti.net named[177335]: IPv6 socket API is incomplete; explicitly binding to each IPv6 address separately
+Jun 02 10:56:54 xn--2e0bj1fruw33b6ti.net named[177335]: listening on IPv6 interface lo, ::1#53
+Jun 02 10:56:54 xn--2e0bj1fruw33b6ti.net named[177335]: listening on IPv6 interface eth0, 2a02:4780:5e:925b::1#53
+Jun 02 10:56:54 xn--2e0bj1fruw33b6ti.net named[177335]: listening on IPv6 interface eth0, fe80::10e8:d4ff:febe:9b5%2#53
+Jun 02 10:56:54 xn--2e0bj1fruw33b6ti.net named[177335]: generating session key for dynamic DNS
+Jun 02 10:56:54 xn--2e0bj1fruw33b6ti.net named[177335]: sizing zone task pool based on 1 zones
+Jun 02 10:56:54 xn--2e0bj1fruw33b6ti.net named[177335]: using built-in root key for view _default
+Jun 02 10:56:54 xn--2e0bj1fruw33b6ti.net named[177335]: set up managed keys zone for view _default, file 'managed-keys.bind'
+Jun 02 10:56:54 xn--2e0bj1fruw33b6ti.net named[177335]: configuring command channel from '/etc/bind/rndc.key'
+Jun 02 10:56:54 xn--2e0bj1fruw33b6ti.net named[177335]: command channel listening on 127.0.0.1#953
+Jun 02 10:56:54 xn--2e0bj1fruw33b6ti.net named[177335]: configuring command channel from '/etc/bind/rndc.key'
+Jun 02 10:56:54 xn--2e0bj1fruw33b6ti.net named[177335]: command channel listening on ::1#953
+Jun 02 10:56:54 xn--2e0bj1fruw33b6ti.net named[177335]: isc_stdio_open '/var/log/bind/query.log' failed: permission denied
+Jun 02 10:56:54 xn--2e0bj1fruw33b6ti.net named[177335]: configuring logging: permission denied
+Jun 02 10:56:54 xn--2e0bj1fruw33b6ti.net named[177335]: loading configuration: permission denied
+Jun 02 10:56:54 xn--2e0bj1fruw33b6ti.net named[177335]: exiting (due to fatal error)
+Jun 02 10:56:54 xn--2e0bj1fruw33b6ti.net systemd[1]: named.service: Main process exited, code=exited, status=1/FAILURE
+Jun 02 10:56:54 xn--2e0bj1fruw33b6ti.net systemd[1]: named.service: Failed with result 'exit-code'.
+Jun 02 10:56:54 xn--2e0bj1fruw33b6ti.net systemd[1]: Failed to start named.service - BIND Domain Name Server.
+Jun 02 10:56:54 xn--2e0bj1fruw33b6ti.net systemd[1]: named.service: Scheduled restart job, restart counter is at 5.
+Jun 02 10:56:54 xn--2e0bj1fruw33b6ti.net systemd[1]: named.service: Start request repeated too quickly.
+Jun 02 10:56:54 xn--2e0bj1fruw33b6ti.net systemd[1]: named.service: Failed with result 'exit-code'.
+Jun 02 10:56:54 xn--2e0bj1fruw33b6ti.net systemd[1]: Failed to start named.service - BIND Domain Name Server.
+
+
+▶ named 직접 실행 (포그라운드):
+
+
+▶ /var/log/bind/query.log 내용:
+   (없음)
+
+▶ syslog 관련 로그:
+2026-06-02T10:58:39.678932+00:00 srv1636789 named[177547]: set up managed keys zone for view _default, file 'managed-keys.bind'
+2026-06-02T10:58:39.690017+00:00 srv1636789 named[177547]: configuring command channel from '/etc/bind/rndc.key'
+2026-06-02T10:58:39.690308+00:00 srv1636789 named[177547]: command channel listening on 127.0.0.1#953
+2026-06-02T10:58:39.690517+00:00 srv1636789 named[177547]: configuring command channel from '/etc/bind/rndc.key'
+2026-06-02T10:58:39.690571+00:00 srv1636789 named[177547]: command channel listening on ::1#953
+2026-06-02T10:58:39.690664+00:00 srv1636789 named[177547]: isc_stdio_open '/var/log/bind/query.log' failed: permission denied
+2026-06-02T10:58:39.690863+00:00 srv1636789 kernel: audit: type=1400 audit(1780397919.689:324): apparmor="DENIED" operation="open" class="file" profile="named" name="/var/log/bind/query.log" pid=177547 comm="isc-net-0000" requested_mask="ac" denied_mask="ac" fsuid=112 ouid=112
+2026-06-02T10:58:39.690946+00:00 srv1636789 named[177547]: configuring logging: permission denied
+2026-06-02T10:58:39.691050+00:00 srv1636789 named[177547]: loading configuration: permission denied
+2026-06-02T10:58:39.691093+00:00 srv1636789 named[177547]: exiting (due to fatal error)
+

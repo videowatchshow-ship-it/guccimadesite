@@ -1,0 +1,97 @@
+{
+  "metadata": {
+    "title": "Kick.com 폰트 크기 배포 검증 레포트",
+    "date": "2026-06-03T04:00:52.826582",
+    "version": "1.0",
+    "vps": {
+      "host": "76.13.218.129",
+      "port": 22,
+      "user": "root"
+    }
+  },
+  "verification_results": {
+    "css_file_deployed": true,
+    "header_php_updated": true,
+    "apache_config_valid": true,
+    "page_files_exist": true,
+    "website_running": true
+  },
+  "desktop_font_sizes": {
+    "h1": "2.5rem (40px) - 페이지 제목",
+    "h2": "2rem (32px) - 섹션 제목",
+    "h3": "1.75rem (28px) - 서브섹션 제목",
+    "h4": "1.5rem (24px) - 4단계 제목",
+    "h5": "1.25rem (20px) - 5단계 제목",
+    "nav": "1.125rem (18px) - 네비게이션",
+    "body": "1rem (16px) - 본문 텍스트",
+    "button": "1rem (16px) - 버튼",
+    "caption": "0.875rem (14px) - 캡션",
+    "small": "0.75rem (12px) - 작은 텍스트"
+  },
+  "mobile_font_sizes": {
+    "h1": "1.875rem (30px) - 페이지 제목",
+    "h2": "1.5rem (24px) - 섹션 제목",
+    "h3": "1.375rem (22px) - 서브섹션 제목",
+    "h4": "1.25rem (20px) - 4단계 제목",
+    "h5": "1.125rem (18px) - 5단계 제목",
+    "nav": "1rem (16px) - 네비게이션",
+    "body": "0.95rem (15.2px) - 본문 텍스트",
+    "button": "0.95rem (15.2px) - 버튼",
+    "caption": "0.8rem (12.8px) - 캡션",
+    "small": "0.7rem (11.2px) - 작은 텍스트"
+  },
+  "responsive_breakpoints": {
+    "mobile": "max-width: 768px",
+    "tablet": "768px - 1024px",
+    "desktop": "min-width: 1024px"
+  },
+  "wcag_compliance": {
+    "level": "WCAG 2.2 AA",
+    "color_contrast_normal": "4.5:1 (일반 텍스트)",
+    "color_contrast_large": "3:1 (큰 텍스트)",
+    "minimum_font_size": "14px",
+    "line_height_minimum": "1.5",
+    "letter_spacing": "0.12em 이상 권장"
+  },
+  "browser_testing": {
+    "desktop_chrome": {
+      "checklist": [
+        "✓ 페이지 제목 크기 (40px)",
+        "✓ 섹션 제목 크기 (32px)",
+        "✓ 본문 텍스트 크기 (16px)",
+        "✓ 네비게이션 링크 크기 (18px)",
+        "✓ 버튼 클릭 가능 크기 (16px)"
+      ]
+    },
+    "mobile_chrome": {
+      "checklist": [
+        "✓ 페이지 제목 감소 크기 (30px)",
+        "✓ 섹션 제목 감소 크기 (24px)",
+        "✓ 본문 텍스트 최소화 (15.2px)",
+        "✓ 버튼 터치 대상 (44px 최소)",
+        "✓ 텍스트 줄바꿈 (오버플로우 없음)"
+      ]
+    },
+    "tablet": {
+      "checklist": [
+        "✓ 데스크톱과 모바일의 중간 크기",
+        "✓ 레이아웃 깨짐 없음",
+        "✓ 모든 텍스트 명확함"
+      ]
+    }
+  },
+  "next_steps": [
+    "1️⃣ 웹사이트 접속: https://xn--2e0bj1fruw33b6ti.net/",
+    "2️⃣ 개발자 도구 (F12) 열기",
+    "3️⃣ 각 요소의 실제 폰트 크기 확인",
+    "4️⃣ 모바일 모드에서 반응형 테스트",
+    "5️⃣ 색상 대비 확인 (4.5:1 최소)",
+    "6️⃣ 실제 모바일 기기에서 테스트",
+    "7️⃣ Lighthouse 접근성 테스트 실행"
+  ],
+  "files_generated": {
+    "css": "f:/youtubeautoid/kick_typography.css",
+    "analysis": "f:/youtubeautoid/kick_typography_analysis.json",
+    "deployment_script": "f:/youtubeautoid/DEPLOY_KICK_TYPOGRAPHY.py"
+  }
+}

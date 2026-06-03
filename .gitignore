@@ -1,79 +1,184 @@
-# 구찌야놀자.net .gitignore (정규식 완전체)
-# 생성일: 2026-06-02
+# .gitignore - 구찌야놀자.net 프로젝트
+# 표준: POSIX 정규표현식 (전세계 표준)
+# 생성일: 2026-06-03
+# 
+# 이 파일의 목적:
+#   로컬: 모든 파일 포함 (개발/테스트/백업용)
+#   깃: 소스코드만 포함 (배포 버전)
+#   서버: 깃에서 pull한 파일만 실행
 
-# ===== 환경 변수 =====
-^\.env$
-^\.env\.local$
-^\.env\.production$
-^\.env\.development$
+# ================================
+# 로컬 개발 전용 (서버 배포 불필요)
+# ================================
 
-# ===== 의존성 =====
-^vendor\/
-^node_modules\/
-^bower_components\/
+# Python 분석/테스트 스크립트
+*.py
+!setup.py
 
-# ===== 로그 파일 =====
-.*\.log$
-^logs\/
-^npm-debug\.log$
-^yarn-error\.log$
+# 백업 및 임시 파일
+/backups/
+/backup/
+*.backup
+*.bak
+*.tmp
 
-# ===== 업로드 파일 =====
-^uploads\/
-^storage\/
-^public\/uploads\/
+# Kiro IDE 설정 (로컬 개발 도구)
+/.kiro/
 
-# ===== 캐시 =====
-^cache\/
-^tmp\/
-^temp\/
-^\.cache\/
+# Docker 개발 설정 (로컬 전용)
+/docker/
+docker-compose.*.yml
 
-# ===== 세션 =====
-^sessions\/
-^\.sessions\/
+# 유틸리티 스크립트
+/scripts/
+*.sh
+!deploy.sh
 
-# ===== 백업 =====
-^backup\/
-^backups\/
-.*\.backup$
-.*\.bak$
+# 문서 (로컬 참고용)
+/docs/
+README.md
+*.md
+!DEPLOYMENT.md
 
-# ===== 컴파일 된 파일 =====
-.*\.pyc$
-.*\.pyo$
-.*\.class$
-.*\.o$
+# ================================
+# 환경 설정 (모든 환경)
+# ================================
 
-# ===== IDE 설정 =====
-^\.vscode\/
-^\.idea\/
-^\.DS_Store$
-^Thumbs\.db$
+# 환경 변수 - 절대 커밋 금지
+.env
+.env.local
+.env.*.local
+.env.production
+.env.development
+.env.testing
 
-# ===== 빌드 출력 =====
-^dist\/
-^build\/
-^out\/
+# ================================
+# 런타임 생성 파일 (서버용)
+# ================================
 
-# ===== 테스트 커버리지 =====
-^coverage\/
-^\.nyc_output\/
+# 로그 파일
+*.log
+logs/
+npm-debug.log
+yarn-error.log
+php_errors.log
 
-# ===== 패키지 파일 =====
-.*\.tar\.gz$
-.*\.zip$
-.*\.rar$
+# 캐시 디렉토리
+cache/
+tmp/
+temp/
+.cache/
+/storage/
 
-# ===== OS 생성 파일 =====
-^\.DS_Store$
-^Thumbs\.db$
-^desktop\.ini$
+# 세션 데이터
+sessions/
+.sessions/
 
-# ===== PHP 특정 =====
-^composer\.phar$
-^php_errors\.log$
+# 업로드 임시 파일
+uploads/
+public/uploads/
 
-# ===== Node.js 특정 =====
-^package-lock\.json$ # 프로젝트에 따라 포함 여부 선택
-^yarn\.lock$ # 프로젝트에 따라 포함 여부 선택
+# ================================
+# 의존성 및 패키지
+# ================================
+
+# PHP 의존성
+vendor/
+composer.phar
+
+# Node.js 의존성
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# Bower
+bower_components/
+
+# ================================
+# 빌드 및 컴파일 출력
+# ================================
+
+# Python 컴파일 파일
+__pycache__/
+*.py[cod]
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+
+# Java/C++ 컴파일
+*.class
+*.o
+*.a
+*.so
+
+# IDE 및 에디터
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
+.project
+.settings/
+
+# 테스트 커버리지
+coverage/
+.nyc_output/
+htmlcov/
+
+# ================================
+# OS 및 시스템 파일
+# ================================
+
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+*.swp
+
+# ================================
+# 압축 파일 (로컬 백업)
+# ================================
+
+*.tar
+*.tar.gz
+*.tar.bz2
+*.zip
+*.rar
+*.7z
+
+# ================================
+# 허용 예외 (강제 포함)
+# ================================
+
+# 다음 파일들은 반드시 포함
+!.gitkeep
+!.env.example
+!.htaccess
+
+# ================================
+# 정책
+# ================================
+
+# ⚠️  WARNING: .env 파일은 절대 커밋하지 마세요!
+# 만약 실수로 커밋했다면:
+# git rm --cached .env
+# git commit --amend --no-edit
+# git push --force-with-lease

@@ -155,12 +155,12 @@ $faqs = [
 
   <!-- FAQ -->
   <section class="mc-faq" aria-labelledby="mc-faq-title">
-    <h2 id="mc-faq-title" class="mc-faq-title">자주 묻는 질문</h2>
+    <h2 id="mc-faq-title" class="mc-faq-title" style="font-size: 1.5rem;">자주 묻는 질문</h2>
     <?php foreach ($faqs as $i => $faq):
         $faq_id = 'mc-faq-' . $i;
     ?>
     <div class="mc-faq-item">
-      <button class="mc-faq-q" aria-expanded="false" aria-controls="<?= $faq_id ?>" id="btn-<?= $faq_id ?>">
+      <button class="mc-faq-q" aria-expanded="false" aria-controls="<?= $faq_id ? style="font-size: 1rem;">" id="btn-<?= $faq_id ?>">
         <?= htmlspecialchars($faq['q'], ENT_QUOTES, 'UTF-8') ?>
         <span class="mc-faq-arrow" aria-hidden="true">▼</span>
       </button>

@@ -76,6 +76,8 @@ $page_img   = $site_url . '/assets/images/avatar-baccarat-gucci-play.png';
   <meta name="mobile-web-app-capable" content="yes">
 </head>
 <body>
+<?php include("/var/www/xn--2e0bj1fruw33b6ti.net/core/helpers/header.php"); ?>
+
 <a class="skip-to-main" href="#main-content">본문으로 바로가기</a>
 <?php require_once dirname(__DIR__, 2) . '/core/helpers/header.php'; ?>
 
@@ -88,7 +90,7 @@ $page_img   = $site_url . '/assets/images/avatar-baccarat-gucci-play.png';
         <span class="m-live-dot" aria-hidden="true"></span>LIVE
       </div>
       <!-- SEO H1 — ref: https://developers.google.com/search/docs/fundamentals/seo-starter-guide -->
-      <h1 id="m-hero-title" class="m-hero-title" style="font-size: 1.875rem;">
+      <h1 id="m-hero-title" class="m-hero-title">
         <span class="m-gold">아바타 바카라</span><br>1위 에이전시
       </h1>
       <p class="m-hero-desc">캄보디아 현장 생방송 · 실시간 스트리밍<br>안정적인 연결 · 현장감 있는 진행</p>
@@ -134,7 +136,7 @@ $page_img   = $site_url . '/assets/images/avatar-baccarat-gucci-play.png';
 
   <!-- 특징 섹션 -->
   <section class="m-features" aria-labelledby="m-features-title">
-    <h2 id="m-features-title" class="m-section-title" style="font-size: 1.5rem;">왜 구찌야놀자인가?</h2>
+    <h2 id="m-features-title" class="m-section-title">왜 구찌야놀자인가?</h2>
     <div class="m-feature-list">
       <div class="m-feature-item">
         <span class="m-feature-icon" aria-hidden="true">⚡</span>
@@ -153,7 +155,7 @@ $page_img   = $site_url . '/assets/images/avatar-baccarat-gucci-play.png';
 
   <!-- 빠른 연락 -->
   <section class="m-contact-quick" aria-labelledby="m-contact-title">
-    <h2 id="m-contact-title" class="m-section-title" style="font-size: 1.5rem;">빠른 문의</h2>
+    <h2 id="m-contact-title" class="m-section-title">빠른 문의</h2>
     <div class="m-contact-btns">
       <a href="https://t.me/Fury0079" class="m-contact-btn m-telegram"
          rel="noopener noreferrer" target="_blank"
@@ -172,5 +174,6 @@ $page_img   = $site_url . '/assets/images/avatar-baccarat-gucci-play.png';
 
 <?php require_once dirname(__DIR__, 2) . '/core/helpers/footer.php'; ?>
 <script src="/mobile/assets/js/mobile.js" defer></script>
+<?php include("/var/www/xn--2e0bj1fruw33b6ti.net/core/helpers/footer.php"); ?>
 </body>
 </html>
