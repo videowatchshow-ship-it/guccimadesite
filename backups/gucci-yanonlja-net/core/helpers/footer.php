@@ -297,7 +297,7 @@
 
       <!-- ── 서비스 인터널 링크 -->
       <nav aria-label="서비스 메뉴">
-        <h2 class="footer-section-title">서비스</h2>
+        <p class="footer-section-title">서비스</p>
         <ul class="footer-links">
           <li>
             <a href="https://xn--2e0bj1fruw33b6ti.net/#streaming">
@@ -329,7 +329,7 @@
 
       <!-- ── 커뮤니티 인터널 링크 -->
       <nav aria-label="커뮤니티 메뉴">
-        <h2 class="footer-section-title">커뮤니티</h2>
+        <p class="footer-section-title">커뮤니티</p>
         <ul class="footer-links">
           <li>
             <a href="https://xn--2e0bj1fruw33b6ti.net/free-board/">
@@ -362,7 +362,7 @@
 
       <!-- ── 아웃바운드 참고 링크 -->
       <nav aria-label="외부 참고 링크">
-        <h2 class="footer-section-title">바카라 정보</h2>
+        <p class="footer-section-title">바카라 정보</p>
         <ul class="footer-links">
           <li>
             <!-- 아웃링크: 바카라 공식 규칙 참고 -->
