@@ -1529,7 +1529,7 @@ $canonical  = htmlspecialchars('https://' . preg_replace('/^https?:\/\//', '', $
 
 
 
-    <script type="application/ld+json">
+      <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "FAQPage",
