@@ -1,5 +1,5 @@
 ---
-inclusion: always
+inclusion: manual
 ---
 
 # 2026 프로덕션 레디 플랫폼 프로젝트 표준
