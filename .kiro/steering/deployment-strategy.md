@@ -6,7 +6,7 @@
 - **위치**: `/var/www/gucci-yanonlja-net`
 - **상태**: 거의 완성된 상태 (PHP 기반)
 - **파일**: 55개, 920KB
-- **프로세스**: nginx + MariaDB + Redis 실행 중
+- **프로세스**: Apache2 + MariaDB + Redis 실행 중
 - **기능**:
   - ✅ 관리자 대시보드 (admin/)
   - ✅ WebSocket 채팅 (core/websocket/)
@@ -72,7 +72,7 @@ f:\youtubeautoid/
 ├── backend/                             # Node.js 추가 기능
 ├── frontend/                            # Next.js 추가 기능
 ├── docker/                              # Docker Compose
-├── nginx/                               # nginx 설정
+├── apache/                              # Apache2 설정
 ├── database/                            # DB 마이그레이션
 └── scripts/                             # 배포 스크립트
 ```
@@ -94,7 +94,7 @@ f:\youtubeautoid/
 
 ### 배포 후
 - [ ] 웹사이트 접속 확인
-- [ ] nginx 상태 확인
+- [ ] Apache2 상태 확인
 - [ ] MariaDB 상태 확인
 - [ ] Redis 상태 확인
 - [ ] 에러 로그 확인
@@ -111,7 +111,7 @@ f:\youtubeautoid/
 | **비밀번호** | `.env` 파일 참조 |
 | **도메인** | 구찌야놀자.net (xn--2e0bj1fruw33b6ti.net) |
 | **배포 디렉토리** | /var/www/gucci-yanonlja-net |
-| **nginx 설정** | /etc/nginx/sites-available/gucci-yanonlja-net |
+| **Apache2 설정** | /etc/apache2/sites-available/gucci-yanonlja-net |
 
 ---
 

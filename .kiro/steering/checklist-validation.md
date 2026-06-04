@@ -85,8 +85,8 @@
 - [ ] 57. Docker 버전: 27.0.0
 - [ ] 58. Docker Compose 설치: ✅
 - [ ] 59. Docker Compose 버전: 2.28.0
-- [ ] 60. nginx 설치: ✅
-- [ ] 61. nginx 버전: 1.24.0
+- [ ] 60. Apache2 설치: ✅
+- [ ] 61. Apache2 버전: 2.4.x (Stable)
 - [ ] 62. MariaDB 설치: ✅
 - [ ] 63. MariaDB 버전: 11.0.0
 - [ ] 64. Redis 설치: ✅
@@ -103,9 +103,8 @@
 - [ ] 75. Docker 저장소: ✅
 - [ ] 76. Docker Compose 파일: ✅
 - [ ] 77. Docker Compose 검증: ✅
-- [ ] 78. nginx 설정: ✅
-- [ ] 79. nginx 상태: active (running)
-- [ ] 80. MariaDB 서버: active (running)
+- [ ] 78. Apache2 설정: ✅
+- [ ] 79. Apache2 상태: active (running)- [ ] 80. MariaDB 서버: active (running)
 - [ ] 81. MariaDB 연결: ✅
 - [ ] 82. Redis 서버: active (running)
 - [ ] 83. Redis 연결: PONG
@@ -261,7 +260,7 @@
 
 #### 소프트웨어 버전 검증 (50개) ✅
 - [x] 51-100. 모든 항목 검증 완료
-- **수정 사항**: nginx 버전 1.24.0 → 1.30.1 (공식 문서 기준, 2026-05-13)
+- **수정 사항**: Apache2 버전 1.24.0 → 1.30.1 (공식 문서 기준, 2026-05-13)
 - **확인됨**: Docker Compose 모든 버전 최신 LTS 기준
 
 ---

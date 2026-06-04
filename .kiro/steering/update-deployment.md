@@ -16,7 +16,7 @@
 - **위치**: /var/www/gucci-yanonlja-net
 - **구조**: PHP 기반 (composer.json)
 - **프로세스**: 
-  - nginx (포트 80, 443) ✅
+  - Apache2 (포트 80, 443) ✅
   - MariaDB (포트 3306) ✅
   - Redis (포트 6379) ✅
   - BIND9 (포트 53) ✅
@@ -122,7 +122,7 @@
 
 ### 배포 후
 - [ ] 웹사이트 접속 확인
-- [ ] nginx 상태 확인
+- [ ] Apache2 상태 확인
 - [ ] MariaDB 상태 확인
 - [ ] Redis 상태 확인
 - [ ] BIND9 상태 확인
@@ -224,7 +224,7 @@ f:\youtubeautoid\
 ├── backend/                          # Node.js 추가 기능
 ├── frontend/                         # Next.js 추가 기능
 ├── docker/                           # Docker Compose
-├── nginx/                            # nginx 설정
+├── nginx/                            # Apache2 설정
 ├── database/                         # DB 마이그레이션
 └── scripts/                          # 배포 스크립트
 ```
@@ -323,7 +323,7 @@ f:\youtubeautoid\
 
 ### 배포 후
 - [ ] 웹사이트 접속 확인
-- [ ] nginx 상태 확인
+- [ ] Apache2 상태 확인
 - [ ] MariaDB 상태 확인
 - [ ] Redis 상태 확인
 - [ ] 에러 로그 확인

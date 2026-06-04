@@ -125,7 +125,7 @@ GET https://developers.hostinger.com/api/dns/v1/zones/{domain}
 | | JWT | https://jwt.io/introduction | — | RFC 7519 | 필수 |
 | **인프라** | Docker | https://docs.docker.com | https://github.com/docker | Stable | 필수 |
 | | Docker Compose | https://docs.docker.com/compose | — | Stable | 필수 |
-| | nginx | https://nginx.org/en/docs | https://github.com/nginx/nginx | Stable | 필수 |
+| | Apache2 | https://nginx.org/en/docs | https://github.com/nginx/nginx | Stable | 필수 |
 | **OS** | Ubuntu | https://ubuntu.com/server/docs | — | 24.04 LTS | 필수 |
 
 ### 버전 관리 규칙
@@ -177,7 +177,7 @@ ssh root@76.13.218.129
 ├── /backend           # Node.js/Express 백엔드 (src/controllers/, services/, models/, routes/, middleware/, config/, utils/)
 ├── /admin             # 관리자 대시보드
 ├── /streaming         # 스트리밍 서버 (SRS)
-├── /nginx             # nginx 역방향 프록시 설정
+├── /apache             # Apache2 리버스 프록시 설정
 ├── /docker            # Docker Compose 파일
 ├── /database          # MariaDB 초기화 스크립트
 ├── /redis             # Redis 설정
@@ -323,7 +323,7 @@ ssh root@76.13.218.129
 2. Redis 7 Stable 설치
 
 ### Phase 4: 웹 서버 설치
-1. nginx Stable 설치
+1. Apache2 Stable 설치
 
 ### Phase 5: Node.js 설치
 1. Node.js 22 LTS 설치
