@@ -1,0 +1,24 @@
+{
+  "name": "구찌야 놀자 — 아바타 바카라 생방송",
+  "short_name": "구찌야놀자",
+  "description": "아바타 바카라 1위 에이전시. 캄보디아 현장 생방송 실시간 스트리밍.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#071a2e",
+  "theme_color": "#0a2540",
+  "lang": "ko",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

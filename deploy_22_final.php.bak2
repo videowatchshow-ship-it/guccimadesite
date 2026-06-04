@@ -201,14 +201,14 @@ $site_url   = 'https://xn--2e0bj1fruw33b6ti.net';
 
 
 
-$page_title = '아바타 바카라 1위 에이전시 구찌야놀자 | 캄보디아 생방송 실시간 바카라';
+$page_title = '아바타 바카라 1위 에이전시 | 구찌야 놀자 캄보디아 생방송 실시간';
 
 
 
 
 
 
-$page_desc  = '아바타 바카라 1위 에이전시 구찌야놀자. 캄보디아 현지 카지노 현장에서 직접 진행되는 실시간 아바타 바카라 생방송 전문 플랫폼. 고화질 스트리밍, 저지연 연결, 모바일·PC 완벽 지원, 24시간 실시간 운영, 실시간 채팅, 빠른 고객 상담 제공. 지금 바로 접속하세요.';
+$page_desc  = '아바타 바카라 1위 에이전시 구찌야 놀자. 캄보디아 현장 생방송, 실시간 스트리밍, 안정적인 연결 환경. 지금 바로 접속하세요.';
 
 
 
@@ -531,7 +531,7 @@ $canonical  = htmlspecialchars('https://' . preg_replace('/^https?:\/\//', '', $
 
 
 
-  <meta property="og:image:alt"   content="아바타 바카라 1위 에이전시 구찌야 놀자 캄보디아 생방송">
+  <meta property="og:image:alt"   content="아바타 바카라 구찌야 놀자 로고">
 
 
 
@@ -580,7 +580,6 @@ $canonical  = htmlspecialchars('https://' . preg_replace('/^https?:\/\//', '', $
 
 
 
-  <meta name="twitter:image:alt"   content="아바타 바카라 구찌야놀자 캄보디아 생방송">
   <meta name="twitter:image"       content="<?php echo htmlspecialchars($page_img, ENT_QUOTES, 'UTF-8'); ?>">
 
 
@@ -644,8 +643,7 @@ $canonical  = htmlspecialchars('https://' . preg_replace('/^https?:\/\//', '', $
 
 
 
-    <!-- robots.txt: /robots.txt -->
-  <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 <link rel="manifest" href="/manifest.json">
 
 
@@ -1529,53 +1527,223 @@ $canonical  = htmlspecialchars('https://' . preg_replace('/^https?:\/\//', '', $
 
 
 
-      <script type="application/ld+json">
+  <script type="application/ld+json">
+
+
+
+
+
+
   {
+
+
+
+
+
+
     "@context": "https://schema.org",
+
+
+
+
+
+
     "@type": "FAQPage",
+
+
+
+
+
+
     "mainEntity": [
+
+
+
+
+
+
       {
+
+
+
+
+
+
         "@type": "Question",
+
+
+
+
+
+
         "name": "아바타 바카라란 무엇인가요?",
+
+
+
+
+
+
         "acceptedAnswer": {
+
+
+
+
+
+
           "@type": "Answer",
+
+
+
+
+
+
           "text": "아바타 바카라는 캄보디아 현지 카지노에서 실제 딜러가 진행하는 바카라 게임을 실시간으로 중계하는 서비스입니다. 이용자는 현장에 직접 가지 않고도 생생한 현장감을 경험할 수 있습니다."
+
+
+
+
+
+
         }
+
+
+
+
+
+
       },
+
+
+
+
+
+
       {
+
+
+
+
+
+
         "@type": "Question",
+
+
+
+
+
+
         "name": "구찌야 놀자는 어떤 플랫폼인가요?",
+
+
+
+
+
+
         "acceptedAnswer": {
+
+
+
+
+
+
           "@type": "Answer",
+
+
+
+
+
+
           "text": "구찌야 놀자는 아바타 바카라 1위 에이전시로, 캄보디아 현장 생방송을 안정적인 실시간 스트리밍으로 제공합니다. 모바일과 PC 모두에서 끊김 없는 연결 환경을 제공합니다."
+
+
+
+
+
+
         }
+
+
+
+
+
+
       },
+
+
+
+
+
+
       {
+
+
+
+
+
+
         "@type": "Question",
+
+
+
+
+
+
         "name": "모바일에서도 이용 가능한가요?",
+
+
+
+
+
+
         "acceptedAnswer": {
+
+
+
+
+
+
           "@type": "Answer",
+
+
+
+
+
+
           "text": "네, 구찌야 놀자는 모바일 최적화 반응형 구조로 설계되어 스마트폰과 태블릿에서도 편안하게 이용할 수 있습니다."
+
+
+
+
+
+
         }
-      },
-      {
-        "@type": "Question",
-        "name": "문의는 어떻게 하나요?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "텔레그램(@Fury0079) 또는 카카오톡 오픈채팅을 통해 24시간 문의 가능합니다. 문의하기 페이지에서도 자세한 안내를 확인할 수 있습니다."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "게임 예약은 어떻게 하나요?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "예약 페이지에서 테이블 사전 예약이 가능합니다. 원하는 시간대와 게임 종류를 선택하여 미리 자리를 확보하세요."
-        }
+
+
+
+
+
+
       }
+
+
+
+
+
+
     ]
+
+
+
+
+
+
   }
+
+
+
+
+
+
   </script>
 
 
@@ -6448,7 +6616,7 @@ $canonical  = htmlspecialchars('https://' . preg_replace('/^https?:\/\//', '', $
   <header role="banner" style="background: linear-gradient(135deg, #071a2e, #0a2540); padding: 1.2rem 2rem; border-bottom: 3px solid rgba(245,200,66,0.3); margin-bottom: 1.5rem;">
 
 
-    <nav aria-label="주 메뉴" style="max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; font-family: 'SchoolSafetyTteokbokki', sans-serif; font-size: 1.1rem; font-weight: 600;">
+    <nav style="max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap; font-family: 'SchoolSafetyTteokbokki', sans-serif; font-size: 1.1rem; font-weight: 600;">
 
 
       <a href="/" style="font-size: 1.3rem; font-weight: 800; color: #f5c842; text-decoration: none; white-space: nowrap; transition: all 0.2s; display: inline-block; padding: 0.5rem 0.75rem; border-radius: 6px;">🏠 홈</a>
@@ -6604,10 +6772,28 @@ $canonical  = htmlspecialchars('https://' . preg_replace('/^https?:\/\//', '', $
 
 
           <h1 class="hero-h1" id="hero-heading">
+
+
+
+
+
+
             <span class="highlight">아바타 바카라</span> 1위 에이전시<br>
+
+
+
+
+
+
             구찌야 놀자 캄보디아 생방송
+
+
+
+
+
+
           </h1>
-          
+          <h2 class="g-section-title" id="streaming-heading">아바타 바카라 실시간 스트리밍</h2>
 
 
 
@@ -7610,7 +7796,7 @@ $canonical  = htmlspecialchars('https://' . preg_replace('/^https?:\/\//', '', $
 
 
 
-        <h2 class="g-section-title" id="features-heading">아바타 바카라 실시간 운영 구조와 안정적인 연결 시스템</h2>
+        <h3 class="g-section-title" id="features-heading">아바타 바카라 실시간 운영 구조와 안정적인 연결 시스템</h3>
 
 
 
@@ -8247,7 +8433,7 @@ $canonical  = htmlspecialchars('https://' . preg_replace('/^https?:\/\//', '', $
 
 
 
-            <h2 class="g-section-title" id="streaming-heading">아바타 바카라 실시간 스트리밍</h2>
+            <h3 class="g-section-title" id="streaming-heading">아바타 바카라 실시간 스트리밍</h3>
 
 
 
@@ -8390,7 +8576,7 @@ $canonical  = htmlspecialchars('https://' . preg_replace('/^https?:\/\//', '', $
 
 
 
-        <h2 class="g-section-title" id="content-heading">아바타 바카라 캄보디아 현장 중심 진행 방식의 특징</h2>
+        <h3 class="g-section-title" id="content-heading">아바타 바카라 캄보디아 현장 중심 진행 방식의 특징</h3>
 
 
 
@@ -9265,7 +9451,7 @@ $canonical  = htmlspecialchars('https://' . preg_replace('/^https?:\/\//', '', $
 
 
 
-        <h2 class="g-section-title" id="reviews-heading">아바타 바카라 이용자 후기</h2>
+        <h3 class="g-section-title" id="reviews-heading">아바타 바카라 이용자 후기</h3>
 
 
 
@@ -9671,7 +9857,7 @@ $canonical  = htmlspecialchars('https://' . preg_replace('/^https?:\/\//', '', $
 
 
 
-        <h2 class="g-section-title" id="faq-heading">아바타 바카라 자주 묻는 질문</h2>
+        <h3 class="g-section-title" id="faq-heading">아바타 바카라 자주 묻는 질문</h3>
 
 
 
@@ -10413,7 +10599,7 @@ $canonical  = htmlspecialchars('https://' . preg_replace('/^https?:\/\//', '', $
 
 
 
-          <h2 class="g-section-title" id="contact-heading">아바타 바카라 지금 바로 문의하세요</h2>
+          <h3 class="g-section-title" id="contact-heading">아바타 바카라 지금 바로 문의하세요</h3>
 
 
 
@@ -10681,23 +10867,27 @@ $canonical  = htmlspecialchars('https://' . preg_replace('/^https?:\/\//', '', $
 
 
 
-  $footer_candidates = [
-      __DIR__ . '/../core/helpers/footer.php',
-      __DIR__ . '/footer-loader.php',
-  ];
-  $footer_included = false;
-  foreach ($footer_candidates as $_footer_file) {
-      if (file_exists($_footer_file)) {
-          include $_footer_file;
-          $footer_included = true;
-          break;
-      }
-  }
-  if (!$footer_included) {
-      $footer_path = filter_input(INPUT_SERVER, 'DOCUMENT_ROOT', FILTER_SANITIZE_SPECIAL_CHARS);
-      if ($footer_path && file_exists($footer_path . '/../core/helpers/footer.php')) {
-          include $footer_path . '/../core/helpers/footer.php';
-      }
+  $footer_path = filter_input(INPUT_SERVER, 'DOCUMENT_ROOT', FILTER_SANITIZE_SPECIAL_CHARS);
+
+
+
+
+
+
+  if ($footer_path && file_exists($footer_path . '/../core/helpers/footer.php')) {
+
+
+
+
+
+
+      include $footer_path . '/../core/helpers/footer.php';
+
+
+
+
+
+
   }
 
 

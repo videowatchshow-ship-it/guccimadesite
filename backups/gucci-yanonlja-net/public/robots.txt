@@ -1,0 +1,11 @@
+# robots.txt for xn--2e0bj1fruw33b6ti.net
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /cache/
+Disallow: /logs/
+Allow: /privacy-policy.php
+Allow: /terms.php
+
+# Sitemaps
+Sitemap: https://xn--2e0bj1fruw33b6ti.net/sitemap.xml
