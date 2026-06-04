@@ -51,7 +51,7 @@ GET  https://developers.hostinger.com/api/dns/v1/zones/{domain}
 2. Redis 7 Stable 설치
 
 ### Phase 4: 웹 서버 설치
-1. nginx Stable 설치
+1. apache2 Stable 설치
 
 ### Phase 5: Node.js 설치
 1. Node.js 22 LTS 설치

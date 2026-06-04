@@ -4,7 +4,7 @@
 
 ## 기술 스택
 - PHP 8.2
-- nginx 1.24.0
+- Apache2/2.4.x
 - MariaDB 11.0
 - Redis 7.0
 

@@ -70,7 +70,7 @@ ini_set('session.gc_maxlifetime', '3600');
 
 /* [주의 08] 파일 포함 경로 제한
  * ref: https://www.php.net/manual/en/ini.core.php#ini.open-basedir
- * 실제 배포 시 nginx/php-fpm 설정에서 open_basedir 적용
+ * 실제 배포 시 apache2/php-fpm 설정에서 open_basedir 적용
  */
 
 /* [주의 09] 입력값 타입 강제 (declare strict_types=1 사용)

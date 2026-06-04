@@ -116,7 +116,7 @@
 - [ ] 89. Node.js 권한: -rwxr-xr-x
 - [ ] 90. npm 권한: -rwxr-xr-x
 - [ ] 91. Docker 권한: ✅
-- [ ] 92. nginx 권한: -rwxr-xr-x
+- [ ] 92. apache2 권한: -rwxr-xr-x
 - [ ] 93. MariaDB 권한: -rwxr-xr-x
 - [ ] 94. Redis 권한: -rwxr-xr-x
 - [ ] 95. Git 권한: -rwxr-xr-x

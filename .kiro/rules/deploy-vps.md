@@ -49,7 +49,7 @@ OS: Ubuntu 24.04 LTS
 ```bash
 docker ps
 systemctl status docker
-systemctl status nginx
+systemctl status apache2
 systemctl status mariadb
 systemctl status redis-server
 ```

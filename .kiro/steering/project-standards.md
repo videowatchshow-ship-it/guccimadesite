@@ -125,7 +125,7 @@ GET https://developers.hostinger.com/api/dns/v1/zones/{domain}
 | | JWT | https://jwt.io/introduction | — | RFC 7519 | 필수 |
 | **인프라** | Docker | https://docs.docker.com | https://github.com/docker | Stable | 필수 |
 | | Docker Compose | https://docs.docker.com/compose | — | Stable | 필수 |
-| | Apache2 | https://nginx.org/en/docs | https://github.com/nginx/nginx | Stable | 필수 |
+| | Apache2 | https://apache2.org/en/docs | https://github.com/apache2/apache2 | Stable | 필수 |
 | **OS** | Ubuntu | https://ubuntu.com/server/docs | — | 24.04 LTS | 필수 |
 
 ### 버전 관리 규칙

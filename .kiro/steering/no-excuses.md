@@ -8,7 +8,7 @@ inclusion: always
 
 - **도메인 xn--2e0bj1fruw33b6ti.net 은 Hostinger에 등록되어 있다** — `is_accessible: true` 확인됨
 - **GoDaddy 네임서버는 ns1.hostinger.com / ns2.hostinger.com 으로 변경되었다** — 사용자가 직접 확인함
-- **VPS 76.13.218.129 는 실행 중이다** — nginx active, 포트 80 열려있음
+- **VPS 76.13.218.129 는 실행 중이다** — apache2 active, 포트 80 열려있음
 - **이 사실들을 "안 됐다", "등록 안 됐다", "변경 안 됐다"고 말하는 것은 금지**
 
 ## 🚫 절대 하지 말 것

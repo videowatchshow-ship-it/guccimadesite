@@ -271,7 +271,7 @@ $admin_email = htmlspecialchars(
           <h2 id="adm-sys-title" class="adm-card-title">🖥️ 시스템 상태</h2>
           <div class="adm-sys-list">
             <div class="adm-sys-item">
-              <span class="adm-sys-name">nginx</span>
+              <span class="adm-sys-name">apache2</span>
               <span class="adm-badge adm-badge-ok"><span class="adm-badge-dot" aria-hidden="true"></span>정상</span>
             </div>
             <div class="adm-sys-item">

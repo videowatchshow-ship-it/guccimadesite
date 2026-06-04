@@ -5,7 +5,7 @@
 **이것은 새로운 배포가 아니라 기존 배포의 수정/업데이트입니다.**
 
 - 서버: `/var/www/gucci-yanonlja-net` (거의 완성된 상태)
-- 상태: nginx + MariaDB + Redis + BIND9 실행 중
+- 상태: apache2 + MariaDB + Redis + BIND9 실행 중
 - 방식: 기존 코드 수정 → GitHub 커밋 → 서버 배포
 
 ---
@@ -224,7 +224,7 @@ f:\youtubeautoid\
 ├── backend/                          # Node.js 추가 기능
 ├── frontend/                         # Next.js 추가 기능
 ├── docker/                           # Docker Compose
-├── nginx/                            # Apache2 설정
+├── apache2/                            # Apache2 설정
 ├── database/                         # DB 마이그레이션
 └── scripts/                          # 배포 스크립트
 ```
@@ -284,7 +284,7 @@ f:\youtubeautoid\
 ├── backend/
 ├── frontend/
 ├── docker/
-├── nginx/
+├── apache2/
 ├── database/
 └── scripts/
 ```

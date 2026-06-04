@@ -76,39 +76,39 @@ maxretry = 10
 bantime = 600
 findtime = 60
 
-# ─── nginx 필터 ───────────────────────────────────────────────────────────────
-[nginx-http-auth]
+# ─── Apache2 필터 ───────────────────────────────────────────────────────────────
+[apache2-http-auth]
 enabled = true
 port = http,https
-filter = nginx-http-auth
-logpath = /var/log/nginx/error.log
+filter = apache2-http-auth
+logpath = /var/log/apache2/error.log
 maxretry = 5
 bantime = 3600
 
-# ─── nginx 404 필터 ───────────────────────────────────────────────────────────
-[nginx-noscript]
+# ─── apache2 404 필터 ───────────────────────────────────────────────────────────
+[apache2-noscript]
 enabled = true
 port = http,https
-filter = nginx-noscript
-logpath = /var/log/nginx/access.log
+filter = apache2-noscript
+logpath = /var/log/apache2/access.log
 maxretry = 6
 bantime = 3600
 
-# ─── nginx 봇 필터 ────────────────────────────────────────────────────────────
-[nginx-badbots]
+# ─── apache2 봇 필터 ────────────────────────────────────────────────────────────
+[apache2-badbots]
 enabled = true
 port = http,https
-filter = nginx-badbots
-logpath = /var/log/nginx/access.log
+filter = apache2-badbots
+logpath = /var/log/apache2/access.log
 maxretry = 2
 bantime = 3600
 
-# ─── nginx 요청 제한 ──────────────────────────────────────────────────────────
-[nginx-limit-req]
+# ─── apache2 요청 제한 ──────────────────────────────────────────────────────────
+[apache2-overflows]
 enabled = true
 port = http,https
-filter = nginx-limit-req
-logpath = /var/log/nginx/error.log
+filter = apache2-overflows
+logpath = /var/log/apache2/error.log
 maxretry = 5
 bantime = 3600
 
@@ -184,7 +184,7 @@ echo "🎉 fail2ban 설정 완료!"
 echo ""
 echo "📊 설정 요약:"
 echo "  - SSH 필터: 활성화 (최대 시도 3회, 차단 시간 1시간)"
-echo "  - nginx 필터: 활성화 (여러 필터)"
+echo "  - Apache2 필터: 활성화 (여러 필터)"
 echo "  - MariaDB 필터: 활성화"
 echo "  - Redis 필터: 활성화"
 echo ""

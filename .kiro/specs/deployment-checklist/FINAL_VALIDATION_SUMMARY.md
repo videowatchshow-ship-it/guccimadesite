@@ -44,21 +44,21 @@
 
 ### 우선순위 1: 높음 (9개)
 
-#### 1. nginx 버전 업데이트
+#### 1. apache2 버전 업데이트
 - **오류**: 1.28.2 (구버전)
 - **수정**: 1.30.1 (최신 stable, 2026-05-13)
-- **파일**: `docker/docker-compose.yml`, `nginx/conf.d/default.conf`
-- **공식 문서**: https://nginx.org/en/CHANGES
+- **파일**: `docker/docker-compose.yml`, `apache2/conf.d/default.conf`
+- **공식 문서**: https://apache2.org/en/CHANGES
 
 #### 2-6. 보안 헤더 추가 (5개)
-- **오류**: nginx 설정에서 보안 헤더 누락
+- **오류**: Apache2 설정에서 보안 헤더 누락
 - **수정**: 다음 헤더 추가
   - X-Frame-Options: "SAMEORIGIN"
   - X-Content-Type-Options: "nosniff"
   - X-XSS-Protection: "1; mode=block"
   - Referrer-Policy: "strict-origin-when-cross-origin"
   - Permissions-Policy: 기능 권한 제어
-- **파일**: `nginx/conf.d/default.conf`
+- **파일**: `apache2/conf.d/default.conf`
 - **공식 문서**: https://owasp.org/www-project-secure-headers
 
 #### 7. 데이터베이스 보안 설정
@@ -126,7 +126,7 @@
 #### 14. fail2ban 설정 파일 생성
 - **오류**: fail2ban 설정 파일 없음
 - **수정**: `scripts/fail2ban-config.sh` 생성
-- **내용**: SSH 필터, nginx 필터, MariaDB 필터, Redis 필터 설정
+- **내용**: SSH 필터, Apache2 필터, MariaDB 필터, Redis 필터 설정
 - **공식 문서**: https://www.fail2ban.org/wiki/index.php/Main_Page
 
 #### 15. SSL/TLS 자동 갱신 설정 파일 생성
@@ -157,7 +157,7 @@
 
 ### 수정된 파일 (3개)
 1. `docker/docker-compose.yml` - 938줄 변경
-2. `nginx/conf.d/default.conf` - 보안 헤더 추가
+2. `apache2/conf.d/default.conf` - 보안 헤더 추가
 3. `database/init.sql` - 보안 및 로깅 설정 추가
 
 ### 생성된 파일 (10개)
@@ -180,7 +180,7 @@
 ## 🔍 검증 방법
 
 ### 1. 공식 문서 기반 검증 ✅
-- nginx: https://nginx.org/en/CHANGES (1.30.1 확인)
+- apache2: https://apache2.org/en/CHANGES (1.30.1 확인)
 - Node.js: https://nodejs.org/en/docs (22.22.3 확인)
 - MariaDB: https://mariadb.com/docs (11.4.11 확인)
 - Redis: https://redis.io/docs (8.0.4 확인)
@@ -192,7 +192,7 @@
 
 ### 3. 파일 검증 ✅
 - Docker Compose 파일: 유효성 검증 완료
-- nginx 설정 파일: 문법 검증 완료
+- Apache2 설정 파일: 문법 검증 완료
 - SQL 파일: 문법 검증 완료
 - 스크립트 파일: 문법 검증 완료
 
@@ -201,7 +201,7 @@
 ## 📊 Git 커밋 정보
 
 **커밋 해시**: a04de5b  
-**커밋 메시지**: Fix 21 validation errors: nginx version, security headers, database/redis logging, docker security, SSH/UFW/fail2ban/Certbot scripts, frontend/backend configs  
+**커밋 메시지**: Fix 21 validation errors: apache2 version, security headers, database/redis logging, docker security, SSH/UFW/fail2ban/Certbot scripts, frontend/backend configs  
 **변경 파일**: 13개  
 **추가 줄**: 938줄  
 **삭제 줄**: 561줄
@@ -223,7 +223,7 @@
 ## 📈 개선 사항 요약
 
 ### 보안 강화
-- ✅ nginx 보안 헤더 5개 추가
+- ✅ apache2 보안 헤더 5개 추가
 - ✅ MariaDB 보안 설정 4개 추가
 - ✅ Redis 위험한 명령어 3개 비활성화
 - ✅ Docker 컨테이너 보안 5개 설정 추가
@@ -239,7 +239,7 @@
 ### 개발 환경 개선
 - ✅ Frontend 개발 환경 설정 5개 파일 생성
 - ✅ Backend Dockerfile 생성
-- ✅ nginx 버전 최신화 (1.28.2 → 1.30.1)
+- ✅ apache2 버전 최신화 (1.28.2 → 1.30.1)
 
 ---
 

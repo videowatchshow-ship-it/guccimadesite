@@ -14,7 +14,7 @@ echo "🔐 SSL/TLS 자동 갱신 설정 시작..."
 if ! command -v certbot &> /dev/null; then
     echo "📦 Certbot 설치 중..."
     apt-get update
-    apt-get install -y certbot python3-certbot-nginx
+    apt-get install -y certbot python3-certbot-apache
     echo "✅ Certbot 설치 완료"
 fi
 
@@ -66,7 +66,7 @@ fi
 cat > "$CRON_FILE" << 'EOF'
 # Certbot SSL/TLS 자동 갱신
 # 매일 자정에 갱신 시도 (Let's Encrypt는 만료 30일 전부터 갱신 가능)
-0 0 * * * root certbot renew --quiet --post-hook "systemctl reload nginx"
+0 0 * * * root certbot renew --quiet --post-hook "systemctl reload apache2"
 EOF
 
 chmod 644 "$CRON_FILE"
@@ -86,18 +86,18 @@ echo "📝 갱신 로그 확인..."
 tail -20 /var/log/letsencrypt/letsencrypt.log || true
 echo "✅ 갱신 로그 확인 완료"
 
-# ─── nginx 설정 확인 ──────────────────────────────────────────────────────────
-echo "🔍 nginx 설정 확인..."
+# ─── Apache2 설정 확인 ──────────────────────────────────────────────────────────
+echo "🔍 Apache2 설정 확인..."
 
-# nginx 설정 테스트
-if nginx -t; then
-    echo "✅ nginx 설정 검증 성공"
+# Apache2 설정 테스트
+if apache2ctl configtest; then
+    echo "✅ Apache2 설정 검증 성공"
     
-    # nginx 재로드
-    systemctl reload nginx
-    echo "✅ nginx 재로드 완료"
+    # Apache2 재로드
+    systemctl reload apache2
+    echo "✅ Apache2 재로드 완료"
 else
-    echo "❌ nginx 설정 검증 실패"
+    echo "❌ Apache2 설정 검증 실패"
     exit 1
 fi
 
@@ -117,7 +117,7 @@ echo ""
 echo "📊 설정 요약:"
 echo "  - 자동 갱신: systemd timer (권장)"
 echo "  - 백업 갱신: Cron 작업 (매일 자정)"
-echo "  - 갱신 후 동작: nginx 재로드"
+echo "  - 갱신 후 동작: Apache2 재로드"
 echo "  - 갱신 로그: /var/log/letsencrypt/letsencrypt.log"
 echo ""
 echo "💡 추가 명령어:"

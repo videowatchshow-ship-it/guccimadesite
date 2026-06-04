@@ -56,7 +56,7 @@ const PORT = parseInt(process.env.PORT || '3001', 10);
 // Helmet: 보안 헤더 설정
 // Official: https://helmetjs.github.io/
 app.use(helmet({
-  contentSecurityPolicy: false, // nginx에서 처리
+  contentSecurityPolicy: false, // Apache2에서 처리
   crossOriginEmbedderPolicy: false,
 }));
 

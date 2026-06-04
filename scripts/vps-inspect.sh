@@ -149,16 +149,16 @@ else
     output "❌ npm: NOT INSTALLED"
 fi
 
-# nginx (공식 문서: https://nginx.org/en/docs/)
+# apache2 (공식 문서: https://apache2.org/en/docs/)
 if command -v apache2 &> /dev/null; then
-    NGINX_VERSION=$(apache2 -v 2>&1 | grep -oP '[0-9]+\.[0-9]+\.[0-9]+' | head -1)
-    if [[ $NGINX_VERSION =~ $VERSION_REGEX ]]; then
-        output "✅ nginx: $NGINX_VERSION (검증 통과)"
+    Apache2_VERSION=$(apache2 -v 2>&1 | grep -oP '[0-9]+\.[0-9]+\.[0-9]+' | head -1)
+    if [[ $Apache2_VERSION =~ $VERSION_REGEX ]]; then
+        output "✅ apache2: $Apache2_VERSION (검증 통과)"
     else
-        output "⚠️  nginx: $NGINX_VERSION (버전 형식 확인 필요)"
+        output "⚠️  apache2: $Apache2_VERSION (버전 형식 확인 필요)"
     fi
 else
-    output "❌ nginx: NOT INSTALLED"
+    output "❌ apache2: NOT INSTALLED"
 fi
 
 # MariaDB (공식 문서: https://mariadb.com/docs/)

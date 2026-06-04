@@ -35,7 +35,7 @@
     "php-version": "8.2 LTS",
     "mariadb-version": "11 Stable",
     "redis-version": "7 Stable",
-    "nginx-version": "Stable",
+    "apache2-version": "Stable",
     "node-version": "22 LTS"
   }
 }

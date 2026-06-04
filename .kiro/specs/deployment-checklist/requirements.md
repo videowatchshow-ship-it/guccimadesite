@@ -39,7 +39,7 @@
 | **Docker** | 컨테이너 기반 가상화 플랫폼 |
 | **MariaDB** | MySQL 호환 오픈소스 데이터베이스 |
 | **Redis** | 인메모리 데이터 저장소 |
-| **nginx** | 웹 서버 및 리버스 프록시 |
+| **apache2** | 웹 서버 및 리버스 프록시 |
 | **SSL/TLS** | 보안 통신 프로토콜 |
 | **CSRF** | Cross-Site Request Forgery - 사이트 간 요청 위조 |
 | **XSS** | Cross-Site Scripting - 사이트 간 스크립팅 |
@@ -69,7 +69,7 @@
 - npm 최신 버전 확인
 - Docker Stable 확인
 - Docker Compose 최신 확인
-- nginx Stable 확인
+- apache2 Stable 확인
 - MariaDB 11 Stable 확인
 - Redis 7 Stable 확인
 - Git 최신 확인

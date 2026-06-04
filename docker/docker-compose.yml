@@ -6,7 +6,7 @@
 #   node:22.22.3-alpine3.22  — https://hub.docker.com/_/node
 #   mariadb:11.4.11          — https://hub.docker.com/_/mariadb (LTS)
 #   redis:8.0.4-alpine       — https://hub.docker.com/_/redis (GA 2026-04)
-# Web server: Apache2 (host-native) — nginx removed
+# Web server: Apache2 (host-native) — apache2 removed
 
 services:
   # ─── Frontend: Next.js 16.2.6 ───────────────────────────────────────────────
@@ -169,7 +169,7 @@ services:
   # Apache2 is installed and managed directly on the VPS host (not as a container).
   # It proxies frontend (:3000) and backend (:3001) via mod_proxy.
   # Config: /etc/apache2/sites-enabled/000-xn--2e0bj1fruw33b6ti.net-le-ssl.conf
-  # NOTE: nginx has been removed. Do not add nginx service back.
+  # NOTE: apache2 has been removed. Do not add apache2 service back.
 
 volumes:
   mariadb-data:

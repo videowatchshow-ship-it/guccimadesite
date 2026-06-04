@@ -256,7 +256,7 @@ phase_4_webserver_installation() {
     log_section "Phase 4: 웹 서버 설치 (Apache2)"
     
     # 8단계: Apache2 설치
-    # NOTE: nginx 사용 안함 — Apache2만 사용
+    # NOTE: apache2 사용 안함 — Apache2만 사용
     log_info "8단계: Apache2 설치"
     
     if command -v apache2 &> /dev/null; then
@@ -427,7 +427,7 @@ phase_9_final_validation() {
     
     # 19단계: 성능 최적화
     log_info "19단계: 성능 최적화"
-    log_info "nginx gzip 압축 설정 필요"
+    log_info "apache2 gzip 압축 설정 필요"
     log_info "캐시 설정 필요"
     
     # 20단계: 최종 검증

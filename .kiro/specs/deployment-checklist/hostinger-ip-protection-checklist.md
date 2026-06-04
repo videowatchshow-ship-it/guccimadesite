@@ -24,8 +24,8 @@
 
 | # | 항목 | 상태 | 정규식 | 비고 |
 |---|------|------|--------|------|
-| 6 | nginx Server 헤더 숨김 | ⏳ | `^(hidden\|visible)$` | server_tokens off |
-| 7 | nginx 버전 정보 제거 | ⏳ | `^(removed\|present)$` | 버전 정보 노출 방지 |
+| 6 | apache2 Server 헤더 숨김 | ⏳ | `^(hidden\|visible)$` | server_tokens off |
+| 7 | apache2 버전 정보 제거 | ⏳ | `^(removed\|present)$` | 버전 정보 노출 방지 |
 | 8 | X-Powered-By 헤더 제거 | ⏳ | `^(removed\|present)$` | 기술 스택 숨김 |
 | 9 | 에러 페이지 커스터마이징 | ⏳ | `^(customized\|default)$` | 서버 정보 노출 방지 |
 | 10 | 디렉토리 리스팅 비활성화 | ⏳ | `^(disabled\|enabled)$` | autoindex off |

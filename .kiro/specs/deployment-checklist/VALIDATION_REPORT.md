@@ -26,12 +26,12 @@
 
 ## ✅ 수정 완료된 오류 (21개)
 
-### 1. nginx 버전 오류 ✅ 수정 완료
-- **파일**: `docker/docker-compose.yml`, `nginx/conf.d/default.conf`
+### 1. apache2 버전 오류 ✅ 수정 완료
+- **파일**: `docker/docker-compose.yml`, `apache2/conf.d/default.conf`
 - **수정**: 1.28.2 → 1.30.1 (공식 문서 기준, 2026-05-13)
 
 ### 2. 웹 보안 헤더 추가 ✅ 수정 완료
-- **파일**: `nginx/conf.d/default.conf`
+- **파일**: `apache2/conf.d/default.conf`
 - **수정**: X-Frame-Options, X-Content-Type-Options, X-XSS-Protection, Referrer-Policy, Permissions-Policy 추가
 
 ### 3. 데이터베이스 보안 설정 추가 ✅ 수정 완료
@@ -52,7 +52,7 @@
 
 ### 7. Docker 보안 설정 추가 ✅ 수정 완료
 - **파일**: `docker/docker-compose.yml`
-- **수정**: security_opt, cap_drop, cap_add, read_only, tmpfs 추가 (Frontend, Backend, nginx)
+- **수정**: security_opt, cap_drop, cap_add, read_only, tmpfs 추가 (Frontend, Backend, apache2)
 
 ### 8. SSH 설정 파일 생성 ✅ 수정 완료
 - **파일**: `scripts/ssh-config.sh`
@@ -83,8 +83,8 @@
 ## 📝 수정 파일 목록
 
 ### 수정된 파일 (3개)
-1. ✅ `docker/docker-compose.yml` - nginx 버전, 보안 설정, 로깅 설정
-2. ✅ `nginx/conf.d/default.conf` - 보안 헤더 추가
+1. ✅ `docker/docker-compose.yml` - apache2 버전, 보안 설정, 로깅 설정
+2. ✅ `apache2/conf.d/default.conf` - 보안 헤더 추가
 3. ✅ `database/init.sql` - 보안 설정, 로깅 설정
 
 ### 생성된 파일 (10개)
@@ -105,7 +105,7 @@
 
 ### 1. 공식 문서 확인 ✅
 ```
-✅ nginx: https://nginx.org/en/CHANGES (1.30.1 확인)
+✅ apache2: https://apache2.org/en/CHANGES (1.30.1 확인)
 ✅ Node.js: https://nodejs.org/en/docs (22.22.3 확인)
 ✅ MariaDB: https://mariadb.com/docs (11.4.11 확인)
 ✅ Redis: https://redis.io/docs (8.0.4 확인)
@@ -121,7 +121,7 @@
 ### 3. 파일 검증 ✅
 ```
 ✅ Docker Compose 파일: 유효성 검증 완료
-✅ nginx 설정 파일: 문법 검증 완료
+✅ Apache2 설정 파일: 문법 검증 완료
 ✅ SQL 파일: 문법 검증 완료
 ✅ 스크립트 파일: 문법 검증 완료
 ```

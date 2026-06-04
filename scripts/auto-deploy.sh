@@ -142,7 +142,7 @@ fi
 
 log_section "Phase 4: 웹 서버 설치 (Apache2)"
 # ref: https://httpd.apache.org/docs/2.4/install.html
-# NOTE: nginx 사용 안함 — Apache2만 사용
+# NOTE: apache2 사용 안함 — Apache2만 사용
 
 log_info "8단계: Apache2 설치"
 if ! command -v apache2 &> /dev/null; then

@@ -6,7 +6,7 @@
  * ref: https://owasp.org/www-project-secure-headers/
  *
  * 접속: https://xn--2e0bj1fruw33b6ti.net/database/schemas/setup-database.php
- * 주의: 배포 후 이 파일은 웹에서 접근 불가하도록 nginx/htaccess 설정 필요
+ * 주의: 배포 후 이 파일은 웹에서 접근 불가하도록 apache2/htaccess 설정 필요
  */
 declare(strict_types=1);
 

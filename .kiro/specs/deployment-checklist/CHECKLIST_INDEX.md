@@ -87,7 +87,7 @@ f:\youtubeautoid\.kiro\specs\deployment-checklist\
 - npm 검증: 5개
 - Docker 검증: 5개
 - Docker Compose 검증: 5개
-- nginx 검증: 5개
+- apache2 검증: 5개
 - MariaDB 검증: 5개
 - Redis 검증: 5개
 - Git 검증: 5개

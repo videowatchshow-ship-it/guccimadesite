@@ -83,19 +83,19 @@
 
 ---
 
-## 🌐 nginx 검증 (5개)
+## 🌐 apache2 검증 (5개)
 
 ### 공식 문서
-- https://nginx.org/en/docs
-- https://github.com/nginx/nginx
+- https://apache2.org/en/docs
+- https://github.com/apache2/apache2
 
 ### 체크리스트
 
-- [ ] 21. nginx 설치 확인 (명령어: `nginx -v`)
-- [ ] 22. nginx 버전 확인 (정규식: `^nginx/[0-9]+\.[0-9]+\.[0-9]+`)
-- [ ] 23. nginx 설정 확인 (명령어: `nginx -t`)
-- [ ] 24. nginx 상태 확인 (명령어: `systemctl status nginx`)
-- [ ] 25. nginx 권한 확인 (정규식: `^-rwxr-xr-x`)
+- [ ] 21. Apache2 설치 확인 (명령어: `apache2 -v`)
+- [ ] 22. apache2 버전 확인 (정규식: `^apache2/[0-9]+\.[0-9]+\.[0-9]+`)
+- [ ] 23. Apache2 설정 확인 (명령어: `apache2ctl configtest`)
+- [ ] 24. Apache2 상태 확인 (명령어: `systemctl status apache2`)
+- [ ] 25. apache2 권한 확인 (정규식: `^-rwxr-xr-x`)
 
 ---
 

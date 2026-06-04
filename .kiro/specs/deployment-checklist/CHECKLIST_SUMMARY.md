@@ -38,7 +38,7 @@
 - npm 검증 (5개)
 - Docker 검증 (5개)
 - Docker Compose 검증 (5개)
-- nginx 검증 (5개)
+- apache2 검증 (5개)
 - MariaDB 검증 (5개)
 - Redis 검증 (5개)
 - Git 검증 (5개)
@@ -191,7 +191,7 @@ docker-compose up -d
 - [Docker](https://docs.docker.com)
 - [MariaDB](https://mariadb.com/docs)
 - [Redis](https://redis.io/docs)
-- [nginx](https://nginx.org/en/docs)
+- [apache2](https://apache2.org/en/docs)
 
 ### 보안 기준
 - [OWASP Top 10](https://owasp.org/www-project-top-ten/)
